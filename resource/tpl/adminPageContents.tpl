@@ -7,27 +7,27 @@
             <tr>
                 <td><span  class="title">Show by</span></td>
                 <td>
-                    <select class="optionbox" onchange="PG_Easycomment_content.execGetTime();" id="{$sPrefix}date_search">
-                        <option value="customs">Customized Search</option>
-                        <option value="today">Today</option>
-                        <option value="current_week">Current Week</option>
-                        <option value="current_month">Current Month</option>
+                    <select class="optionbox" onchange="PG_Easycomment_content.execGetTime();" id="<?php echo $sPrefix;?>date_range">
+                        <option value="custom" <?php if($sDateRange=='custom'){?>selected="selected"<?php }?>>Customized Search</option>
+                        <option value="today"<?php if($sDateRange=='today'){?>selected="selected"<?php }?>>Today</option>
+                        <option value="currentWeek" <?php if($sDateRange=='currentWeek'){?>selected="selected"<?php }?>>Current Week</option>
+                        <option value="currentMonth"<?php if($sDateRange=='currentMonth'){?>selected="selected"<?php }?>>Current Month</option>
                     </select></td>
                 
-                <td><span  class="title">Start Date:</span> <input type="text" value="" id="{$sPrefix}start_date" class="input_text" readonly="readonly" /><a href="#none"><label for="{$sPrefix}start_date" ><img style="cursor:pointer;" src="images/calendar_icon.png" /></label></a></td>
-                <td><span  class="title">End Date: </span><input type="text" value="" id="{$sPrefix}end_date"  class="input_text" readonly="readonly" /><a href="#none"><label for="{$sPrefix}end_date" ><img style="cursor:pointer;"  src="images/calendar_icon.png" /></label></a></td>
+                <td><span  class="title">Start Date:</span> <input type="text" value="<?php echo $sStartDate;?>" id="<?php echo $sPrefix;?>start_date"  name="<?php echo $sPrefix;?>start_date" class="input_text" readonly="readonly" /><a href="#none"><label for="<?php echo $sPrefix;?>start_date" ><img style="cursor:pointer;" src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
+                <td><span  class="title">End Date: </span><input type="text" value="<?php echo $sEndDate;?>" id="<?php echo $sPrefix;?>end_date"  name="<?php echo $sPrefix;?>end_date" class="input_text" readonly="readonly" /><a href="#none"><label for="<?php echo $sPrefix;?>end_date" ><img style="cursor:pointer;"  src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
                 
             </tr>
             <tr>
                 <td><span  class="title">Search Keyword</span></td>
                 <td>
-                    <select class="optionbox" id="{$sPrefix}field_type">
-                        <option value="name"  {if $sField=='name' || $sField==''}selected="selected"{/if}>Name</option>
-                        <option value="url" {if $sField=='url'}selected="selected"{/if}>URL</option>
+                    <select class="optionbox" id="<?php echo $sPrefix;?>field_search">
+                        <option value="name">Name</option>
+                        <option value="url">URL</option>
                     </select>
                 </td>
                 
-                <td colspan="2"><input type="text" value="" title="Search by URL or Name" id="{$sPrefix}keyword" class="input_search"/> <a href="#none" class="btn_nor_01 btn_width_search" title="Search Keyword" onclick="PG_Easycomment_content.execSearch();return false;" style="width:45px;height:13px" >Search</a><a href="#none" onclick="PG_Easycomment_content.execReset();" class="add_link" title="Reset to default">Reset</a></td>          
+                <td colspan="2"><input type="text" value="<?php echo $sKeyword; ?>" title="Search by URL or Name" id="<?php echo $sPrefix;?>keyword" class="input_search"/> <a href="#none" class="btn_nor_01 btn_width_search" title="Search Keyword" onclick="adminPageContents.execSearch();return false;" style="width:45px;height:13px" >Search</a><a href="#none" onclick="adminPageContents.execReset();" class="add_link" title="Reset to default">Reset</a></td>          
             </tr>
         </table>
     </td>
@@ -42,12 +42,12 @@
         </li>
         <li class="show">
             <label for="{$sPrefix}show_row">Show Rows</label>
-            <select id="{$sPrefix}show_row" onchange="PG_Easycomment_content.execShowRows('{$sQrySort}{$sQrySearch}');">
-                <option {if $iTotalRow==10}selected="selected"{/if}>10</option>
-                <option {if $iTotalRow==20}selected="selected"{/if}>20</option>
-                <option {if $iTotalRow==30}selected="selected"{/if}>30</option>
-                <option {if $iTotalRow==50}selected="selected"{/if}>50</option>
-                <option {if $iTotalRow==100}selected="selected"{/if}>100</option>
+            <select id="<?php echo $sPrefix?>show_row" onchange="adminPageContents.execShowRows();">
+                <option <?php if($iRow==10){?>selected="selected" <?php }?>>10</option>
+                <option <?php if($iRow==20){?>selected="selected" <?php }?>>20</option>
+                <option <?php if($iRow==30){?>selected="selected" <?php }?>>30</option>
+                <option <?php if($iRow==50){?>selected="selected" <?php }?>>50</option>
+                <option <?php if($iRow==100){?>selected="selected" <?php }?>>100</option>
             </select>
         </li>
     </ul>
@@ -59,16 +59,16 @@
     <col width="44px" />
     <col width="48px" />
     <col  />
-    <col/>              
+    <col />              
     <col width="150px" />               
     <col width="200px" />       
 </colgroup>
 <thead>         
 <tr>
-    <th class="chk"><input type="checkbox" title="" onClick="PG_Easycomment_content.execSelectAll();" class="input_chk" /></th>
+    <th class="chk"><input type="checkbox" title="Select All" id="select_all" onClick="adminPageContents.execSelectAll(this.id);" class="input_chk" /></th>
     <th>No.</th>
-    <th><a href="#" class="">URL</a></th>             
     <th><a href="#" class="">Name</a></th>      
+    <th><a href="#" class="">URL</a></th>             
     <th><a href="#" class="">Date</a></th>      
     <th class="no_border">Options</th>  
 </tr>
@@ -77,10 +77,10 @@
 <?php if($aData){?>
 <?php foreach($aData as $rows){?>
     <tr onmouseover="this.className='over'" onmouseout="this.className=''">
-        <td><input type="checkbox" title="" value="{$rows.ped_idx}" name="{$sPrefix}check_box" class="input_chk" /></td>
+        <td><input type="checkbox" title="" value="{$rows.ped_idx}" name="idx_val[]" class="input_chk" /></td>
         <td>1</td>
-        <td class="table_subtitle"><a href="{$rows.peu_url}" target="_blank" title="Edit Schedule"><?php echo $rows['url_idx'] ?></a></td>
-        <td><?php echo $rows['name'];?></td>               
+        <td><a href="{$rows.peu_url}" target="_blank" title="Edit Schedule"><?php echo $rows['name'];?></a></td>               
+        <td class="table_subtitle"><?php echo $rows['url_idx'] ?></td>
         <td><?php echo $rows['comment_date'];?></td>                
         <td>
             <!--<a href="#none" class="btn_nor_02 btn_width_add" title="Add comment on the link" onclick="PG_Easycomment_content.execShowComment();">Comment</a>-->
@@ -170,8 +170,8 @@
             <col width="65px" />
             <col width="320px" />
         </colgroup>
-        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:320px !important;" id="{$sPrefix}add_url"  type="text"/></td></tr>
-        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:320px !important;"  id="{$sPrefix}owner_name" type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:380px !important;" id="{$sPrefix}add_url"  type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:380px !important;"  id="{$sPrefix}owner_name" type="text"/></td></tr>
         <tr>
             <th><label for="textarea_memo">Comment : </label></th>
             <td>
@@ -194,8 +194,8 @@
             <col width="65px" />
             <col width="320px" />
         </colgroup>
-        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:320px !important;" id="{$sPrefix}add_url"  type="text"/></td></tr>
-        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:320px !important;"  id="{$sPrefix}owner_name" type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:380px !important;" id="{$sPrefix}add_url"  type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:380px !important;"  id="{$sPrefix}owner_name" type="text"/></td></tr>
         <tr>
             <th><label for="textarea_memo">Comment : </label></th>
             <td>
