@@ -10,4 +10,10 @@ class modelAdmin extends Model
         $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS;
         return $this->query($sSql);
     }
+
+    public function execViewComment($iIdx)
+    {
+        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $iIdx;
+        return $this->query($sSql,'row');
+    }
 }

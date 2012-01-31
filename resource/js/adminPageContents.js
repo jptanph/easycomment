@@ -12,7 +12,37 @@ var adminPageContents = {
             'classname': 'ly_set ly_editor'
         });
         popup.close('easycomment_edit_comment');
-    },execEditComment : function(){
+    },execEditComment : function(idx){
+        
+        var options = {
+            url : usbuilder.getUrl('apiAdminViewComment'),
+            type : 'post',
+            dataType : 'json',
+            data : {
+                idx : idx
+            },success : function(serverResponse){
+               
+                
+                popup.load('easycomment_edit_comment').skin('admin').layer({
+                    'title' : 'Edit Comment',
+                    'width' : 460,
+                    'classname': 'ly_set ly_editor'
+                });
+                
+                $("#easycomment_edit_idx").val('');
+                $("#easycomment_edit_url").val('');
+                $("#easycomment_edit_name").val('');
+                $("#easycomment_edit_user_comment").val('');
+                
+                $("#easycomment_edit_idx").val(serverResponse.Data.idx);
+                $("#easycomment_edit_url").val(serverResponse.Data.url_idx);
+                $("#easycomment_edit_name").val(serverResponse.Data.name);
+                $("#easycomment_edit_user_comment").val(serverResponse.Data.comment);
+               
+            }            
+        }
+        
+        $.ajax(options);
         
         popup.load('easycomment_edit_comment').skin('admin').layer({
             'title' : 'Edit Comment',
@@ -21,6 +51,10 @@ var adminPageContents = {
         });        
         popup.close('easycomment_add_comment');
     },execSelectAll : function(id){
+        popup.close('easycomment_edit_comment');
+        popup.close('easycomment_add_comment');
+        popup.close('easycomment_delete_single_comment');
+        
         var is_checked = $("#"+id).is(':checked');
         $("input[name='idx_val[]']").each(function(index,value){
             $(this).attr('checked',is_checked);
@@ -44,5 +78,15 @@ var adminPageContents = {
        var show_row = $("#easycomment_show_row");
        
        location.href = usbuilder.getUrl('adminPageContents') + '&row=' + show_row.val();
+    },execUpdate : function(){
+        alert(1)
+    },execSingleDelete : function(){
+        popup.load('easycomment_delete_single_comment').skin('admin').layer({
+            'title' : 'Delete Comment',
+            'width' : 280,
+            'classname': 'ly_set ly_editor'
+        });       
+        popup.close('easycomment_edit_comment');
+        popup.close('easycomment_add_comment');
     }
 }
