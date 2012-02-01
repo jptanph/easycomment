@@ -18,4 +18,10 @@ class modelAdmin extends Model
         $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $iIdx;
         return $this->query($sSql,'row');
     }
+
+    public function execUpdate($aArgs)
+    {
+        $sSql = "UPDATE " . EASYCOMMENT_CONTENTS . " SET visitor_comment = '{$aArgs['comment']}' WHERE idx = {$aArgs['idx']}";
+        return $this->query($sSql);
+    }
 }

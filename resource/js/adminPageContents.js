@@ -32,14 +32,12 @@ var adminPageContents = {
                 });
                 
                 $("#easycomment_edit_idx").val('');
-                $("#easycomment_edit_url").val('');
-                $("#easycomment_edit_name").val('');
                 $("#easycomment_edit_user_comment").val('');
                 
                 $("#easycomment_edit_idx").val(serverResponse.Data.idx);
-                $("#easycomment_edit_url").val(serverResponse.Data.url_idx);
-                $("#easycomment_edit_name").val(serverResponse.Data.name);
-                $("#easycomment_edit_user_comment").val(serverResponse.Data.comment);
+                $("#easycomment_edit_url").html(serverResponse.Data.url_idx);
+                $("#easycomment_edit_name").html(serverResponse.Data.visitor_name);
+                $("#easycomment_edit_user_comment").val(serverResponse.Data.visitor_comment);
                
             }            
         }
@@ -69,16 +67,37 @@ var adminPageContents = {
         $("select#easycomment_date_range").val('currentMonth');
         $("#easycomment_keyword").val('');
     
-    },execShowRows  : function(){
+    },execShowRows  : function(sQry){
        
         var show_row = $("#easycomment_show_row");
        
-       location.href = usbuilder.getUrl('adminPageContents') + '&row=' + show_row.val();
+       location.href = usbuilder.getUrl('adminPageContents') + '&row=' + show_row.val() + sQry;
    
-    },execUpdate : function(){
+    },execUpdate : function(sQry){
+        var idx = $("#easycomment_edit_idx");
+        var name = $("#easycomment_edit_name");
+        var comment = $("#easycomment_edit_user_comment");
         
-        alert(1)
-    
+        var options = {
+            url : usbuilder.getUrl('apiAdminUpdate'),
+            type : 'post',
+            dataType : 'json',
+            data : {
+                idx : idx.val(),
+                name : name.val(),
+                comment : comment.val()
+            },success : function(serverResponse){
+                if(serverResponse.Data){
+                    popup.close('easycomment_edit_comment');
+                    oValidator.generalPurpose.getMessage(true, "Save successfully!");
+                    location.href = usbuilder.getUrl('adminPageContents') + sQry;
+                }
+            }
+        }
+        if(oValidator.formName.getMessage('easycomment_edit_comment_form')){
+            $.ajax(options);    
+        }
+            
     },execSingleDelete : function(){
         
         popup.load('easycomment_delete_single_comment').skin('admin').layer({
@@ -105,8 +124,8 @@ var adminPageContents = {
                 $("#easycomment_end_date").val(serverResponse.Data.eDate)
             }
         }
-        
         $.ajax(options);
+        
     },execMultipleDelete : function(){
         
         var total_checked = $("input[name='idx_val[]']:checked").length;
@@ -134,8 +153,5 @@ var adminPageContents = {
         if(total_checked>0){
             $("#validation_message").hide();
         }
-        
-
-        
     }
 }

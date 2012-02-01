@@ -13,6 +13,9 @@ class adminPageContents extends Controller_Admin
         /** usbuilder initializer.**/
         $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
         $this->writeJs($sInitScript);
+
+        $sFormScript = usbuilder()->getFormAction($this->_sPrefix . 'edit_comment_form','');
+        $this->writeJs($sFormScript);
         /** usbuilder initializer.**/
 
         /** query strings. **/
@@ -28,7 +31,8 @@ class adminPageContents extends Controller_Admin
             :
             ''
             ;
-
+        $sQryRow = (isset($aArgs['row'])) ? "&row=" . $aArgs['row'] : '';
+        $sQrySort = (isset($aArgs['sort']) && isset($aArgs['type'])) ? '&sort=' . $aArgs['sort'] . "&type=" . $aArgs['type'] : '';
         /** query strings. **/
 
         /** queries for model.**/
@@ -60,8 +64,8 @@ class adminPageContents extends Controller_Admin
                 'idx' => $rows['idx'],
                 'url_idx' => $rows['url_idx'],
                 'user_type' => $rows['user_type'],
-                'name' => $rows['name'],
-                'comment' => $rows['comment'],
+                'name' => $rows['visitor_name'],
+                'comment' => $rows['visitor_comment'],
                 'password' => $rows['password'],
                 'comment_date' => $rows['comment_date']
             );
@@ -78,6 +82,7 @@ class adminPageContents extends Controller_Admin
 
         /** assigns for search functionality.**/
         $this->assign('sKeyword',$aArgs['keyword']);
+        $this->assign('sFieldSearch',$aArgs['field_search']);
         $this->assign('iRow',$aArgs['row']);
         $this->assign('sDateRange',$aArgs['date_range']);
         $this->assign('sStartDate',(!isset($aArgs['start_date'])) ? date("Y/m/") . '01' : $aArgs['start_date']);
@@ -87,6 +92,8 @@ class adminPageContents extends Controller_Admin
         /** query string assigns. **/
         $this->assign('sSortType',($aArgs['type']=='asc') ? 'des' : 'asc');
         $this->assign('sQrySearch',$sQrySearch);
+        $this->assign('sQryRow',$sQryRow);
+        $this->assign('sQrySort',$sQrySort);
         /** query string assigns. **/
 
         $this->assign('sSort',$aArgs['sort']);
