@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <lang>
+    <menu>  
+        <var name="easycomment">Easy Comment Settings</var>
+        <mostbutton>
+            <var param="EasycommentPageContents">Show Settings</var>
+        </mostbutton>
+    </menu>    
     <var name="lang">Language</var>
     <var name="name">English</var>
 </lang>

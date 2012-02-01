@@ -93,7 +93,7 @@ class adminPageContents extends Controller_Admin
         $this->assign('sKeyword',$aArgs['keyword']);
         $this->assign('sFieldSearch',$aArgs['field_search']);
         $this->assign('iRow',$aArgs['row']);
-        $this->assign('sDateRange',$aArgs['date_range']);
+        $this->assign('sDateRange',(isset($aArgs['date_range'])) ? $aArgs['date_range'] : 'currentMonth');
         $this->assign('sStartDate',(!isset($aArgs['start_date'])) ? date("Y/m/") . '01' : $aArgs['start_date']);
         $this->assign('sEndDate',(!isset($aArgs['end_date'])) ? date("Y/m/t") : $aArgs['end_date']);
         /** assigns for search functionality.**/

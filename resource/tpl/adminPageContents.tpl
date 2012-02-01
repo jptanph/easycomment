@@ -156,16 +156,16 @@
             <col width="65px" />
             <col width="320px" />
         </colgroup>
-        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:380px !important;" id="{$sPrefix}add_url"  type="text"/></td></tr>
-        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:380px !important;"  id="{$sPrefix}owner_name" type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;" id="{$sPrefix}add_url"  type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;"  id="{$sPrefix}owner_name" type="text"/></td></tr>
         <tr>
             <th><label for="textarea_memo">Comment : </label></th>
             <td>
-                <textarea id="{$sPrefix}add_comment" style="resize:none;height:90px;"></textarea>
+                <textarea id="{$sPrefix}add_comment"  style="resize:none;height:120px;padding:5px;"></textarea>
             </td>
         </tr>
         </table>
-        <center><a href="#none" class="btn_ly" onclick="PG_Easycomment_content.execSaveUserComment('{$sQrtStrings}')">Save</a> <a href="#none" onclick="PG_Easycomment_content.execCloseDialog('{$sPrefix}comment_popup')" class="btn_ly">Cancel</a></center>
+        <center><a href="#none" class="btn_ly" onclick="adminPageContents.execSave()">Save</a> <a href="#none" onclick="PG_Easycomment_content.execCloseDialog('{$sPrefix}comment_popup')" class="btn_ly">Cancel</a></center>
         </form>
     </div>
 </div>

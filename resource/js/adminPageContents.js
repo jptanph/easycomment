@@ -15,7 +15,7 @@ var adminPageContents = {
         
         popup.load('easycomment_add_comment').skin('admin').layer({
             'title' : 'Add Comment',
-            'width' : 460,
+            'width' : 480,
             'classname': 'ly_set ly_editor'
         });
         popup.close('easycomment_edit_comment');
@@ -33,7 +33,7 @@ var adminPageContents = {
                 
                 popup.load('easycomment_edit_comment').skin('admin').layer({
                     'title' : 'Edit Comment',
-                    'width' : 460,
+                    'width' : 480,
                     'classname': 'ly_set ly_editor'
                 });
                 
@@ -194,6 +194,11 @@ var adminPageContents = {
         if(total_checked>0){
             $("#validation_message").hide();
         }
+        
+        $("#easycomment_add_comment").hide();
+        $("#easycomment_edit_comment").hide();
+        $("#easycomment_delete_multiple_comment").hide();        
+        $("#easycomment_delete_single_comment").hide();  
     },execDeleteMConfirm  : function(){
         $(".pop_calendar").hide();
         var options = {
@@ -237,13 +242,15 @@ var adminPageContents = {
         }
         $.ajax(options);
     },execCustomDateRange : function(){
+    
         $("select#easycomment_date_range").val('custom');
-        $("#easycomment_start_date").val('');
-        $("#easycomment_end_date").val('');
         
         $("#easycomment_add_comment").hide();
         $("#easycomment_edit_comment").hide();
         $("#easycomment_delete_multiple_comment").hide();        
         $("#easycomment_delete_single_comment").hide();        
+    
+    },execSave : function(){
+        alert(1)
     }
 }
