@@ -6,14 +6,14 @@
                 <td><span  class="title">Show by</span></td>
                 <td>
                     <select class="optionbox" onchange="adminPageContents.execDateRange();" id="<?php echo $sPrefix;?>date_range">
-                        <option value="custom" <?php if($sDateRange=='custom'){?>selected="selected"<?php }?>>Customized Search</option>
-                        <option value="today"<?php if($sDateRange=='today'){?>selected="selected"<?php }?>>Today</option>
-                        <option value="currentWeek" <?php if($sDateRange=='currentWeek'){?>selected="selected"<?php }?>>Current Week</option>
-                        <option value="currentMonth"<?php if($sDateRange=='currentMonth'){?>selected="selected"<?php }?>>Current Month</option>
+                        <option id="1" value="custom" <?php if($sDateRange=='custom'){?>selected="selected"<?php }?>>Customized Search</option>
+                        <option id="2" value="today"<?php if($sDateRange=='today'){?>selected="selected"<?php }?>>Today</option>
+                        <option id="3" value="currentWeek" <?php if($sDateRange=='currentWeek'){?>selected="selected"<?php }?>>Current Week</option>
+                        <option id="4" value="currentMonth"<?php if($sDateRange=='currentMonth'){?>selected="selected"<?php }?>>Current Month</option>
                     </select></td>
 
-                <td><span  class="title">Start Date:</span> <input type="text" value="<?php echo $sStartDate;?>" id="<?php echo $sPrefix;?>start_date"  name="<?php echo $sPrefix;?>start_date" class="input_text" readonly="readonly" /><a href="#none"><label for="<?php echo $sPrefix;?>start_date" ><img style="cursor:pointer;" src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
-                <td><span  class="title">End Date: </span><input type="text" value="<?php echo $sEndDate;?>" id="<?php echo $sPrefix;?>end_date"  name="<?php echo $sPrefix;?>end_date" class="input_text" readonly="readonly" /><a href="#none"><label for="<?php echo $sPrefix;?>end_date" ><img style="cursor:pointer;"  src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
+                <td><span  class="title">Start Date:</span> <input type="text" value="<?php echo $sStartDate;?>" id="<?php echo $sPrefix;?>start_date"  name="<?php echo $sPrefix;?>start_date" class="input_text" readonly="readonly" onclick="adminPageContents.execCustomDateRange()" /><a href="#none"><label for="<?php echo $sPrefix;?>start_date" ><img style="cursor:pointer;" src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
+                <td><span  class="title">End Date: </span><input type="text" value="<?php echo $sEndDate;?>" id="<?php echo $sPrefix;?>end_date"  name="<?php echo $sPrefix;?>end_date" class="input_text" readonly="readonly" onclick="adminPageContents.execCustomDateRange()" /><a href="#none"><label for="<?php echo $sPrefix;?>end_date" ><img style="cursor:pointer;"  src="<?php echo $sImagePath;?>calendar_icon.png" /></label></a></td>
 
             </tr>
             <tr>
@@ -64,9 +64,9 @@
 <tr>
     <th class="chk"><input type="checkbox" title="Select All" id="select_all" onClick="adminPageContents.execSelectAll(this.id);" class="input_chk" /></th>
     <th>No.</th>
-    <th><a href="<?php echo $sUrlContents;?>&sort=visitor_name&type=<?php if($sSort=='name'){ echo $sSortType;}else{ echo 'asc';}?><?php echo $sQrySearch . $sQryRow;?>" class="<?php if($sSort=='visitor_name'){echo $sSortType;}?>">Name</a></th>
-    <th><a href="<?php echo $sUrlContents;?>&sort=url&type=<?php if($sSort=='url'){ echo  $sSortType;}else{ echo 'asc';}?><?php echo $sQrySearch . $sQryRow;?>" class="<?php if($sSort=='url'){echo $sSortType;}?>">URL</a></th>
-    <th><a href="<?php echo $sUrlContents;?>&sort=comment_date&type=<?php if($sSort=='comment_date'){ echo  $sSortType;}else{ echo 'asc';}?><?php echo $sQrySearch . $sQryRow;?>" class="<?php if($sSort=='comment_date'){echo $sSortType;}?>">Date</a></th>
+    <th><a href="<?php echo $sUrlContents;?>&sort=visitor_name&type=<?php if($sSort=='visitor_name'){ echo $sSortType;}else{ echo 'asc';}?><?php echo $sQrySearch . $sQryRow . $sQryPage;?>" class="<?php if($sSort=='visitor_name'){echo $sSortType;}?>">Name</a></th>
+    <th><a href="<?php echo $sUrlContents;?>&sort=url&type=<?php if($sSort=='url'){ echo  $sSortType;}else{ echo 'asc';}?><?php echo $sQrySearch . $sQryRow . $sQryPage;?>" class="<?php if($sSort=='url'){echo $sSortType;}?>">URL</a></th>
+    <th><a href="<?php echo $sUrlContents;?>&sort=comment_date&type=<?php if($sSort=='comment_date'){ echo  $sSortType;}else{ echo 'asc';}?><?php echo $sQrySearch . $sQryRow . $sQryPage;?>" class="<?php if($sSort=='comment_date'){echo $sSortType;}?>">Date</a></th>
     <th class="no_border">Options</th>
 </tr>
 </thead>
@@ -74,9 +74,9 @@
 <?php if($aData){?>
 <?php foreach($aData as $rows){?>
     <tr onmouseover="this.className='over'" onmouseout="this.className=''">
-        <td><input type="checkbox" title="" value="{$rows.ped_idx}" name="idx_val[]" class="input_chk" /></td>
-        <td>1</td>
-        <td><a href="{$rows.peu_url}" target="_blank" title="Edit Schedule"><?php echo $rows['name'];?></a></td>
+        <td><input type="checkbox" onclick="adminPageContents.execResetSelect();" value="<?php echo $rows['idx'];?>" name="idx_val[]" class="input_chk" /></td>
+        <td><?php echo $rows['row'];?></td>
+        <td><a href="#none"  onclick="adminPageContents.execEditComment(<?php echo $rows['idx']?>)" title="Edit Schedule"><?php echo $rows['name'];?></a></td>
         <td class="table_subtitle"><?php echo $rows['url_idx'] ?></td>
         <td><?php echo $rows['comment_date'];?></td>
         <td>
@@ -189,7 +189,7 @@
             </td>
         </tr>
         </table>
-        <center><a href="#none" class="btn_ly" onclick="adminPageContents.execUpdate('<?php echo $sQrySearch . $sQrySort . $sQryRow;?>')">Save</a> <a href="#none" onclick="PG_Easycomment_content.execCloseDialog('{$sPrefix}comment_popup')" class="btn_ly">Cancel</a></center>
+        <center><a href="#none" class="btn_ly" onclick="adminPageContents.execUpdate('<?php echo $sQrySearch . $sQrySort . $sQryRow . $sQryPage;?>')">Save</a> <a href="#none" onclick="PG_Easycomment_content.execCloseDialog('{$sPrefix}comment_popup')" class="btn_ly">Cancel</a></center>
         </form>
     </div>
 </div>
@@ -199,7 +199,7 @@
         Are you sure you want to delete this record?
         <br />
         <br />
-        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDelete()"> Delete </a>
+        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDeleteSConfirm()"> Delete </a>
     </div>
 </div>
 
@@ -208,6 +208,7 @@
         Are you sure you want to delete the record?
         <br />
         <br />
-        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDelete()"> Delete </a>
+        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDeleteMConfirm()"> Delete </a>
     </div>
 </div>
+

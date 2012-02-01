@@ -33,7 +33,11 @@ class adminPageContents extends Controller_Admin
             ;
         $sQryRow = (isset($aArgs['row'])) ? "&row=" . $aArgs['row'] : '';
         $sQrySort = (isset($aArgs['sort']) && isset($aArgs['type'])) ? '&sort=' . $aArgs['sort'] . "&type=" . $aArgs['type'] : '';
+        $sQryPage = (isset($aArgs['page'])) ? '&page=' . $aArgs['page'] : '';
         /** query strings. **/
+
+        $iPage =(isset($aArgs['page'])) ? $aArgs['page'] : '1';
+        $iRow = ($iPage - 1) * $iLimit;
 
         /** queries for model.**/
         $sSearchWhere = (
@@ -57,10 +61,14 @@ class adminPageContents extends Controller_Admin
         $sUrlContents = usbuilder()->getUrl('adminPageContents');
         $model = new modelAdmin();
         $aResult = $model->execGetContents($sSearchWhere,$sOrderBy,$sLimit);
+        $aCount = $model->execGetCount($sSearchWhere);
+        $iResult = count($aCount);
+        $iIncRow = 0;
 
         foreach($aResult as $rows)
         {
             $aData[] = array(
+                'row' => (($iPage==1) ? ( $iResult - $iIncRow ) : ($iResult-$iRow) - $iIncRow),
                 'idx' => $rows['idx'],
                 'url_idx' => $rows['url_idx'],
                 'user_type' => $rows['user_type'],
@@ -69,6 +77,7 @@ class adminPageContents extends Controller_Admin
                 'password' => $rows['password'],
                 'comment_date' => $rows['comment_date']
             );
+            $iIncRow++;
         }
 
         /** assign for css and js**/
@@ -94,12 +103,13 @@ class adminPageContents extends Controller_Admin
         $this->assign('sQrySearch',$sQrySearch);
         $this->assign('sQryRow',$sQryRow);
         $this->assign('sQrySort',$sQrySort);
+        $this->assign('sQryPage',$sQryPage);
         /** query string assigns. **/
 
         $this->assign('sSort',$aArgs['sort']);
         $this->assign('sPrefix',$sPrefix);
         $this->assign('sImagePath',$sImagePath);
-        $this->assign('sPagination',(!$aData) ? '' : usbuilder()->pagination(20, 2));
+        $this->assign('sPagination',(!$aData) ? '' : usbuilder()->pagination(count($aCount), $iLimit));
         $this->assign('aData',$aData);
         $this->view(__CLASS__);
     }
