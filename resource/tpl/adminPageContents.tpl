@@ -5,7 +5,7 @@
             <tr>
                 <td><span  class="title">Show by</span></td>
                 <td>
-                    <select class="optionbox" onchange="PG_Easycomment_content.execGetTime();" id="<?php echo $sPrefix;?>date_range">
+                    <select class="optionbox" onchange="adminPageContents.execDateRange();" id="<?php echo $sPrefix;?>date_range">
                         <option value="custom" <?php if($sDateRange=='custom'){?>selected="selected"<?php }?>>Customized Search</option>
                         <option value="today"<?php if($sDateRange=='today'){?>selected="selected"<?php }?>>Today</option>
                         <option value="currentWeek" <?php if($sDateRange=='currentWeek'){?>selected="selected"<?php }?>>Current Week</option>
@@ -34,13 +34,13 @@
     <ul class="row_2">
         <li>
             <a href="#none" class="btn_nor_01 btn_width_add" style="width:100px;height:13px" title="Add Comment" onclick="adminPageContents.execAddComment();" >Add Comment</a>
-            <a href="#none" class="btn_nor_01 btn_width_st1" title="Delete Comment" onclick="PG_Easycomment_content.execDeleteAll();return false;">Delete</a>
+            <a href="#none" class="btn_nor_01 btn_width_st1" title="Delete Comment" onclick="adminPageContents.execMultipleDelete();">Delete</a>
         </li>
         <li class="show">
             <label for="{$sPrefix}show_row">Show Rows</label>
             <select id="<?php echo $sPrefix?>show_row" onchange="adminPageContents.execShowRows();">
                 <option <?php if($iRow==10){?>selected="selected" <?php }?>>10</option>
-                <option <?php if($iRow==20){?>selected="selected" <?php }?>>20</option>
+                <option <?php if($iRow==20 || $iRow==''){?>selected="selected" <?php }?>>20</option>
                 <option <?php if($iRow==30){?>selected="selected" <?php }?>>30</option>
                 <option <?php if($iRow==50){?>selected="selected" <?php }?>>50</option>
                 <option <?php if($iRow==100){?>selected="selected" <?php }?>>100</option>
@@ -63,9 +63,9 @@
 <tr>
     <th class="chk"><input type="checkbox" title="Select All" id="select_all" onClick="adminPageContents.execSelectAll(this.id);" class="input_chk" /></th>
     <th>No.</th>
-    <th><a href="#" class="">Name</a></th>
-    <th><a href="#" class="">URL</a></th>
-    <th><a href="#" class="">Date</a></th>
+    <th><a href="<?php echo $sUrlContents;?>&sort=name&type=<?php if($sSort=='name'){ echo $sSortType;}else{ echo 'asc';}?><?php echo $sQrySearch;?>" class="<?php if($sSort=='name'){echo $sSortType;}?>">Name</a></th>
+    <th><a href="<?php echo $sUrlContents;?>&sort=url&type=<?php if($sSort=='url'){ echo  $sSortType;}else{ echo 'asc';}?><?php echo $sQrySearch;?>" class="<?php if($sSort=='url'){echo $sSortType;}?>">URL</a></th>
+    <th><a href="<?php echo $sUrlContents;?>&sort=comment_date&type=<?php if($sSort=='comment_date'){ echo  $sSortType;}else{ echo 'asc';}?><?php echo $sQrySearch;?>" class="<?php if($sSort=='comment_date'){echo $sSortType;}?>">Date</a></th>
     <th class="no_border">Options</th>
 </tr>
 </thead>
@@ -80,8 +80,8 @@
         <td><?php echo $rows['comment_date'];?></td>
         <td>
             <!--<a href="#none" class="btn_nor_02 btn_width_add" title="Add comment on the link" onclick="PG_Easycomment_content.execShowComment();">Comment</a>-->
-            <a href="#none" class="btn_nor_01 btn_width_st1" title="Edit Comment" onclick="adminPageContents.execEditComment(<?php echo $rows['idx']?>);return false;">Edit</a>
-            <a href="#none" class="btn_nor_01 btn_width_st1" title="Delete Comment" onclick="adminPageContents.execSingleDelete(<?php echo $rows['idx']?>);return false;">Delete</a>
+            <a href="#none" class="btn_nor_01 btn_width_st1" title="Edit Comment" onclick="adminPageContents.execEditComment(<?php echo $rows['idx']?>)">Edit</a>
+            <a href="#none" class="btn_nor_01 btn_width_st1" title="Delete Comment" onclick="adminPageContents.execSingleDelete(<?php echo $rows['idx']?>)">Delete</a>
         </td>
     </tr>
 <?php } ?>
@@ -106,37 +106,26 @@
             <a href="#none" class="btn_nor_01 btn_width_st1" title="Apply selected action">Apply</a>
         </li>-->
         <li>
-            <a href="#none" class="btn_nor_01 btn_width_st1" title="Delete selected schedule" onclick="PG_Easycomment_content.execDeleteAll();return false;">Delete</a>
+            <a href="#none" class="btn_nor_01 btn_width_st1" title="Delete selected schedule" onclick="adminPageContents.execMultipleDelete();">Delete</a>
         </li>
         <li class="show">
             <a href="#none" onclick="adminPageContents.execAddComment();" class="btn_nor_01 btn_width_add" title="Add Comment"style="width:100px;height:13px"  >Add Comment</a>
         </li>
     </ul>
 </div>
-<!-- pagination -->
-<div class="pagination">
-<!--
-    <span title="Previous">prev</span>
-    <a href="#none" class="current">1</a>
-    <a href="#none" class="num">2</a>
-    <a href="#none" class="num">3</a>
-    <a href="#none" class="num">4</a>
-    <a href="#none" class="num">5</a>
-    <a href="#none" class="num">6</a>
-    <a href="#none" class="num">7</a> ...
-    <a href="#none" class="num">41</a>
-    <a href="#none" class="activity" title="Next">next</a>
--->
 
-</div>
+<!-- pagination -->
+<?php echo $sPagination;?>
+<!-- pagination -->
+
 <input type="hidden" id="{$sPrefix}server_url" value="{$sServerUrl}">
 <!-- // pagination -->
 <!-- // table horizontal -->
 
 
 <div style="display:none;" id="{$sPrefix}edit_popup" title="Edit Comment">
-<table border="1" cellspacing="0" class="table_input_vr">
     <form>
+    <table border="1" cellspacing="0" class="table_input_vr">
     <input type="hidden" id="{$sPrefix}edit_idx">
     <colgroup>
         <col width="115px" />
@@ -159,9 +148,9 @@
 
 <div style="display:none;" id="<?php echo $sPrefix;?>add_comment">
     <div class="admin_popup_contents">
+    <form id="{$sPrefix}add_comment_form">
+    <input type="hidden" id="{$sPrefix}edit_idx">
     <table border="1" cellspacing="0" class="table_input_vr">
-        <form id="{$sPrefix}add_comment_form">
-        <input type="hidden" id="{$sPrefix}edit_idx">
         <colgroup>
             <col width="65px" />
             <col width="320px" />
@@ -183,9 +172,9 @@
 
 <div style="display:none;" id="<?php echo $sPrefix;?>edit_comment">
     <div class="admin_popup_contents">
-    <table border="1" cellspacing="0" class="table_input_vr">
-        <form id="{$sPrefix}edit_comment_form">
+         <form id="{$sPrefix}edit_comment_form">
         <input type="hidden" id="<?php echo $sPrefix?>edit_idx">
+        <table border="1" cellspacing="0" class="table_input_vr">
         <colgroup>
             <col width="65px" />
             <col width="320px" />
@@ -208,7 +197,15 @@
         Are you sure you want to delete this record?
         <br />
         <br />
-        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDelete()"> Delete <a/>
+        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDelete()"> Delete </a>
+    </div>
+</div>
 
+<div style="display:none;" id="<?php echo $sPrefix;?>delete_multiple_comment">
+    <div class="admin_popup_contents">
+        Are you sure you want to delete the record?
+        <br />
+        <br />
+        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDelete()"> Delete </a>
     </div>
 </div>

@@ -1,13 +1,15 @@
 <?php
+require_once('builder/builderInterface.php');
+
 define('sPrefix','easycomment_');
 define('EASYCOMMENT_CONTENTS' , sPrefix . 'contents');
 
 class modelAdmin extends Model
 {
 
-    public function execGetContents()
+    public function execGetContents($sSearchWhere,$sOrderBy)
     {
-        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS;
+        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " $sSearchWhere $sOrderBy $sLimit";
         return $this->query($sSql);
     }
 

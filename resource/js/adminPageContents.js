@@ -6,12 +6,14 @@ $(document).ready(function(){
 
 var adminPageContents = {
     execAddComment : function(){
+        
         popup.load('easycomment_add_comment').skin('admin').layer({
             'title' : 'Add Comment',
             'width' : 460,
             'classname': 'ly_set ly_editor'
         });
         popup.close('easycomment_edit_comment');
+        
     },execEditComment : function(idx){
         
         var options = {
@@ -50,10 +52,75 @@ var adminPageContents = {
             'classname': 'ly_set ly_editor'
         });        
         popup.close('easycomment_add_comment');
-    },execSelectAll : function(id){
+        
+    },execSearch : function(){
+    
+        var date_range = $("#easycomment_date_range");
+        var field_search = $("#easycomment_field_search");
+        var start_date = $("#easycomment_start_date");
+        var end_date = $("#easycomment_end_date");
+        var keyword = $("#easycomment_keyword");
+        
+        location.href = usbuilder.getUrl('adminPageContents') + '&keyword='+keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&field_search='+field_search.val()+'&date_range='+date_range.val();
+    
+    },execReset : function(){
+    
+        $("select#easycomment_field_search").val('name');
+        $("select#easycomment_date_range").val('currentMonth');
+        $("#easycomment_keyword").val('');
+    
+    },execShowRows  : function(){
+       
+        var show_row = $("#easycomment_show_row");
+       
+       location.href = usbuilder.getUrl('adminPageContents') + '&row=' + show_row.val();
+   
+    },execUpdate : function(){
+        
+        alert(1)
+    
+    },execSingleDelete : function(){
+        
+        popup.load('easycomment_delete_single_comment').skin('admin').layer({
+            'title' : 'Delete Comment',
+            'width' : 280,
+            'classname': 'ly_set ly_editor'
+        });       
         popup.close('easycomment_edit_comment');
         popup.close('easycomment_add_comment');
-        popup.close('easycomment_delete_single_comment');
+        
+    
+    },execDateRange : function(){
+        
+        var date_range = $("#easycomment_date_range");
+        
+        var options = {
+            url : usbuilder.getUrl('apiAdminDateRange'),
+            type : 'post',
+            dataType : 'json',
+            data : {
+                requestDate : date_range.val()
+            },success : function(serverResponse){
+                $("#easycomment_start_date").val(serverResponse.Data.sDate)
+                $("#easycomment_end_date").val(serverResponse.Data.eDate)
+            }
+        }
+        
+        $.ajax(options);
+    },execMultipleDelete : function(){
+        
+        var total_checked = $("input[name='idx_val[]']:checked").length;
+        if(total_checked==0){
+            oValidator.generalPurpose.getMessage(false, "Please select the record(s) you'd like to delete.");
+        }else{
+            $("#validation_message").hide();
+            popup.load('easycomment_delete_multiple_comment').skin('admin').layer({
+                'title' : 'Delete Comment',
+                'width' : 280,
+                'classname': 'ly_set ly_editor'
+            });  
+        }
+    },execSelectAll : function(id){
         
         var is_checked = $("#"+id).is(':checked');
         $("input[name='idx_val[]']").each(function(index,value){
@@ -62,31 +129,13 @@ var adminPageContents = {
         if($("input[name='idx_val[]']:checked").length==0){
             popup.close("simplesample_delete_popup");
         }
-    },execSearch : function(){
-        var date_range = $("#easycomment_date_range");
-        var field_search = $("#easycomment_field_search");
-        var start_date = $("#easycomment_start_date");
-        var end_date = $("#easycomment_end_date");
-        var keyword = $("#easycomment_keyword");
         
-        location.href = usbuilder.getUrl('adminPageContents') + '&keyword='+keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&field_search='+field_search.val()+'&date_range='+date_range.val();
-    },execReset : function(){
-        $("select#easycomment_field_search").val('name');
-        $("select#easycomment_date_range").val('currentMonth');
-        $("#easycomment_keyword").val('');
-    },execShowRows  : function(){
-       var show_row = $("#easycomment_show_row");
-       
-       location.href = usbuilder.getUrl('adminPageContents') + '&row=' + show_row.val();
-    },execUpdate : function(){
-        alert(1)
-    },execSingleDelete : function(){
-        popup.load('easycomment_delete_single_comment').skin('admin').layer({
-            'title' : 'Delete Comment',
-            'width' : 280,
-            'classname': 'ly_set ly_editor'
-        });       
-        popup.close('easycomment_edit_comment');
-        popup.close('easycomment_add_comment');
+        var total_checked = $("input[name='idx_val[]']:checked").length;
+        if(total_checked>0){
+            $("#validation_message").hide();
+        }
+        
+
+        
     }
 }

@@ -7,6 +7,7 @@ class adminPageContents extends Controller_Admin
     protected function run($aArgs)
     {
         $aData = array();
+        $iLimit = 20;
         $sPrefix = $this->Request->getAppID() . '_';
         $sImagePath = '/_sdk/img/' . $this->Request->getAppID() . '/';
         /** usbuilder initializer.**/
@@ -14,9 +15,44 @@ class adminPageContents extends Controller_Admin
         $this->writeJs($sInitScript);
         /** usbuilder initializer.**/
 
-        $this->importCss('adminPageStyle');
+        /** query strings. **/
+         $sQrySearch = (
+            isset($aArgs['keyword']) &&
+            isset($aArgs['start_date']) &&
+            isset($aArgs['end_date']) &&
+            isset($aArgs['field_search']) &&
+            isset($aArgs['date_range'])
+            )
+            ?
+            "&keyword={$aArgs['keyword']}&start_date={$aArgs['start_date']}&end_date={$aArgs['end_date']}&field_search={$aArgs['field_search']}&date_range={$aArgs['date_range']}"
+            :
+            ''
+            ;
+
+        /** query strings. **/
+
+        /** queries for model.**/
+        $sSearchWhere = (
+            isset($aArgs['keyword']) &&
+            isset($aArgs['start_date']) &&
+            isset($aArgs['end_date']) &&
+            isset($aArgs['field_search']) &&
+            isset($aArgs['date_range'])
+            )
+           ?
+           " WHERE " . $aArgs['field_search'] . " LIKE '%" . $aArgs['keyword'] . "%' AND DATE_FORMAT(comment_date,'%Y/%m/%d') BETWEEN '" . $aArgs['start_date'] . "' AND '" . $aArgs['end_date'] . "' "
+           :
+           '';
+        $sOrderBy = (isset($aArgs['sort']) && isset($aArgs['type']))
+            ?
+            " ORDER BY " . $aArgs['sort'] . " " . (($aArgs['type']=='des' ) ? " DESC " : " ASC ")
+            : " ORDER BY comment_date DESC ";
+        $sLimit = (isset($aArgs['row'])) ? " LIMIT $iLimit ": " ";
+        /** queries for model.**/
+
+        $sUrlContents = usbuilder()->getUrl('adminPageContents');
         $model = new modelAdmin();
-        $aResult = $model->execGetContents();
+        $aResult = $model->execGetContents($sSearchWhere,$sOrderBy,$sLimit);
 
         foreach($aResult as $rows)
         {
@@ -30,9 +66,15 @@ class adminPageContents extends Controller_Admin
                 'comment_date' => $rows['comment_date']
             );
         }
+
+        /** assign for css and js**/
+        $this->importCss('adminPageStyle');
         $this->importCss('jqueryCalendar');
-        $this->importJs(__CLASS__);
         $this->importJs('jqueryCalendar');
+        $this->importJs(__CLASS__);
+        /** assign for css and js**/
+
+        $this->assign('sUrlContents',$sUrlContents);
 
         /** assigns for search functionality.**/
         $this->assign('sKeyword',$aArgs['keyword']);
@@ -42,8 +84,15 @@ class adminPageContents extends Controller_Admin
         $this->assign('sEndDate',(!isset($aArgs['end_date'])) ? date("Y/m/t") : $aArgs['end_date']);
         /** assigns for search functionality.**/
 
+        /** query string assigns. **/
+        $this->assign('sSortType',($aArgs['type']=='asc') ? 'des' : 'asc');
+        $this->assign('sQrySearch',$sQrySearch);
+        /** query string assigns. **/
+
+        $this->assign('sSort',$aArgs['sort']);
         $this->assign('sPrefix',$sPrefix);
         $this->assign('sImagePath',$sImagePath);
+        $this->assign('sPagination',(!$aData) ? '' : usbuilder()->pagination(20, 2));
         $this->assign('aData',$aData);
         $this->view(__CLASS__);
     }
