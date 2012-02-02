@@ -3,13 +3,19 @@ require_once('builder/builderInterface.php');
 
 class adminPageSettings extends Controller_Admin
 {
+    private $_sPrefix;
+
     protected function run($aArgs)
     {
-        $sPrefix = $this->Request->getAppID() . '_';
+        $this->_sPrefix = $this->Request->getAppID() . '_';
         $sImagePath = '/_sdk/img/' . $this->Request->getAppID() . '/';
         /** usbuilder initializer.**/
         $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
         $this->writeJs($sInitScript);
+
+        $sFormScript = usbuilder()->getFormAction($this->_sPrefix . 'settings_form','adminExecSaveSettings');
+        $this->writeJs($sFormScript);
+        /** usbuilder initializer.**/
 
         $model = new modelAdmin();
         $aResult = $model->execGetSettings();
@@ -18,7 +24,7 @@ class adminPageSettings extends Controller_Admin
         $this->importJs(__CLASS__);
 
         /** settings assign value.**/
-        $this->assign('sPrefix',$sPrefix);
+        $this->assign('sPrefix',$this->_sPrefix);
         $this->assign('iIdx',$aResult['idx']);
         $this->assign('iCommentLimit',$aResult['comment_limit']);
         $this->assign('sUnAuthorizedWord',$aResult['unauthorized_word']);

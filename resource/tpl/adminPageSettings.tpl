@@ -1,3 +1,5 @@
+<form name="<?php echo $sPrefix?>settings_form" id="<?php echo $sPrefix?>settings_form" method="post">
+<input type="hidden" value="<?php echo $iIdx?>" name="<?php echo $sPrefix;?>idx">
 <!-- message box -->
 	<p class="require"><span class="neccesary">*</span> Required</p>
 	<!-- input area -->
@@ -9,9 +11,9 @@
 		<tr>
 			<th class="padt1"><label for="show_html_value">Pagination</label></th>
 			<td class="padt1">
-				<select title="select rows" class="rows" id="show_html_value">
+				<select title="select rows" class="rows" id="<?php echo $sPrefix?>comment_limit" name="<?php echo $sPrefix?>comment_limit">
 					<?php for($i = 1 ; $i <= 21 ; $i++){?>
-                        <option value="<?php echo $i;?>" <?php if($iCommentLimit==$i){?> selected="selected" <?php }?>><?php echo $i;?></option>
+                        <option id="<?php echo $i;?>" value="<?php echo $i;?>" <?php if($iCommentLimit==$i){?> selected="selected" <?php }?>><?php echo $i;?></option>
 					<?php }?>
 				</select>
 			</td>
@@ -19,12 +21,11 @@
 		<tr>
 			<th><label for="show_html_value">Un-authorized Word</label></th>
 			<td>
-				<textarea class="word_filter"><?php echo $sUnAuthorizedWord?></textarea>
+				<textarea class="word_filter" name="<?php echo $sPrefix?>ua_word" id="<?php echo $sPrefix?>ua_word"><?php echo $sUnAuthorizedWord?></textarea>
 			</td>
 		</tr>
 	</table>
 	<!--  Display option  -->
-
 	<div>
 		<div>
 			<p>
@@ -38,7 +39,7 @@
 				<td><label for="module_label">Background Color</label></td>
 				<td>
 				<span id="module_label_wrap">
-					<input type="text" id="module_label" class="fix" style="width:100px;" value="#FFFFFF" />
+					<input type="text" id="<?php echo $sPrefix?>bg_color" name="<?php echo $sPrefix?>bg_color" class="fix" style="width:100px;" value="<?php echo $sBackgroundColor?>" />
 				</span>
 				<a href="#"><img src="images/color_picker.png" class="ipick_color" /></a>
 				</td>
@@ -47,7 +48,7 @@
 				<td><label for="module_label">Text Color</label></td>
 				<td>
 				<span id="module_label_wrap">
-					<input type="text" id="module_label" class="fix" style="width:100px" value="#FFFFFF" />
+					<input type="text" id="module_label" class="fix" name="<?php echo $sPrefix?>text_color" id="<?php echo $sPrefix?>text_color"style="width:100px" value="<?php echo $sTextColor?>" />
 				</span>
 				<a href="#"><img src="images/color_picker.png" class="ipick_color" /></a>
 				</td>
@@ -56,7 +57,7 @@
 				<td><label for="module_label">Header Color</label></td>
 				<td>
 				<span id="module_label_wrap">
-					<input type="text" id="module_label" class="fix" style="width:100px" value="#FFFFFF" />
+					<input type="text" id="module_label" name="<?php echo $sPrefix?>header_color" id="<?php echo $sPrefix?>header_color" class="fix" style="width:100px" value="<?php echo $sHeaderColor?>" />
 				</span>
 				<a href="#"><img src="images/color_picker.png" class="ipick_color" /></a>
 				</td>
@@ -65,13 +66,14 @@
 				<td><label for="module_label">Header Text Color</label></td>
 				<td>
 				<span id="module_label_wrap">
-					<input type="text" id="module_label" class="fix" style="width:100px" value="#FFFFFF" />
+					<input type="text" id="module_label" name="<?php echo $sPrefix?>htext_color" id="<?php echo $sPrefix?>htext_color" class="fix" style="width:100px" value="<?php echo $sHeaderTextColor?>" />
 				</span>
 				<a href="#"><img src="images/color_picker.png" class="ipick_color" /></a>
 				</td>
 			</tr>
 		</table>
 	</div>
+</form>
 	<div class="tbl_lb_wide_btn">
 		<a href="#" class="btn_apply" title="Save changes" onclick="adminPageSettings.execSave();">Save</a>
 		<a href="#" class="add_link" title="Reset to default">Reset to Default</a>

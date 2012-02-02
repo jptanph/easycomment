@@ -1,6 +1,6 @@
 var adminPageSettings = {
     execSave : function(){
-        alert(1)
+        document.easycomment_settings_form.submit();
     },execHideShow : function(status){
         if(status=='up'){
             $("#easycomment_custom_area").hide();
