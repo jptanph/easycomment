@@ -34,8 +34,8 @@
 <div class="table_header_area">
     <ul class="row_2">
         <li>
-            <a href="#none" class="btn_nor_01 btn_width_add" style="width:100px;height:13px" title="Add Comment" onclick="adminPageContents.execAddComment();" >Add Comment</a>
             <a href="#none" class="btn_nor_01 btn_width_st1" title="Delete Comment" onclick="adminPageContents.execMultipleDelete();">Delete</a>
+            <a href="#none" class="btn_nor_01 btn_width_add" style="width:100px;height:13px" title="Add Comment" onclick="adminPageContents.execAddComment();" >Add Comment</a>
         </li>
         <li class="show">
             <label for="{$sPrefix}show_row">Show Rows</label>

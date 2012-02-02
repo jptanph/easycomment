@@ -20,11 +20,14 @@ class adminPageSettings extends Controller_Admin
         $model = new modelAdmin();
         $aResult = $model->execGetSettings();
 
+        $this->importCss('farbtastic');
+        $this->importJs('farbtastic');
         $this->importCss(__CLASS__);
         $this->importJs(__CLASS__);
 
         /** settings assign value.**/
         $this->assign('sPrefix',$this->_sPrefix);
+        $this->assign('sImagePath',$sImagePath);
         $this->assign('iIdx',$aResult['idx']);
         $this->assign('iCommentLimit',$aResult['comment_limit']);
         $this->assign('sUnAuthorizedWord',$aResult['unauthorized_word']);

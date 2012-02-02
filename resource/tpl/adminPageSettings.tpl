@@ -41,40 +41,43 @@
 				<span id="module_label_wrap">
 					<input type="text" id="<?php echo $sPrefix?>bg_color" name="<?php echo $sPrefix?>bg_color" class="fix" style="width:100px;" value="<?php echo $sBackgroundColor?>" />
 				</span>
-				<a href="#"><img src="images/color_picker.png" class="ipick_color" /></a>
+				<a href="#none" onclick="adminPageSettings.execColorPicker('<?php echo $sPrefix?>bg_color');"><img src="<?php echo $sImagePath;?>color_picker.png" class="ipick_color" /></a>
 				</td>
 			</tr>
 			<tr>
 				<td><label for="module_label">Text Color</label></td>
 				<td>
 				<span id="module_label_wrap">
-					<input type="text" id="module_label" class="fix" name="<?php echo $sPrefix?>text_color" id="<?php echo $sPrefix?>text_color"style="width:100px" value="<?php echo $sTextColor?>" />
+					<input type="text" class="fix" name="<?php echo $sPrefix?>text_color" id="<?php echo $sPrefix?>text_color"style="width:100px" value="<?php echo $sTextColor?>" />
 				</span>
-				<a href="#"><img src="images/color_picker.png" class="ipick_color" /></a>
+				<a href="#none" onclick="adminPageSettings.execColorPicker('<?php echo $sPrefix?>text_color');"><img src="<?php echo $sImagePath;?>color_picker.png" class="ipick_color" /></a>
 				</td>
 			</tr>
 			<tr>
 				<td><label for="module_label">Header Color</label></td>
 				<td>
 				<span id="module_label_wrap">
-					<input type="text" id="module_label" name="<?php echo $sPrefix?>header_color" id="<?php echo $sPrefix?>header_color" class="fix" style="width:100px" value="<?php echo $sHeaderColor?>" />
+					<input type="text" name="<?php echo $sPrefix?>header_color" id="<?php echo $sPrefix?>header_color" class="fix" style="width:100px" value="<?php echo $sHeaderColor?>" />
 				</span>
-				<a href="#"><img src="images/color_picker.png" class="ipick_color" /></a>
+				<a href="#none" onclick="adminPageSettings.execColorPicker('<?php echo $sPrefix?>header_color');"><img src="<?php echo $sImagePath;?>color_picker.png" class="ipick_color" /></a>
 				</td>
 			</tr>
 			<tr>
 				<td><label for="module_label">Header Text Color</label></td>
 				<td>
 				<span id="module_label_wrap">
-					<input type="text" id="module_label" name="<?php echo $sPrefix?>htext_color" id="<?php echo $sPrefix?>htext_color" class="fix" style="width:100px" value="<?php echo $sHeaderTextColor?>" />
+					<input type="text" name="<?php echo $sPrefix?>htext_color" id="<?php echo $sPrefix?>htext_color" class="fix" style="width:100px" value="<?php echo $sHeaderTextColor?>" />
 				</span>
-				<a href="#"><img src="images/color_picker.png" class="ipick_color" /></a>
+				<a href="#none"  onclick="adminPageSettings.execColorPicker('<?php echo $sPrefix?>htext_color');"><img src="<?php echo $sImagePath;?>color_picker.png" class="ipick_color" /></a>
 				</td>
 			</tr>
 		</table>
 	</div>
 </form>
-	<div class="tbl_lb_wide_btn">
-		<a href="#" class="btn_apply" title="Save changes" onclick="adminPageSettings.execSave();">Save</a>
-		<a href="#" class="add_link" title="Reset to default">Reset to Default</a>
-	</div>
+<div class="tbl_lb_wide_btn">
+	<a href="#" class="btn_apply" title="Save changes" onclick="adminPageSettings.execSave();">Save</a>
+	<a href="#" class="add_link" title="Reset to default">Reset to Default</a>
+</div>
+<div id="color_picker_area">
+</div>
+
