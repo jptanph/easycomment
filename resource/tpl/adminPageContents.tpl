@@ -124,29 +124,6 @@
 <!-- // table horizontal -->
 
 
-<div style="display:none;" id="{$sPrefix}edit_popup" title="Edit Comment">
-    <form>
-    <table border="1" cellspacing="0" class="table_input_vr">
-    <input type="hidden" id="{$sPrefix}edit_idx">
-    <colgroup>
-        <col width="115px" />
-        <col width="*" />
-    </colgroup>
-    <tr><th><label for="textarea_memo">URL</label></th><td>: <span id="{$sPrefix}edit_url"></span></td></tr>
-    <tr><th><label for="textarea_memo">Name</label></th><td>: <span id="{$sPrefix}edit_name" ></span></td></tr>
-    <tr>
-        <th><label for="textarea_memo">Comment</label></th>
-        <td>
-            <textarea id="{$sPrefix}edit_comment"></textarea>
-        </td>
-    </tr>
-    </table>
-    <center><a href="#none" class="btn_ly" onclick="PG_Easycomment_content.execSaveComment()">Save</a> <a href="#none" onclick="PG_Easycomment_content.execCloseDialog('{$sPrefix}edit_popup')" class="btn_ly">Cancel</a></center>
-    </form>
-    <br />
-    <br />
-</div>
-
 <div style="display:none;" id="<?php echo $sPrefix;?>add_comment">
     <div class="admin_popup_contents">
     <form id="{$sPrefix}add_comment_form">
@@ -165,7 +142,7 @@
             </td>
         </tr>
         </table>
-        <center><a href="#none" class="btn_ly" onclick="adminPageContents.execSave()">Save</a> <a href="#none" onclick="PG_Easycomment_content.execCloseDialog('{$sPrefix}comment_popup')" class="btn_ly">Cancel</a></center>
+        <a href="#none" class="btn_ly" onclick="adminPageContents.execSave()">Save</a> <a href="#none" onclick="PG_Easycomment_content.execCloseDialog('{$sPrefix}comment_popup')" class="btn_ly">Cancel</a>
         </form>
     </div>
 </div>
@@ -185,11 +162,11 @@
         <tr>
             <th><label for="textarea_memo">Comment : </label></th>
             <td>
-                <textarea id="<?php echo $sPrefix;?>edit_user_comment"  fw-filter="isFill" fw-label="<?php echo $sPrefix;?>edit_user_comment" style="resize:none;height:120px;padding:5px"></textarea>
+                <textarea id="<?php echo $sPrefix;?>edit_user_comment"  fw-filter="isFill" fw-label="<?php echo $sPrefix;?>edit_user_comment" style="resize:none;height:120px;padding:5px;" cols="10" rows="200"></textarea>
             </td>
         </tr>
         </table>
-        <center><a href="#none" class="btn_ly" onclick="adminPageContents.execUpdate('<?php echo $sQrySearch . $sQrySort . $sQryRow . $sQryPage;?>')">Save</a> <a href="#none" onclick="PG_Easycomment_content.execCloseDialog('{$sPrefix}comment_popup')" class="btn_ly">Cancel</a></center>
+        <a href="#none" style="height:20px;" class="btn_ly" onclick="adminPageContents.execUpdate('<?php echo $sQrySearch . $sQrySort . $sQryRow . $sQryPage;?>')">Save</a> <a href="#none" onclick="PG_Easycomment_content.execCloseDialog('{$sPrefix}comment_popup')" class="btn_ly">Cancel</a>
         </form>
     </div>
 </div>

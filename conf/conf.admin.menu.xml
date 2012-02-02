@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <adminmenus>
     <menu name="Easy Comment" param="EasycommentPageContents"  use_most_action="Y">
-        <page lang="simpleschedule" param="SimpleschedulePageAdd"/>
+        <page lang="easycomment" param="EasycommentPageSettings"/>
     </menu>
 </adminmenus>

@@ -1,0 +1,81 @@
+
+
+/* input table */
+.table_input_vr {width:100%;margin-bottom:33px;border:0;margin-top:-10px;}
+.table_input_vr th {padding:9px 0;border:0;font-weight:normal;text-align:left;vertical-align:top;color:#444;line-height:normal}
+.table_input_vr td {padding:7px 0;border:0;color:#777;text-align:left;}
+.table_input_vr a {text-decoration:underline}
+.table_input_vr p {margin-top:3px}
+.table_input_vr input {width:99%;padding-left:0}
+.table_input_vr input.fix {width:298px}
+.table_input_vr input.fix_size {width:43px}
+.table_input_vr textarea {width:99%;height:50px;padding:10px 0}
+.table_input_vr .utc {display:inline-block;margin-left:4px;padding:0 5px;background:#ddd;font-style:italic;line-height:16px;vertical-align:middle}
+.table_input_vr .chk_group {position:relative;float:left;overflow:auto;min-width:264px;max-height:185px;padding:10px 17px 14px 17px;background:#fff;border:1px solid #dfdfde;}
+.table_input_vr .chk_group p {white-space:nowrap}
+
+.table_input_vr .require_wrap {margin-top:10px}
+.table_input_vr .require_wrap .neccesary {float:left;margin-right:8px}
+.table_input_vr .require_wrap .chk_group {min-width:253px}
+
+
+.tbl_option {margin-left:106px}
+.tbl_option tr {height:28px !important}
+/*.tbl_option select {width:100px !important;}*/
+.tbl_option td {padding-left:5px;}
+.tbl_option input {border: 1px solid #CCCCCC;margin-left:20px;height:20px;}
+.lbl_style {width:60px;}
+.symb_style {font-size:12px;font-weight:bold;font-style:normal;text-decoration:none;color:#000000;}
+.module_title {background: url("/_sdk/img/easycomment/right_scroll.gif") no-repeat scroll right center transparent;color: #000000;cursor: pointer;font-family: Verdana; font-size: 12px;font-style: normal; font-weight: bold; padding-right: 20px;text-decoration: none;}
+
+.module_title2 {background: url("/_sdk/img/easycomment/down_scroll.gif") no-repeat scroll right center transparent;color: #000000; cursor: pointer; font-family: Verdana; font-size: 12px; font-style: normal;font-weight: bold;padding-right: 20px;text-decoration: none;}
+
+.padt1 {padding-top:30px;} 
+.padt2 {padding-top:20px;} 
+.selected_wrap {margin:10px 0 10px 0;}
+.selected_wrap span  {margin-right:10px}
+.selected_wrap span label {width:40px !important;display:inline-block;line-height:15px}
+
+.require    {float:right;font-size:11px;color:#777;}
+
+#pg_mapquest_wrap {width:640px;max-height:480px;overflow:hidden;margin-top:10px;border:1px solid silver}
+#pg_mapquest_container {width:640px;max-height:480px;overflow:hidden !important;text-align:center}
+#pg_mapquest div {display:inline-block;}/*width:640px !important;height:480px !important*/
+
+/* float */
+.fl {float:left !important}
+.fr {float:right !important}
+
+/*---------------------- form ----------------------*/
+/*input {height:17px;padding:1px 0 0 10px;border:1px solid #ccc;color:#777;font-size:11px;font-family:verdana, arial, sans-serif}*/
+.input_file {background:#fff !important;height:20px;}
+
+.lbl_radio  {display:inline-block;margin-right:10px;color:#777;vertical-align:middle} /* radio and label  */
+.lbl_check  {display:inline-block;margin-right:10px;color:#777;vertical-align:middle;line-height:16px} /* checkbox and label  */
+.annonce    {margin-left:10px;font-size:11px;color:#777}
+.annonce_vr {clear:both;font-size:11px;color:#777}
+.warn_vr {margin-left:10px;font-style:italic;font-size:11px;color:#f00}
+.please_vr {display:inline-block;font-style:italic;font-size:11px;color:#f00;vertical-align:middle}
+.caution    {display:inline-block;margin-left:10px;font-size:11px;color:#f00;line-height:13px;vertical-align:middle}
+.warn_vr_recom {display:inline-block;margin-left:10px;font-size:11px;color:#777;line-height:13px;vertical-align:middle}
+.neccesary  {margin-left:0;color:#dc4e22;font-family:tahoma, sans-serif;}
+
+.require    {float:right;font-size:11px;color:#777;} /*  */
+.require.noheight {margin:0 0 -30px 0;}/* require (settings) */
+
+
+/* button top margin */
+.tbl_lb_btn         {clear:both;width:100%;margin:10px 0 0 0}
+.tbl_lt_btn         {clear:both;width:100%;margin:10px 0 10px 0}
+.tbl_lb_wide_btn    {clear:both;width:100%;margin:40px 0 0 0}
+.tbl_lb_btn:after   {content:'';clear:both;display:block}.
+.tbl_lb_btn a       {text-decoration:underline;}
+.tbl_btom_cnt {width:100%;text-align:center;margin-top:10px}
+.tbl_btom_rgt   {float:right;margin:10px 0 0 0;padding:0 0 1px 0;}
+.ly_cnt_btn {width:100%;text-align:center}
+.ly_cnt_wide_btn {clear:both;width:100%;margin:30px 0 0 0}
+
+
+.ipick_color {vertical-align:middle;}
+.word_filter {resize:none;width:250px !important;height:75px !important;padding-top:2px !important;}
+.rows {height:20px;}

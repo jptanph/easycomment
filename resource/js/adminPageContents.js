@@ -16,7 +16,8 @@ var adminPageContents = {
         popup.load('easycomment_add_comment').skin('admin').layer({
             'title' : 'Add Comment',
             'width' : 480,
-            'classname': 'ly_set ly_editor'
+            'classname': 'ly_set ly_editor',
+            resizable : true
         });
         popup.close('easycomment_edit_comment');
         
@@ -251,6 +252,12 @@ var adminPageContents = {
         $("#easycomment_delete_single_comment").hide();        
     
     },execSave : function(){
-        alert(1)
+    
+        alert($("#easycomment_delete_single_comment").html());
+    
+    },mostAction : function(){
+        
+        location.href = usbuilder.getUrl('adminPageSettings');
+        
     }
 }
