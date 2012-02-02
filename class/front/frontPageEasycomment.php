@@ -36,8 +36,7 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="							<form>\n";
         $sHtml .="								<input type='hidden' id='{$sPrefix}show_comment' value='{$iShowComment}'>\n";
         $sHtml .="								<input type='hidden' id='{$sPrefix}limit' value='{$iShowComment}'>\n";
-        $sHtml .="								<input type='hidden' id='{$sPrefix}server_url' value='{$sServerUrl}'>\n";
-        $sHtml .="								<input type='hidden' id='{$sPrefix}page_url' value='{$sPageUrl}'>\n";
+        $sHtml .="								<input type='hidden' id='{$this->_sPrefix}current_url' value='{$_SERVER['SCRIPT_URI']}'>\n";
         $sHtml .="								<input type='hidden' id='{$sPrefix}plugin_url' value='{$sPluginUrl}'>\n";
         $sHtml .="								<label for='name'>Name:</label>\n";
         $sHtml .="								<input type='text' value='' id='{$sPrefix}name' class='name' />\n";
@@ -55,7 +54,7 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="									<input type='text' value='' id='{$sPrefix}captcha' class='textinthebox' />\n";
         $sHtml .="								</div>\n";
         $sHtml .="								<div class='sdk_easycomment'>\n";
-        $sHtml .="									<p class='expandable_btn2' style='border-bottom:none;display:visible;' id='{$sPrefix}send'><a href='#none' onclick='PG_Easycomment_front.execSaveComment();'><span>Send</span></a></p>\n";
+        $sHtml .="									<p class='expandable_btn2' style='border-bottom:none;display:visible;' id='{$sPrefix}send'><a href='#none' onclick='frontPageEasycomment.execSaveComment();'><span>Send</span></a></p>\n";
         $sHtml .="									<p class='expandable_btn4 ' style='border-bottom:none;display:none !important;' id='{$sPrefix}processing'><label><a><span class='no_cursor'>Processing...</span></a></label></p>\n";
         $sHtml .="								</div>\n";
         $sHtml .="							</form>\n";

@@ -5,10 +5,10 @@ $(window).ready(function(){
 var frontPageEasycomment = {
     currentUrl : '',
     init : function(){
-    
         this.currentUrl = $("#easycomment_current_url").val();
-        $("#easycomment_current_url").remove();    
-    },test : function(){
-        alert( this.currentUrl)
+        $("#easycomment_current_url").remove(); 
+        
+    },execSaveComment : function(){
+        alert(this.currentUrl)
     }
 }
