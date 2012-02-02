@@ -2,6 +2,7 @@
 require_once('builder/builderInterface.php');
 define('sPrefix','easycomment_');
 define('EASYCOMMENT_CONTENTS' , sPrefix . 'contents');
+define('EASYCOMMENT_SETTINGS' , sPrefix . 'settings');
 
 class modelAdmin extends Model
 {
@@ -35,6 +36,12 @@ class modelAdmin extends Model
     {
         $sSql = "DELETE FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = $iIdx";
         return $this->query($sSql);
+    }
+
+    public function execGetSettings()
+    {
+        $sSql = "SELECT * FROM " . EASYCOMMENT_SETTINGS;
+        return $this->query($sSql,'row');
     }
 
     public function filter_data($sData)

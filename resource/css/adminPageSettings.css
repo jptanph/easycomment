@@ -26,9 +26,9 @@
 .tbl_option input {border: 1px solid #CCCCCC;margin-left:20px;height:20px;}
 .lbl_style {width:60px;}
 .symb_style {font-size:12px;font-weight:bold;font-style:normal;text-decoration:none;color:#000000;}
-.module_title {background: url("/_sdk/img/easycomment/right_scroll.gif") no-repeat scroll right center transparent;color: #000000;cursor: pointer;font-family: Verdana; font-size: 12px;font-style: normal; font-weight: bold; padding-right: 20px;text-decoration: none;}
+.module_title {background: url("/_sdk/img/easycomment/down_scroll.gif") no-repeat scroll right center transparent;color: #000000;cursor: pointer;font-family: Verdana; font-size: 12px;font-style: normal; font-weight: bold; padding-right: 20px;text-decoration: none;}
 
-.module_title2 {background: url("/_sdk/img/easycomment/down_scroll.gif") no-repeat scroll right center transparent;color: #000000; cursor: pointer; font-family: Verdana; font-size: 12px; font-style: normal;font-weight: bold;padding-right: 20px;text-decoration: none;}
+.module_title2 {background: url("/_sdk/img/easycomment/right_scroll.gif") no-repeat scroll right center transparent;color: #000000; cursor: pointer; font-family: Verdana; font-size: 12px; font-style: normal;font-weight: bold;padding-right: 20px;text-decoration: none;}
 
 .padt1 {padding-top:30px;} 
 .padt2 {padding-top:20px;} 
