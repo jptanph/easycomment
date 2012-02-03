@@ -4,10 +4,13 @@ $(window).ready(function(){
 
 var frontPageEasycomment = {
     currentUrl : '',
+    iLimit : 0,
     init : function(){
         var sHtml = '';
         this.currentUrl = $("#easycomment_current_url").val();
+        this.iLimit = $("#easycomment_limit").val()
         $("#easycomment_current_url").remove();
+        $("#easycomment_limit").remove();
         
         var options = {
             url : usbuilder.getUrl('apiFrontComments'),
@@ -40,9 +43,74 @@ var frontPageEasycomment = {
         }
         
         $.ajax(options);
+        frontPageEasycomment.execGenerateCaptcha();
         
     },execSaveComment : function(){
-        oValidator.formName.getMessage('test_form')
-        alert(this.currentUrl)
+
+        var name = $("#easycomment_name");
+        var comment = $("#easycomment_comment");
+        var password = $("#easycomment_password");
+        var captcha = $("#easycomment_captcha");
+        var page_url = $("#easycomment_current_url");        
+        var errors = 0;     
+
+        if($.trim(name.val()).length==0){
+            name.attr('style','border:solid 1px #DC4E22;');
+            errors += 1;
+        }else{
+            name.attr('style','border:solid 1px #CCCCCC;');
+        }
+
+        if($.trim(comment.val()).length==0){
+            comment.attr('style','border:solid 1px #DC4E22;');
+            errors += 1;
+        }else{
+            comment.attr('style','border:solid 1px #CCCCCC;');
+        }
+        
+        if($.trim(password.val()).length<5){
+            password.attr('style','border:solid 1px #DC4E22;');
+            errors += 1;
+        }else{
+            password.attr('style','border:solid 1px #CCCCCC;');
+        }
+
+        if($.trim(captcha.val()).length==0 || PG_Easycomment_front.sC!=captcha.val()){
+            captcha.attr('style','border:solid 1px #DC4E22;');
+            //errors += 1;
+        }else{
+            captcha.attr('style','border:solid 1px #CCCCCC;');
+        }
+        
+        if(errors==0){
+            var options = {
+                url : usbuilder.getUrl('apiFrontSaveComment'),
+                dataType : 'html',
+                type : 'post',
+                data : {
+                    name : name.val(),
+                    comment : comment.val(),
+                    password : password.val(),
+                    captcha : captcha.val(),
+                    page_url : frontPageEasycomment.currentUrl
+                },success : function(serverResponse){
+                    alert(serverResponse)
+                }                
+            }
+            
+            $.ajax(options);
+        }
+        
+    },execGenerateCaptcha : function(){
+       
+        var options = {
+            url : usbuilder.getUrl('apiFrontCaptcha'),
+            dataType : 'html',
+            type : 'post',
+            success : function(serverResponse){
+               // alert(serverResponse)
+            }
+        }
+        $.ajax(options);
     }
 }

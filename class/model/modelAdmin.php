@@ -3,12 +3,20 @@ require_once('builder/builderInterface.php');
 define('sPrefix','easycomment_');
 define('EASYCOMMENT_CONTENTS' , sPrefix . 'contents');
 define('EASYCOMMENT_SETTINGS' , sPrefix . 'settings');
+define('EASYCOMMENT_URL' , sPrefix . 'url');
 
 class modelAdmin extends Model
 {
     public function execGetContents($sSearchWhere,$sOrderBy)
     {
-        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " $sSearchWhere $sOrderBy $sLimit";
+        $sSql = "SELECT
+            t_contents.visitor_name as visitor_name,
+            t_contents.visitor_comment as visitor_comment,
+            t_contents.idx as idx,t_url.url as url,
+            t_contents.url_idx as url_idx
+             FROM " . EASYCOMMENT_CONTENTS . " AS t_contents
+            INNER JOIN " . EASYCOMMENT_URL . " as t_url ON
+             t_contents.url_idx = t_url.idx  $sSearchWhere $sOrderBy $sLimit";
         return $this->query($sSql);
     }
 

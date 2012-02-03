@@ -77,7 +77,7 @@
         <td><input type="checkbox" onclick="adminPageContents.execResetSelect();" value="<?php echo $rows['idx'];?>" name="idx_val[]" class="input_chk" /></td>
         <td><?php echo $rows['row'];?></td>
         <td><a href="#none"  onclick="adminPageContents.execEditComment(<?php echo $rows['idx']?>)" title="Edit Schedule"><?php echo $rows['name'];?></a></td>
-        <td class="table_subtitle"><?php echo $rows['url_idx'] ?></td>
+        <td class="table_subtitle"><?php echo $rows['url'] ?></td>
         <td><?php echo $rows['comment_date'];?></td>
         <td>
             <!--<a href="#none" class="btn_nor_02 btn_width_add" title="Add comment on the link" onclick="PG_Easycomment_content.execShowComment();">Comment</a>-->

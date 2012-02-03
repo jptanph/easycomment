@@ -16,9 +16,12 @@ class frontPageEasycomment extends Controller_Front
         /** usbuilder initializer.**/
 
         $model = new modelFront();
-
+        $aResult = $model->execGetSettings();
 
         $this->importJs(__CLASS__);
+        $this->importCss(__CLASS__);
+        $this->importJs('jquery.scrollTo-1.4.2');
+
         $sHtml = '';
         $sHtml .= "<div id='sdk_easycomment_holder'>\n";
         $sHtml .="		<div id='sdk_easycomment_container'>\n";
@@ -42,23 +45,21 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="							<h3 class='comment_frm_title'>Add Comment</h3>\n";
         $sHtml .="							<form name='test_form' id='test_form'>\n";
         $sHtml .="								<input type='hidden' id='{$this->_sPrefix}show_comment' value='{$iShowComment}'>\n";
-        $sHtml .="								<input type='hidden' id='{$this->_sPrefix}limit' value='{$iShowComment}'>\n";
+        $sHtml .="								<input type='hidden' id='{$this->_sPrefix}limit' value='{$aResult['comment_limit']}'>\n";
         $sHtml .="								<input type='hidden' id='{$this->_sPrefix}current_url' value='{$_SERVER['SCRIPT_URI']}'>\n";
-        $sHtml .="								<input type='hidden' id='{$sPrefix}plugin_url' value='{$sPluginUrl}'>\n";
         $sHtml .="								<label for='name'>Name:</label>\n";
-        $sHtml .="								<input fw-filter='isFill' type='text' value='' id='{$sPrefix}name' class='name' />\n";
+        $sHtml .="								<input type='text' value='' id='{$this->_sPrefix}name' class='name' />\n";
         $sHtml .="								<label for='comment'>Comments:</label>\n";
-        $sHtml .="								<textarea class='comment'  id='{$sPrefix}comment' onkeydown='PG_Easycomment_front.execLimiter();'></textarea>\n";
+        $sHtml .="								<textarea class='comment'  id='{$this->_sPrefix}comment' onkeydown='PG_Easycomment_front.execLimiter();'></textarea>\n";
         $sHtml .="								<p class='sdk_easycomment_textarea_count'><span class='sdk_easycomment_textarea_remaining' id='{$sPrefix}text_remaining'><!--1000</span>/<span class='sdk_easycomment_textarea_total'>1000</span>char</p>-->\n";
         $sHtml .="								<label for='name'>Password:</label>\n";
-        $sHtml .="								<input type='password' value='' id='{$sPrefix}password' class='password' />\n";
+        $sHtml .="								<input type='password' value='' id='{$this->_sPrefix}password' class='password' />\n";
         $sHtml .="								<div class='captcha'>\n";
         $sHtml .="									<label for='name' class='captcha_name'>Captcha:</label>\n";
-        $sHtml .="										<div class='box'>\n";
-        $sHtml .="										</div>\n";
+        $sHtml .="										<div class='box'></div>\n";
         $sHtml .="									<br />\n";
         $sHtml .="									<label for='textinthebox'>Enter text:</label>\n";
-        $sHtml .="									<input type='text' value='' id='{$sPrefix}captcha' class='textinthebox' />\n";
+        $sHtml .="									<input type='text' value='' id='{$this->_sPrefix}captcha' class='textinthebox' />\n";
         $sHtml .="								</div>\n";
         $sHtml .="								<div class='sdk_easycomment'>\n";
         $sHtml .="									<p class='expandable_btn2' style='border-bottom:none;display:visible;' id='{$sPrefix}send'><a href='#none' onclick='frontPageEasycomment.execSaveComment();'><span>Send</span></a></p>\n";
@@ -72,8 +73,6 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="	</div>\n";
         $sHtml .="</div>";
 
-        $this->importCss(__CLASS__);
-        $this->importJs('jquery.scrollTo-1.4.2');
         $this->assign('sVar',"<input type='text' value='" . $_SERVER['SCRIPT_URI'] . "' id='{$this->_sPrefix}current_url'>");
         $this->assign('easycomment',$sHtml);
 

@@ -70,6 +70,7 @@ class adminPageContents extends Controller_Admin
                 'row' => (($iPage==1) ? ( $iResult - $iIncRow ) : ($iResult-$iRow) - $iIncRow),
                 'idx' => $rows['idx'],
                 'url_idx' => $rows['url_idx'],
+                'url' => $rows['url'],
                 'user_type' => $rows['user_type'],
                 'name' => $rows['visitor_name'],
                 'comment' => $rows['visitor_comment'],
