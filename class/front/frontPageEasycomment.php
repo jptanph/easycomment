@@ -10,8 +10,15 @@ class frontPageEasycomment extends Controller_Front
     {
         $this->_sImagePath = '/_sdk/img/' . $this->Request->getAppID() . '/';
         $this->_sPrefix = $this->Request->getAppID() . '_';
-        $this->importJs(__CLASS__);
+        /** usbuilder initializer.**/
+        $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
+        $this->writeJs($sInitScript);
+        /** usbuilder initializer.**/
 
+        $model = new modelFront();
+
+
+        $this->importJs(__CLASS__);
         $sHtml = '';
         $sHtml .= "<div id='sdk_easycomment_holder'>\n";
         $sHtml .="		<div id='sdk_easycomment_container'>\n";
@@ -25,21 +32,21 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="				<div class='sdk_easycomment_wrap' style='background-color:none'>\n";
         $sHtml .="					<div class='sdk_easycomment_content' style='background-color:{$bg_color}'>\n";
         $sHtml .="						<div class='{$sPrefix}move'></div>\n";
-        $sHtml .="						<div id='{$sPrefix}loader'><img src='/_sdk/img/easycomment/comment-loader.gif'></div>\n";
-        $sHtml .="						<ul id='{$sPrefix}main_comments'></ul>\n";
+        $sHtml .="						<div id='{$sPrefix}loader'style='display:none;' ><img src='/_sdk/img/easycomment/comment-loader.gif'></div>\n";
+        $sHtml .="						<ul id='{$this->_sPrefix}main_comments'></ul>\n";
         $sHtml .="						<div class='see_more_comment' style='display:none !important;'>\n";
         $sHtml .="							<a href='#none' class='older_post' onclick='PG_Easycomment_front.execLimitComment();'><span>Show Comment <span id='{$sPrefix}per_comment'></span></span></a>\n";
-        $sHtml .="							<div  class='loader_message'><img src='{$sImagePath}small-loader.gif' /></div>\n";
+        $sHtml .="							<div class='loader_message'><img src='{$sImagePath}small-loader.gif' /></div>\n";
         $sHtml .="						</div>\n";
         $sHtml .="						<div class='comment_frm' id='{$sPrefix}comment_form' style='display:visible;'>\n";
         $sHtml .="							<h3 class='comment_frm_title'>Add Comment</h3>\n";
-        $sHtml .="							<form>\n";
-        $sHtml .="								<input type='hidden' id='{$sPrefix}show_comment' value='{$iShowComment}'>\n";
-        $sHtml .="								<input type='hidden' id='{$sPrefix}limit' value='{$iShowComment}'>\n";
+        $sHtml .="							<form name='test_form' id='test_form'>\n";
+        $sHtml .="								<input type='hidden' id='{$this->_sPrefix}show_comment' value='{$iShowComment}'>\n";
+        $sHtml .="								<input type='hidden' id='{$this->_sPrefix}limit' value='{$iShowComment}'>\n";
         $sHtml .="								<input type='hidden' id='{$this->_sPrefix}current_url' value='{$_SERVER['SCRIPT_URI']}'>\n";
         $sHtml .="								<input type='hidden' id='{$sPrefix}plugin_url' value='{$sPluginUrl}'>\n";
         $sHtml .="								<label for='name'>Name:</label>\n";
-        $sHtml .="								<input type='text' value='' id='{$sPrefix}name' class='name' />\n";
+        $sHtml .="								<input fw-filter='isFill' type='text' value='' id='{$sPrefix}name' class='name' />\n";
         $sHtml .="								<label for='comment'>Comments:</label>\n";
         $sHtml .="								<textarea class='comment'  id='{$sPrefix}comment' onkeydown='PG_Easycomment_front.execLimiter();'></textarea>\n";
         $sHtml .="								<p class='sdk_easycomment_textarea_count'><span class='sdk_easycomment_textarea_remaining' id='{$sPrefix}text_remaining'><!--1000</span>/<span class='sdk_easycomment_textarea_total'>1000</span>char</p>-->\n";
