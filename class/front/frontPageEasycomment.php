@@ -38,7 +38,7 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="						<div class='{$sPrefix}move'></div>\n";
         $sHtml .="						<div id='{$sPrefix}loader'style='display:none;' ><img src='/_sdk/img/easycomment/comment-loader.gif'></div>\n";
         $sHtml .="						<ul id='{$this->_sPrefix}main_comments'></ul>\n";
-        $sHtml .="						<div class='see_more_comment' style='display:none !important;'>\n";
+        $sHtml .="						<div class='see_more_comment' style='display:visible !important;'>\n";
         $sHtml .="							<a href='#none' class='older_post' onclick='PG_Easycomment_front.execLimitComment();'><span>Show Comment <span id='{$sPrefix}per_comment'></span></span></a>\n";
         $sHtml .="							<div class='loader_message'><img src='{$sImagePath}small-loader.gif' /></div>\n";
         $sHtml .="						</div>\n";

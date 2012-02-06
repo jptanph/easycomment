@@ -124,15 +124,16 @@ var frontPageEasycomment = {
     },execLeaveMessage : function(){
         
         $("#easycomment_scrolling").attr('style','display:none !important');     
-        $('#easycomment_holder').scrollTo( 
-            $('#pg_easycomment_comment'),
+        $('div,#easycomment_holder').scrollTo( 
+            $('#easycomment_comment'),
             1000,
             {onAfter:function(){ 
                 $("#easycomment_scrolling").show();
+
             }}
         );
-        $("#pg_easycomment_comment").focus();
-        $("#pg_easycomment_comment").text('');
+        $("#easycomment_comment").focus();
+        $("#easycomment_comment").text('');
         
     },execShowDelete : function(comment_idx){
         $("#easycomment_delete_link"+comment_idx).show();
@@ -141,18 +142,34 @@ var frontPageEasycomment = {
     },execHideDelete : function(comment_idx){
         $("#easycomment_delete_link"+this.showDeleteIdx).hide();        
     },execDeleteComment : function(comment_idx){
-        $("#easycomment_password"+comment_idx).attr('style','border:solid 1px #CCC;');
+//        
+//        $("#easycomment_password"+comment_idx).attr('style','border:solid 1px #CCC;');
+//        
+//        $("#easycomment_delete_form"+comment_idx).show();
+//        
+//        if(comment_idx == this.clickDeleteIdx){
+//            $("#easycomment_delete_form"+ comment_idx).show();            
+//        }else{
+//            $("#easycomment_delete_form"+ this.clickDeleteIdx).hide();            
+//            
+//        }
+//        
+//        this.clickDeleteIdx = comment_idx
+//    
+    
         
-        $("#easycomment_delete_form"+comment_idx).show();
-        
-        if(comment_idx == this.clickDeleteIdx){
-            $("#easycomment_delete_form"+ comment_idx).show();            
-        }else{
-            $("#easycomment_delete_form"+ this.clickDeleteIdx).hide();            
-            
+        $("#easycomment_password"+comment_idx).css({'border':'solid 1px #CCCCCC'});
+
+        if(comment_idx!=this.clickDeleteIdx){
+            $('#easycomment_delete_form'+this.clickDeleteIdx).slideUp(150);
         }
-        
-        this.clickDeleteIdx = comment_idx
+        $("#easycomment_delete_form"+comment_idx).toggle();
+        this.clickDeleteIdx = comment_idx;
+        $("#easycomment_password"+this.clickDeleteIdx).focus();
+    
+    
+    
+    
     },execDelete : function(idx){
         var password = $("#easycomment_password"+idx);
         $("#easycomment_password"+idx).attr('style','border:solid 1px #CCC;');
