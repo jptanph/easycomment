@@ -1,5 +1,5 @@
 <?php
-
+require_once('builder/common.function.php');
 class apiFrontComments extends Controller_Api
 {
     protected function post($aArgs)
@@ -20,11 +20,12 @@ class apiFrontComments extends Controller_Api
                 'idx' => $rows['idx'],
                 'url_idx' => $rows['url_idx'],
                 'visitor_name' => $rows['visitor_name'],
-                'visitor_comment' => $rows['visitor_comment'],
+                'visitor_comment' => limitChar($rows['visitor_comment'],300),
                 'user_type' => $rows['user_type'],
                 'password' => $rows['password'],
                 'comment_date' => $rows['comment_date'],
-                'date_posted' => $rows['date_posted']
+                'date_posted' => $rows['date_posted'],
+                 'comment_length' => strlen($rows['visitor_comment'])
             );
        }
 

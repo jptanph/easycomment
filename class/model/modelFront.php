@@ -78,4 +78,10 @@ class modelFront extends Model
         $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'] . " AND PASSWORD = PASSWORD('{$aData['password']}')";
         return $this->query($sSql);
     }
+
+    public function execShowComment($aData)
+    {
+        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'];
+        return $this->query($sSql,'row');
+    }
 }

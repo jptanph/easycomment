@@ -8,6 +8,8 @@ var frontPageEasycomment = {
     showDelete_idx : 0,
     clickDeleteIdx : 0,
     iFixedLimit : 0,
+    viewIdx : [],
+    cacheComment : [],
     init : function(){
         var sHtml = '';
         this.currentUrl = ( this.currentUrl) ?  this.currentUrl : $("#easycomment_current_url").val();
@@ -34,8 +36,12 @@ var frontPageEasycomment = {
                         sHtml += "		<a href='#none' class='date' style='color:white'>" + value.date_posted + "</a>\n";
                         sHtml += "		<a href='#none' alt='Delete Comment' title='Delete Comment' id='easycomment_delete_link" + value.idx + "' class='delete_icon' style='display:none;' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")' ><span>Delete Comment</span></a>";
                         sHtml += "		</div>\n";
-                        sHtml += "  <p class='sdk_easycomment_text' style='color:black'>\n";
+                        sHtml += "  <p class='sdk_easycomment_text' style='color:black' id='easycomment_users_comment" + value.idx + "'>\n";
                         sHtml += value.visitor_comment;
+                        if(value.comment_length>300){
+                            sHtml += "<br /><i class='{$sPrefix}see_more_comment_loader{$rows.ped_idx}' style='display:none'>loading..</i>";
+                            sHtml += "  <a href='#none' onclick='frontPageEasycomment.execSeeMore(" + value.idx + ");' id='{$sPrefix}see_more_comment{$rows.ped_idx}' class='sdk_easycomment_see_more_comment'>See more.. </a>";
+                        }
                         sHtml += "  </p>\n";
                         sHtml += "<div class='delete_comment' style='display:none;' id='easycomment_delete_form" + value.idx + "'>\n";
                         sHtml += "  <p>Enter Password:</p>\n";
@@ -43,11 +49,17 @@ var frontPageEasycomment = {
                         sHtml += "  <p class='expandable_btn' style='border-bottom:none;display:visible;'><a href='#none' style='width:20px !important' onclick='frontPageEasycomment.execDelete(" + value.idx + ");'><span>Delete</span></a></p>\n";
                         sHtml += "</div>\n";
                         sHtml += "</li>\n";                         
-                    });                                      
+                    });
                 }
-                
-                
+                                
                 $("#easycomment_main_comments").html(sHtml);
+                if(frontPageEasycomment.cacheComment.length>0){
+                    
+                    var total_comment = frontPageEasycomment.cacheComment.length;   
+                    for(var i = 0 ; i < total_comment ; i++){
+                        $('#easycomment_users_comment'+frontPageEasycomment.viewIdx[i]).html(frontPageEasycomment.cacheComment[i]);
+                    }
+                }
             }
         }
         
@@ -202,5 +214,38 @@ var frontPageEasycomment = {
 
         this.init();
         
+    },execSeeMore : function(idx){
+        var options = {
+            url : usbuilder.getUrl('apiFrontGetSingleComment'),
+            dataType : 'json',
+            type : 'post',
+            data : {
+                idx : idx
+            },success : function(serverResponse){
+
+                if($.inArray(idx, frontPageEasycomment.viewIdx)==-1){
+                    frontPageEasycomment.viewIdx.push(serverResponse.Data.idx);
+                    frontPageEasycomment.cacheComment.push(serverResponse.Data.visitor_comment);
+                }
+                $("#easycomment_users_comment"+idx).html(serverResponse.Data.visitor_comment);
+            }
+        }
+        $.ajax(options);
+//        var pNode = $("#PLUGIN_Easycomment");
+//        var mData = { url : PG_Easycomment_front.sServerUrl,
+//            action : 'seemorecomment',
+//            idx : idx
+//        }               
+//        
+//        $('#pg_easycomment_see_more_comment'+idx).hide();
+//        $('.pg_easycomment_see_more_comment_loader'+idx).show();
+//        
+//        PLUGIN.post(pNode, mData , 'custom' , 'html', function (serverResponse){
+//            if(jQuery.inArray(idx, PG_Easycomment_front.arrIdx)==-1){
+//                PG_Easycomment_front.arrIdx.push(idx);
+//                PG_Easycomment_front.cacheComment.push(serverResponse);
+//            }
+//            $('#pg_easycomment_users_comment'+idx).html(serverResponse);
+//        }); 
     }
 }
