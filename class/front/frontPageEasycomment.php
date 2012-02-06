@@ -18,6 +18,7 @@ class frontPageEasycomment extends Controller_Front
         $model = new modelFront();
         $aResult = $model->execGetSettings();
 
+        $this->importJs('jquery.scrollTo-1.4.2');
         $this->importJs(__CLASS__);
         $this->importCss(__CLASS__);
         $this->importJs('jquery.scrollTo-1.4.2');
@@ -28,7 +29,7 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="			<p class='sdk_easycomment_header'><h3 class='sdk_easycomment_title'>Easycomment</h3></p>\n";
         $sHtml .="			<div class='sdk_easycomment_expand'>\n";
         $sHtml .="				<div class='leave_message2 fixed2'>\n";
-        $sHtml .="					<a href='#none'  id='{$sPrefix}scrolling' onclick='PG_Easycomment_front.execLeaveMessage();return false;'>\n";
+        $sHtml .="					<a href='#none'  id='{$this->_sPrefix}scrolling' onclick='frontPageEasycomment.execLeaveMessage();return false;'>\n";
         $sHtml .="						<span>Leave Message</span>\n";
         $sHtml .="					</a>\n";
         $sHtml .="				</div>\n";
@@ -75,6 +76,5 @@ class frontPageEasycomment extends Controller_Front
 
         $this->assign('sVar',"<input type='text' value='" . $_SERVER['SCRIPT_URI'] . "' id='{$this->_sPrefix}current_url'>");
         $this->assign('easycomment',$sHtml);
-
     }
 }

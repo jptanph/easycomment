@@ -7,6 +7,11 @@ class apiFrontComments extends Controller_Api
        $model = new modelFront();
        $aUrl = $model->execGetUrl($aArgs);
        $aResult = $model->execGetComments($aUrl['idx']);
+
+//        if($aResult){
+
+//        }
+//        $aInfo = array();
        return $aResult;
     }
 }

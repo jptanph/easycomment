@@ -17,7 +17,7 @@ class modelFront extends Model
             visitor_comment,
             password,
             comment_date,
-            DATE_FORMAT(comment_date,'%Y/%d/%m %H:%i:%s') as date_posted
+            DATE_FORMAT(FROM_UNIXTIME(comment_date),'%Y/%d/%m %H:%i:%s') as date_posted
             FROM " . EASYCOMMENT_CONTENTS . " WHERE url_idx = $iIdx ORDER BY comment_date DESC ";
         return $this->query($sSql);
     }
@@ -33,7 +33,7 @@ class modelFront extends Model
         $sSql = "INSERT INTO " . EASYCOMMENT_CONTENTS .
             "(url_idx,user_type,visitor_name,visitor_comment,password,comment_date)
             VALUES
-            ($iIdx,'visitor','{$aData['name']}','{$aData['comment']}','{$aData['password']}',UNIX_TIMESTAMP(NOW()))
+            ($iIdx,'visitor','{$aData['name']}','{$aData['comment']}',PASSWORD('{$aData['password']}'),UNIX_TIMESTAMP(NOW()))
             ";
 
         return $this->query($sSql);
@@ -51,4 +51,16 @@ class modelFront extends Model
         return $this->query($sSql,'row');
     }
 
+    public function execDeleteComment($aData)
+    {
+
+        $sSql = "DELETE FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'] . " AND PASSWORD = PASSWORD('{$aData['password']}')";
+        return $this->query($sSql);
+    }
+
+    public function execViewComment($aData)
+    {
+        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'] . " AND PASSWORD = PASSWORD('{$aData['password']}')";
+        return $this->query($sSql);
+    }
 }
