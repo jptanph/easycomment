@@ -76,11 +76,19 @@ class modelAdmin extends Model
         return $this->query($sSql);
     }
 
-    public function execSaveComment()
+    public function execSaveComment($aData,$iUrlIdx)
     {
-        $sSql = " INSERT " . EASYCOMMENT_CONTENTS .
-            "(url_idx,)"
-        ;
+        $sSql = " INSERT INTO " . EASYCOMMENT_CONTENTS .
+            "(url_idx,user_type,visitor_name,visitor_comment,comment_date)
+            VALUES
+            ($iUrlIdx,'admin','{$aData['name']}','{$aData['comment']}',UNIX_TIMESTAMP(NOW()))";
+        $this->query($sSql);
+    }
+
+    public function execGetUrlInfo($aData)
+    {
+        $sSql = "SELECT * FROM " . EASYCOMMENT_URL . " WHERE url = '" . $aData['url']  .  "'";
+        return $this->query($sSql,'row');
     }
 
 }

@@ -15,6 +15,8 @@ class adminPageContents extends Controller_Admin
 
         $sFormScript = usbuilder()->getFormAction($this->_sPrefix . 'edit_comment_form','');
         $this->writeJs($sFormScript);
+
+        usbuilder()->validator(array('form' => $this->_sPrefix . 'add_form'));
         /** usbuilder initializer.**/
 
         /** query strings. **/

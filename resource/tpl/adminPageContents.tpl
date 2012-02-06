@@ -133,12 +133,12 @@
             <col width="65px" />
             <col width="320px" />
         </colgroup>
-        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;" id="<?php echo $sPrefix;?>add_url"  type="text"/></td></tr>
-        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;"  id="<?php echo $sPrefix;?>add_name" type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;" fw-filter="isFill" fw-label="<?php echo $sPrefix;?>add_url"  id="<?php echo $sPrefix;?>add_url"  name="<?php echo $sPrefix;?>add_url"   type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;"  fw-filter="isFill" fw-label="<?php echo $sPrefix;?>add_name"  id="<?php echo $sPrefix;?>add_name"  name="<?php echo $sPrefix;?>add_name"type="text"/></td></tr>
         <tr>
             <th><label for="textarea_memo">Comment : </label></th>
-            <td>
-                <textarea id="<?php echo $sPrefix;?>add_visitor_comment"  style="resize:none;height:120px;padding:5px;"></textarea>
+            <td><span class="neccesary">*</span>
+                <textarea id="<?php echo $sPrefix;?>add_visitor_comment" name="<?php echo $sPrefix;?>add_visitor_comment" fw-filter="isFill" fw-label="<?php echo $sPrefix;?>add_visitor_comment" style="resize:none;height:120px;padding:5px;"></textarea>
             </td>
         </tr>
         </table>
@@ -150,7 +150,7 @@
 
 <div style="display:none;" id="<?php echo $sPrefix;?>edit_comment">
     <div class="admin_popup_contents">
-        <form id="<?php echo $sPrefix;?>edit_comment_form" mehtod="post">
+        <form id="<?php echo $sPrefix;?>edit_comment_form" method="post">
         <input type="hidden" id="<?php echo $sPrefix?>edit_idx">
         <table border="1" cellspacing="0" class="table_input_vr">
         <colgroup>

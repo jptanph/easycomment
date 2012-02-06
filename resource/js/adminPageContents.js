@@ -15,7 +15,7 @@ var adminPageContents = {
         
         popup.load('easycomment_add_comment').skin('admin').layer({
             'title' : 'Add Comment',
-            'width' : 480,
+            'width' : 485,
             'classname': 'ly_set ly_editor',
             resizable : true
         });
@@ -257,17 +257,29 @@ var adminPageContents = {
         var name = $("#easycomment_add_name");
         var comment = $("#easycomment_add_visitor_comment");
         
+        
         var options = {
             url : usbuilder.getUrl('apiAdminSave'),
-            dataType : 'html',
+            dataType : 'json',
             type : 'post',
             data : {
-                
+                name : name.val(),
+                comment : comment.val(),
+                url : url.val()
             },success : function(serverResponse){
-                alert(serverResponse)
+                if(serverResponse.Data.status=='error'){
+                    url.css({'border':'solid 2px #DC4E22'});
+                }else{
+                    url.css({'border':'solid 1px #CCC'});
+                    popup.close('easycomment_add_comment');
+                    oValidator.generalPurpose.getMessage(true, "Save successfully!");
+                    location.href = usbuilder.getUrl('adminPageContents');
+                }
             }
         }
-        $.ajax(options);    
+        if(oValidator.formName.getMessage('easycomment_add_comment')){
+            $.ajax(options);    
+        }
     },mostAction : function(){
         
         location.href = usbuilder.getUrl('adminPageSettings');
