@@ -28,13 +28,18 @@ var frontPageEasycomment = {
             },success : function(serverResponse){
                     
                 if(serverResponse.Data.list){
+                    if(serverResponse.Data.total_comment < frontPageEasycomment.iLimit){
+                        frontPageEasycomment.iLimit = serverResponse.Data.total_comment;
+                    }
                     $("#easycomment_per_comment").html(frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment)
                     $.each(serverResponse.Data.list,function(index,value){
                         sHtml += "<li id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>\n";
                         sHtml += "  <div class='date_author_info' style='background-color:#royalblue'>";
                         sHtml += "		<a class='author' style='color:white'>" +  value.visitor_name + "</a>\n";
                         sHtml += "		<a href='#none' class='date' style='color:white'>" + value.date_posted + "</a>\n";
-                        sHtml += "		<a href='#none' alt='Delete Comment' title='Delete Comment' id='easycomment_delete_link" + value.idx + "' class='delete_icon' style='display:none;' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")' ><span>Delete Comment</span></a>";
+                        if(value.user_type=='visitor'){
+                            sHtml += "      <a href='#none' alt='Delete Comment' title='Delete Comment' id='easycomment_delete_link" + value.idx + "' class='delete_icon' style='display:none;' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")' ><span>Delete Comment</span></a>";                            
+                        }
                         sHtml += "		</div>\n";
                         sHtml += "  <p class='sdk_easycomment_text' style='color:black' id='easycomment_users_comment" + value.idx + "'>\n";
                         sHtml += value.visitor_comment;

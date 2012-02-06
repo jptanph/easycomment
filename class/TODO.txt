@@ -1,0 +1,2 @@
+*front
+    - show comment value and total.
