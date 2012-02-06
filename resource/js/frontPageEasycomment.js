@@ -17,9 +17,9 @@ var frontPageEasycomment = {
             dataType : 'json',
             type : 'post',
             data : {
-                
+                page_url : frontPageEasycomment.currentUrl
             },success : function(serverResponse){
-                
+
                 if(serverResponse.Data){
                     
                     $.each(serverResponse.Data,function(index,value){

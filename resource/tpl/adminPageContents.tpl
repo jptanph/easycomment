@@ -126,19 +126,19 @@
 
 <div style="display:none;" id="<?php echo $sPrefix;?>add_comment">
     <div class="admin_popup_contents">
-    <form id="{$sPrefix}add_comment_form">
+    <form id="<?php echo $sPrefix;?>add_comment_form">
     <input type="hidden" id="{$sPrefix}edit_idx">
     <table border="1" cellspacing="0" class="table_input_vr">
         <colgroup>
             <col width="65px" />
             <col width="320px" />
         </colgroup>
-        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;" id="{$sPrefix}add_url"  type="text"/></td></tr>
-        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;"  id="{$sPrefix}owner_name" type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">URL</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;" id="<?php echo $sPrefix;?>add_url"  type="text"/></td></tr>
+        <tr><th><label for="textarea_memo">Name</label></th><td><span class="neccesary">*</span> <input style="width:400px !important;"  id="<?php echo $sPrefix;?>add_name" type="text"/></td></tr>
         <tr>
             <th><label for="textarea_memo">Comment : </label></th>
             <td>
-                <textarea id="{$sPrefix}add_comment"  style="resize:none;height:120px;padding:5px;"></textarea>
+                <textarea id="<?php echo $sPrefix;?>add_visitor_comment"  style="resize:none;height:120px;padding:5px;"></textarea>
             </td>
         </tr>
         </table>

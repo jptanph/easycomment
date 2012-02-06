@@ -6,7 +6,7 @@ class adminPageContents extends Controller_Admin
     protected function run($aArgs)
     {
         $aData = array();
-        $iLimit = 20;
+        $iLimit = (isset($aArgs['row'])) ? $aArgs['row'] : 20;
         $sPrefix = $this->Request->getAppID() . '_';
         $sImagePath = '/_sdk/img/' . $this->Request->getAppID() . '/';
         /** usbuilder initializer.**/
@@ -28,8 +28,8 @@ class adminPageContents extends Controller_Admin
             ?
             "&keyword={$aArgs['keyword']}&start_date={$aArgs['start_date']}&end_date={$aArgs['end_date']}&field_search={$aArgs['field_search']}&date_range={$aArgs['date_range']}"
             :
-            ''
-            ;
+            '';
+
         $sQryRow = (isset($aArgs['row'])) ? "&row=" . $aArgs['row'] : '';
         $sQrySort = (isset($aArgs['sort']) && isset($aArgs['type'])) ? '&sort=' . $aArgs['sort'] . "&type=" . $aArgs['type'] : '';
         $sQryPage = (isset($aArgs['page'])) ? '&page=' . $aArgs['page'] : '';
@@ -47,20 +47,31 @@ class adminPageContents extends Controller_Admin
             isset($aArgs['date_range'])
             )
            ?
-           " WHERE " . $aArgs['field_search'] . " LIKE '%" . $aArgs['keyword'] . "%' AND DATE_FORMAT(comment_date,'%Y/%m/%d') BETWEEN '" . $aArgs['start_date'] . "' AND '" . $aArgs['end_date'] . "' "
+           " WHERE " . (($aArgs['field_search']=='url') ? " t_url.url " : $aArgs['field_search'] ) . " LIKE '%" . trim($aArgs['keyword']) . "%' AND DATE_FORMAT(FROM_UNIXTIME(t_contents.comment_date),'%Y/%m/%d') BETWEEN '" . $aArgs['start_date'] . "' AND '" . $aArgs['end_date'] . "' "
            :
            '';
         $sOrderBy = (isset($aArgs['sort']) && isset($aArgs['type']))
             ?
-            " ORDER BY " . $aArgs['sort'] . " " . (($aArgs['type']=='des' ) ? " DESC " : " ASC ")
+            " ORDER BY " . (($aArgs['sort']=='url') ? "t_url.url" : $aArgs['sort'] ) . " " . (($aArgs['type']=='des' ) ? " DESC " : " ASC ")
             : " ORDER BY comment_date DESC ";
-        $sLimit = (isset($aArgs['row'])) ? " LIMIT $iLimit ": " ";
+        $sLimit = (isset($aArgs['page'])) ?  " LIMIT $iRow, $iLimit" :  " LIMIT $iLimit ";
+        $sInnerJoin = (
+            isset($aArgs['keyword']) &&
+            isset($aArgs['start_date']) &&
+            isset($aArgs['end_date']) &&
+            isset($aArgs['field_search']) &&
+            isset($aArgs['date_range'])
+            )
+           ?
+           " AS t_contents INNER JOIN easycomment_url as t_url ON t_url.idx = t_contents.url_idx "
+           :
+           "";
         /** queries for model.**/
 
         $sUrlContents = usbuilder()->getUrl('adminPageContents');
         $model = new modelAdmin();
         $aResult = $model->execGetContents($sSearchWhere,$sOrderBy,$sLimit);
-        $aCount = $model->execGetCount($sSearchWhere);
+        $aCount = $model->execGetCount($sInnerJoin,$sSearchWhere);
         $iResult = count($aCount);
         $iIncRow = 0;
 
@@ -75,7 +86,7 @@ class adminPageContents extends Controller_Admin
                 'name' => $rows['visitor_name'],
                 'comment' => $rows['visitor_comment'],
                 'password' => $rows['password'],
-                'comment_date' => $rows['comment_date']
+                'comment_date' => date('m/d/Y :H:i:s', $rows['date_posted'])
             );
             $iIncRow++;
         }

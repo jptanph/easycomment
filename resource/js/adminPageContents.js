@@ -253,8 +253,21 @@ var adminPageContents = {
     
     },execSave : function(){
     
-        alert($("#easycomment_delete_single_comment").html());
-    
+        var url = $("#easycomment_add_url");
+        var name = $("#easycomment_add_name");
+        var comment = $("#easycomment_add_visitor_comment");
+        
+        var options = {
+            url : usbuilder.getUrl('apiAdminSave'),
+            dataType : 'html',
+            type : 'post',
+            data : {
+                
+            },success : function(serverResponse){
+                alert(serverResponse)
+            }
+        }
+        $.ajax(options);    
     },mostAction : function(){
         
         location.href = usbuilder.getUrl('adminPageSettings');

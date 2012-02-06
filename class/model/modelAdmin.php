@@ -7,13 +7,14 @@ define('EASYCOMMENT_URL' , sPrefix . 'url');
 
 class modelAdmin extends Model
 {
-    public function execGetContents($sSearchWhere,$sOrderBy)
+    public function execGetContents($sSearchWhere,$sOrderBy,$sLimit)
     {
         $sSql = "SELECT
             t_contents.visitor_name as visitor_name,
             t_contents.visitor_comment as visitor_comment,
             t_contents.idx as idx,t_url.url as url,
-            t_contents.url_idx as url_idx
+            t_contents.url_idx as url_idx,
+            t_contents.comment_date as date_posted
              FROM " . EASYCOMMENT_CONTENTS . " AS t_contents
             INNER JOIN " . EASYCOMMENT_URL . " as t_url ON
              t_contents.url_idx = t_url.idx  $sSearchWhere $sOrderBy $sLimit";
@@ -34,9 +35,9 @@ class modelAdmin extends Model
         return $this->query($sSql);
     }
 
-    public function execGetCount($sSearchWhere)
+    public function execGetCount($sInnerJoin,$sSearchWhere)
     {
-        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " $sSearchWhere";
+        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " $sInnerJoin  $sSearchWhere";
         return $this->query($sSql);
     }
 
@@ -75,5 +76,11 @@ class modelAdmin extends Model
         return $this->query($sSql);
     }
 
+    public function execSaveComment()
+    {
+        $sSql = " INSERT " . EASYCOMMENT_CONTENTS .
+            "(url_idx,)"
+        ;
+    }
 
 }
