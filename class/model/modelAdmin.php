@@ -23,7 +23,14 @@ class modelAdmin extends Model
 
     public function execViewComment($iIdx)
     {
-        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $iIdx;
+        $sSql = "SELECT
+             t_contents.idx AS idx,
+             t_contents.url_idx as url_idx,
+             t_contents.visitor_name as visitor_name,
+             t_contents.visitor_comment as visitor_comment,
+             t_url.url as url
+             FROM " . EASYCOMMENT_CONTENTS . " AS t_contents
+            INNER JOIN " . EASYCOMMENT_URL . " AS t_url on t_contents.url_idx = t_url.idx WHERE t_contents.idx = $iIdx" ;
         return $this->query($sSql,'row');
     }
 

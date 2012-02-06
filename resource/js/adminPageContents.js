@@ -31,7 +31,6 @@ var adminPageContents = {
                 idx : idx
             },success : function(serverResponse){
                
-                
                 popup.load('easycomment_edit_comment').skin('admin').layer({
                     'title' : 'Edit Comment',
                     'width' : 480,
@@ -42,7 +41,7 @@ var adminPageContents = {
                 $("#easycomment_edit_user_comment").val('');
                 
                 $("#easycomment_edit_idx").val(serverResponse.Data.idx);
-                $("#easycomment_edit_url").html(serverResponse.Data.url_idx);
+                $("#easycomment_edit_url").html(serverResponse.Data.url);
                 $("#easycomment_edit_name").html(serverResponse.Data.visitor_name);
                 $("#easycomment_edit_user_comment").val(serverResponse.Data.visitor_comment);
                
