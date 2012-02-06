@@ -7,7 +7,7 @@ define('EASYCOMMENT_URL' , sPrefix . 'url');
 
 class modelFront extends Model
 {
-    public function execGetComments($iIdx)
+    public function execGetComments($iIdx,$sLimit)
     {
         $sSql = "SELECT
             idx,
@@ -18,7 +18,22 @@ class modelFront extends Model
             password,
             comment_date,
             DATE_FORMAT(FROM_UNIXTIME(comment_date),'%Y/%d/%m %H:%i:%s') as date_posted
-            FROM " . EASYCOMMENT_CONTENTS . " WHERE url_idx = $iIdx ORDER BY comment_date DESC ";
+            FROM " . EASYCOMMENT_CONTENTS . " WHERE url_idx = $iIdx ORDER BY comment_date DESC $sLimit";
+        return $this->query($sSql);
+    }
+
+    public function execGetCommentsCount($iIdx)
+    {
+        $sSql = "SELECT
+        idx,
+        url_idx,
+        visitor_name,
+        user_type,
+        visitor_comment,
+        password,
+        comment_date,
+        DATE_FORMAT(FROM_UNIXTIME(comment_date),'%Y/%d/%m %H:%i:%s') as date_posted
+        FROM " . EASYCOMMENT_CONTENTS . " WHERE url_idx = $iIdx ORDER BY comment_date DESC";
         return $this->query($sSql);
     }
 

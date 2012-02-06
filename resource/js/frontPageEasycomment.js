@@ -7,10 +7,13 @@ var frontPageEasycomment = {
     iLimit : 0,
     showDelete_idx : 0,
     clickDeleteIdx : 0,
+    iFixedLimit : 0,
     init : function(){
         var sHtml = '';
         this.currentUrl = ( this.currentUrl) ?  this.currentUrl : $("#easycomment_current_url").val();
-        this.iLimit = $("#easycomment_limit").val()
+        this.iLimit = (this.iLimit ) ? this.iLimit : $("#easycomment_limit").val();
+        this.iFixedLimit = ( this.iFixedLimit ) ?  this.iFixedLimit : $("#easycomment_limit").val();
+
         $("#easycomment_current_url").remove();
         $("#easycomment_limit").remove();
         var options = {
@@ -18,12 +21,13 @@ var frontPageEasycomment = {
             dataType : 'json',
             type : 'post',
             data : {
-                page_url : frontPageEasycomment.currentUrl
+                page_url : frontPageEasycomment.currentUrl,
+                limit : this.iLimit
             },success : function(serverResponse){
-
-                if(serverResponse.Data){
                     
-                    $.each(serverResponse.Data,function(index,value){
+                if(serverResponse.Data.list){
+                    $("#easycomment_per_comment").html(frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment)
+                    $.each(serverResponse.Data.list,function(index,value){
                         sHtml += "<li id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>\n";
                         sHtml += "  <div class='date_author_info' style='background-color:#royalblue'>";
                         sHtml += "		<a class='author' style='color:white'>" +  value.visitor_name + "</a>\n";
@@ -190,5 +194,13 @@ var frontPageEasycomment = {
             }
         }
         $.ajax(options);
+    
+    },execLimitComment : function(){
+        
+
+        this.iLimit = parseInt(this.iLimit) + parseInt(this.iFixedLimit);
+
+        this.init();
+        
     }
 }
