@@ -34,7 +34,12 @@ class apiFrontComments extends Controller_Api
                 'password' => $rows['password'],
                 'comment_date' => $rows['comment_date'],
                 'date_posted' => $rows['date_posted'],
-                 'comment_length' => strlen($rows['visitor_comment'])
+                'comment_length' => strlen($rows['visitor_comment']),
+                'bg_color' => $aSettings['background_color'],
+                'text_color' => $aSettings['text_color'],
+                'header_color' => $aSettings['header_color'],
+                'htext_color' => $aSettings['header_text_color'],
+                'ua_word' => $aSettings['unauthorized_word']
             );
        }
 
