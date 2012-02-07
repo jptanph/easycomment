@@ -17,8 +17,6 @@ class adminPageSettings extends Controller_Admin
         $this->writeJs($sFormScript);
         /** usbuilder initializer.**/
 
-        $sUrlContents = usbuilder()->getUrl('adminPageContents');
-
         $model = new modelAdmin();
         $aResult = $model->execGetSettings();
 
@@ -29,11 +27,15 @@ class adminPageSettings extends Controller_Admin
 
         /** settings assign value.**/
         $this->assign('sPrefix',$this->_sPrefix);
-        $this->assign('sUrlContents',$sUrlContents);
         $this->assign('sImagePath',$sImagePath);
         $this->assign('iIdx',$aResult['idx']);
-        $this->assign('iCommentLimit',($aResult['comment_limit']=='') ? 5 : $aResult['comment_limit']);
+        $this->assign('iCommentLimit',$aResult['comment_limit']);
         $this->assign('sUnAuthorizedWord',$aResult['unauthorized_word']);
+        $this->assign('sBackgroundColor',$aResult['background_color']);
+        $this->assign('sTextColor',$aResult['text_color']);
+        $this->assign('sHeaderColor',$aResult['header_color']);
+        $this->assign('sHeaderTextColor',$aResult['header_text_color']);
+        $this->assign('sShowCustom',($aResult['background_color'] || $aResult['text_color'] || $aResult['header_color'] || $aResult['header_text_color']) ? 'yes' : 'no');
         /** settings assign value.**/
 
         $this->view(__CLASS__);

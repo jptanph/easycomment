@@ -32,5 +32,15 @@ var adminPageSettings = {
         $.farbtastic('#easycomment_cp_canvas', function(color){
             $("#"+element).val(color);
         }); 
+    },execReset : function(){
+        $("#easycomment_bg_color").val('');
+        $("#easycomment_text_color").val('');
+        $("#easycomment_header_color").val('');
+        $("#easycomment_htext_color").val('');  
+        $("#easycomment_comment_limit").val(5);
+        $("#easycomment_ua_word").val('');
+        $("#easycomment_custom_area").hide();
+        $("#easycomment_down").hide();
+        $("#easycomment_up").show(); 
     }
 }

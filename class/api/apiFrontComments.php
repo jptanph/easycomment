@@ -9,7 +9,7 @@ class apiFrontComments extends Controller_Api
     protected function post($aArgs)
     {
        $aData = array();
-       $aRepWord = array("");
+       $aRepWord = array("***");
        $model = new modelFront();
        $this->_oFilter = new Filter_class();
        $aUrl = $model->execGetUrl($aArgs);
