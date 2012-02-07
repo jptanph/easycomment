@@ -124,6 +124,7 @@
 
 .older_post {width:150px;text-align:center;margin:0 auto;padding-right:10px;text-decoration:none;font-weight:normal;font-style:normal;padding-left:2px !important;color:#558de2;text-align:center;background: url(/_sdk/img/easycomment/sort_down_curr.gif) no-repeat 130px center;display:inline-block;}
 .older_post:hover {text-decoration:underline;}
+.older_post_no_record {width:150px;text-align:center;margin:0 auto;padding-right:10px;text-decoration:none;font-weight:normal;font-style:normal;padding-left:2px !important;color:#558de2;text-align:center;display:inline-block;}
 
 #pg_easycomment_loader{width:64px;display:inline-block;text-align:center;margin:60px 0 0 130px;display:none;}
 

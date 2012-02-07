@@ -14,6 +14,7 @@ var frontPageEasycomment = {
     bShowComment : false,
     init : function(){
         var sHtml = '';
+        var sShowLimit = '';
         this.currentUrl = ( this.currentUrl) ?  this.currentUrl : $("#easycomment_current_url").val();
         this.iLimit = (this.iLimit ) ? this.iLimit : $("#easycomment_limit").val();
         this.iFixedLimit = ( this.iFixedLimit ) ?  this.iFixedLimit : $("#easycomment_limit").val();
@@ -23,6 +24,7 @@ var frontPageEasycomment = {
         var options = {
             url : usbuilder.getUrl('apiFrontComments'),
             dataType : 'json',
+            cache : false,
             type : 'post',
             data : {
                 page_url : frontPageEasycomment.currentUrl,
@@ -32,12 +34,19 @@ var frontPageEasycomment = {
                     if(serverResponse.Data.total_comment < frontPageEasycomment.iLimit){
                         frontPageEasycomment.iLimit = serverResponse.Data.total_comment;
                     }
-                    $("#easycomment_per_comment").html(frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment)
+
+                    
+                    if(serverResponse.Data.total_comment == 0){
+                        sShowLimit = "<a  class='older_post'><span>No comment.</span></span></a>";
+                    }else{
+                        sShowLimit = "<a href='#none' class='older_post' onclick='frontPageEasycomment.execLimitComment();'><span>Show Comment <span>"+frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment+"</span></span></a>";
+                    }
+                    $("#limit_option_area").html(sShowLimit)
                     $.each(serverResponse.Data.list,function(index,value){
                          
                         sHtml += "<li id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>\n";
-                        sHtml += "  <div class='date_author_info' style='background-color:#3B5998'>";
-                        sHtml += "		<a class='author' style='color:white'>" +  value.visitor_name + "</a>\n";
+                        sHtml += "  <div class='date_author_info' style='background-color:" + value.header_color + "'>";
+                        sHtml += "		<a class='author' style='color:" + value.htext_color + "'>" +  value.visitor_name + "</a>\n";
                         sHtml += "		<a href='#none' class='date' style='color:white'>" + value.date_posted + "</a>\n";
                         if(value.user_type=='visitor'){
                             sHtml += "      <a href='#none' alt='Delete Comment' title='Delete Comment' id='easycomment_delete_link" + value.idx + "' class='delete_icon' style='display:none;' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")' ><span>Delete Comment</span></a>";                            
@@ -57,6 +66,9 @@ var frontPageEasycomment = {
                         sHtml += "</div>\n";
                         sHtml += "</li>\n";                         
                     });
+                }else{
+                    sShowLimit = "<a  class='older_post_no_record'><label>No comment.</label></span></a>";
+                    $("#limit_option_area").html(sShowLimit)
                 }
                                 
                 $("#easycomment_main_comments").html(sHtml);

@@ -60,13 +60,17 @@ class modelAdmin extends Model
         return $this->query($sSql,'row');
     }
 
-    public function execSaveSettings($aData)
+     public function execSaveSettings($aData)
     {
         $sSql = "INSERT INTO " . EASYCOMMENT_SETTINGS .
-            "(comment_limit,unauthorized_word)
+            "(comment_limit,unauthorized_word,background_color,text_color,header_color,header_text_color)
             VALUES
             ('{$aData['easycomment_comment_limit']}',
-            '{$aData['easycomment_ua_word']}'
+            '{$aData['easycomment_ua_word']}',
+            '{$aData['easycomment_bg_color']}',
+            '{$aData['easycomment_text_color']}',
+            '{$aData['easycomment_header_color']}'
+            '{$aData['easycomment_htext_color']}'
             )
             ";
         return $this->query($sSql);
@@ -77,7 +81,11 @@ class modelAdmin extends Model
         $sSql = "UPDATE " . EASYCOMMENT_SETTINGS .
             " SET
               comment_limit = {$aData['easycomment_comment_limit']},
-              unauthorized_word = '{$aData['easycomment_ua_word']}'
+              unauthorized_word = '{$aData['easycomment_ua_word']}',
+              background_color = '{$aData['easycomment_bg_color']}',
+              text_color = '{$aData['easycomment_text_color']}',
+              header_color = '{$aData['easycomment_header_color']}',
+              header_text_color = '{$aData['easycomment_htext_color']}'
               WHERE idx = {$aData['easycomment_idx']}
             ";
         return $this->query($sSql);
