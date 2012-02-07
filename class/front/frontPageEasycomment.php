@@ -19,12 +19,12 @@ class frontPageEasycomment extends Controller_Front
         $aResult = $model->execGetSettings();
 
         $this->importJs('jquery.scrollTo-1.4.2');
+        $this->importJs('jquery.realperson');
         $this->importJs(__CLASS__);
+        $this->importCss('jquery.realperson');
         $this->importCss(__CLASS__);
-        $this->importJs('jquery.scrollTo-1.4.2');
-
         $sHtml = '';
-        $sHtml .= "<input type='button' onclick='frontPageEasycomment.test();' value='test'><div id='sdk_easycomment_holder'>\n";
+        $sHtml .= "<div id='sdk_easycomment_holder'>\n";
         $sHtml .="		<div id='sdk_easycomment_container'>\n";
         $sHtml .="			<p class='sdk_easycomment_header'><h3 class='sdk_easycomment_title' style='font-family:Georgia'>Easycomment</h3></p>\n";
         $sHtml .="			<div class='sdk_easycomment_expand'>\n";
