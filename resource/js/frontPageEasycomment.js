@@ -26,7 +26,6 @@ var frontPageEasycomment = {
                 page_url : frontPageEasycomment.currentUrl,
                 limit : this.iLimit
             },success : function(serverResponse){
-                    
                 if(serverResponse.Data.list){
                     if(serverResponse.Data.total_comment < frontPageEasycomment.iLimit){
                         frontPageEasycomment.iLimit = serverResponse.Data.total_comment;
@@ -42,7 +41,7 @@ var frontPageEasycomment = {
                         }
                         sHtml += "		</div>\n";
                         sHtml += "  <p class='sdk_easycomment_text' style='color:black' id='easycomment_users_comment" + value.idx + "'>\n";
-                        sHtml += value.visitor_comment;
+                        sHtml += value.visitor_comment + '<br />';
                         if(value.comment_length>300){
                             sHtml += "<br /><i class='{$sPrefix}see_more_comment_loader{$rows.ped_idx}' style='display:none'>loading..</i>";
                             sHtml += "  <a href='#none' onclick='frontPageEasycomment.execSeeMore(" + value.idx + ");' id='{$sPrefix}see_more_comment{$rows.ped_idx}' class='sdk_easycomment_see_more_comment'>See more.. </a>";
@@ -65,6 +64,10 @@ var frontPageEasycomment = {
                         $('#easycomment_users_comment'+frontPageEasycomment.viewIdx[i]).html(frontPageEasycomment.cacheComment[i]);
                     }
                 }
+                $(".see_more_comment").fadeIn(250);
+                $(".older_post").show();
+                $(".loader_message").hide();
+                
             }
         }
         
@@ -101,13 +104,13 @@ var frontPageEasycomment = {
             password.attr('style','border:solid 1px #CCCCCC;');
         }
 
-        if($.trim(captcha.val()).length==0 || PG_Easycomment_front.sC!=captcha.val()){
-            captcha.attr('style','border:solid 2px #DC4E22;');
-            //errors += 1;
-        }else{
-            captcha.attr('style','border:solid 1px #CCCCCC;');
-        }
-        
+//        if($.trim(captcha.val()).length==0 || PG_Easycomment_front.sC!=captcha.val()){
+//            captcha.attr('style','border:solid 2px #DC4E22;');
+//            //errors += 1;
+//        }else{
+//            captcha.attr('style','border:solid 1px #CCCCCC;');
+//        }
+//        
         if(errors==0){
             var options = {
                 url : usbuilder.getUrl('apiFrontSaveComment'),
@@ -124,7 +127,8 @@ var frontPageEasycomment = {
                     name.val('');
                     comment.val('');
                     password.val('');
-                    captcha.val('');                      
+                    captcha.val('');
+                    $("div").scrollTo($(".easycomment_move"),1000,{offset: {top:-30}});
                 }                
             }
             
@@ -214,7 +218,8 @@ var frontPageEasycomment = {
     
     },execLimitComment : function(){
         
-
+        $(".older_post").hide();
+        $(".loader_message").show();
         this.iLimit = parseInt(this.iLimit) + parseInt(this.iFixedLimit);
 
         this.init();

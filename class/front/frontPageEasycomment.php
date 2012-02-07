@@ -35,12 +35,12 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="				</div>\n";
         $sHtml .="				<div class='sdk_easycomment_wrap' style='background-color:none'>\n";
         $sHtml .="					<div class='sdk_easycomment_content' style='background-color:{$bg_color}'>\n";
-        $sHtml .="						<div class='{$sPrefix}move'></div>\n";
+        $sHtml .="						<div class='{$this->_sPrefix}move'></div>\n";
         $sHtml .="						<div id='{$sPrefix}loader'style='display:none;' ><img src='/_sdk/img/easycomment/comment-loader.gif'></div>\n";
         $sHtml .="						<ul id='{$this->_sPrefix}main_comments'></ul>\n";
-        $sHtml .="						<div class='see_more_comment' style='display:visible !important;'>\n";
+        $sHtml .="						<div class='see_more_comment' style='display:none !important;'>\n";
         $sHtml .="							<a href='#none' class='older_post' onclick='frontPageEasycomment.execLimitComment();'><span>Show Comment <span id='{$this->_sPrefix}per_comment'></span></span></a>\n";
-        $sHtml .="							<div class='loader_message'><img src='{$sImagePath}small-loader.gif' /></div>\n";
+        $sHtml .="							<div class='loader_message'><img src='{$this->_sImagePath}small-loader.gif' /></div>\n";
         $sHtml .="						</div>\n";
         $sHtml .="						<div class='comment_frm' id='{$sPrefix}comment_form' style='display:visible;'>\n";
         $sHtml .="							<h3 class='comment_frm_title'>Add Comment</h3>\n";
@@ -51,7 +51,7 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="								<label for='name'>Name:</label>\n";
         $sHtml .="								<input type='text' value='' id='{$this->_sPrefix}name' class='name' />\n";
         $sHtml .="								<label for='comment'>Comments:</label>\n";
-        $sHtml .="								<textarea class='comment'  id='{$this->_sPrefix}comment' onkeydown='PG_Easycomment_front.execLimiter();'></textarea>\n";
+        $sHtml .="								<textarea class='comment'  id='{$this->_sPrefix}comment'></textarea>\n";
         $sHtml .="								<p class='sdk_easycomment_textarea_count'><span class='sdk_easycomment_textarea_remaining' id='{$sPrefix}text_remaining'><!--1000</span>/<span class='sdk_easycomment_textarea_total'>1000</span>char</p>-->\n";
         $sHtml .="								<label for='name'>Password:</label>\n";
         $sHtml .="								<input type='password' value='' id='{$this->_sPrefix}password' class='password' />\n";
