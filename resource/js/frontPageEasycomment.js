@@ -33,7 +33,7 @@ var frontPageEasycomment = {
                     $("#easycomment_per_comment").html(frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment)
                     $.each(serverResponse.Data.list,function(index,value){
                         sHtml += "<li id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>\n";
-                        sHtml += "  <div class='date_author_info' style='background-color:#royalblue'>";
+                        sHtml += "  <div class='date_author_info' style='background-color:#3B5998'>";
                         sHtml += "		<a class='author' style='color:white'>" +  value.visitor_name + "</a>\n";
                         sHtml += "		<a href='#none' class='date' style='color:white'>" + value.date_posted + "</a>\n";
                         if(value.user_type=='visitor'){
@@ -257,5 +257,19 @@ var frontPageEasycomment = {
 //            }
 //            $('#pg_easycomment_users_comment'+idx).html(serverResponse);
 //        }); 
+    },test : function(){
+
+        var options = {
+            url : usbuilder.getUrl('frontExecCaptcha'),
+            dataType : 'html',
+            type : 'post',
+            data : {
+              data : 'johntan'
+            },success : function(serverResponse){
+                    alert(usbuilder.getUrl('frontExecCaptcha'))
+                //$("body").append(serverResponse)
+            }
+        }
+        $.ajax(options);
     }
 }

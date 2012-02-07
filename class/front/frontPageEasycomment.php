@@ -24,9 +24,9 @@ class frontPageEasycomment extends Controller_Front
         $this->importJs('jquery.scrollTo-1.4.2');
 
         $sHtml = '';
-        $sHtml .= "<div id='sdk_easycomment_holder'>\n";
+        $sHtml .= "<input type='button' onclick='frontPageEasycomment.test();' value='test'><div id='sdk_easycomment_holder'>\n";
         $sHtml .="		<div id='sdk_easycomment_container'>\n";
-        $sHtml .="			<p class='sdk_easycomment_header'><h3 class='sdk_easycomment_title'>Easycomment</h3></p>\n";
+        $sHtml .="			<p class='sdk_easycomment_header'><h3 class='sdk_easycomment_title' style='font-family:Georgia'>Easycomment</h3></p>\n";
         $sHtml .="			<div class='sdk_easycomment_expand'>\n";
         $sHtml .="				<div class='leave_message2 fixed2'>\n";
         $sHtml .="					<a href='#none'  id='{$this->_sPrefix}scrolling' onclick='frontPageEasycomment.execLeaveMessage();return false;'>\n";

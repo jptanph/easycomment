@@ -19,13 +19,14 @@
 */
 
 /* plugin container */
-#sdk_easycomment_holder  #sdk_easycomment_container {padding:0; margin:0;}
-#sdk_easycomment_holder  #sdk_easycomment_container {float:left;width:340px;padding-top:5px;background:url(/_sdk/img/easycomment/blue/easy_comment_bg_blue.gif) left top no-repeat;}
-#sdk_easycomment_holder  #sdk_easycomment_container .sdk_easycomment_expand {float:left;width:340px;padding-bottom:15px;background:url(/_sdk/img/easycomment/blue/easy_comment_expand.gif) left bottom no-repeat;}
+#sdk_easycomment_holder  #sdk_easycomment_container {padding:0; margin:0;border:solid 1px #3B5998;}
+/*#sdk_easycomment_holder  #sdk_easycomment_container {float:left;width:340px;padding-top:5px;background:url(/_sdk/img/easycomment/blue/easy_comment_bg_blue.gif) left top no-repeat;}*/
+#sdk_easycomment_holder  #sdk_easycomment_container {float:left;width:340px;padding-top:5px;background:#3B5998}
+#sdk_easycomment_holder  #sdk_easycomment_container .sdk_easycomment_expand {border-top:solid 1px #CCC;float:left;width:340px;padding-bottom:15px;background:url(/_sdk/img/easycomment/blue/easy_comment_expand.gifs) left bottom no-repeat;background:white}
 
 /* plugin title */
 #sdk_easycomment_holder  p.sdk_easycomment_header  {float:left;margin-bottom:5px;margin-left:9px;display:inline;}
-#sdk_easycomment_holder  h3.sdk_easycomment_title {height:35px;margin-right:5px;padding-right:10px;line-height:28px;font-weight:bold;font-size:12px;font-family:Tahoma, Geneva, sans-serif;color:#fff;background:url(/_sdk/img/easycomment/blue/easy_comment_arrow.gif) 95px 12px no-repeat;display:inline-block;}
+#sdk_easycomment_holder  h3.sdk_easycomment_title {height:35px;margin-right:5px;padding-right:10px;line-height:28px;font-weight:bold;font-size:20px;font-family:Tahoma, Geneva, sans-serif;color:#fff;background:url(/_sdk/img/easycomment/blue/easy_comment_arrow.gifs) 95px 12px no-repeat;display:inline-block;}
 
 .sdk_easycomment_wrap {width:336px;height:360px !important;overflow:auto !important;margin-left:2px !important;margin-top:2px !important;}
 
