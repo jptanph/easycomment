@@ -19,39 +19,40 @@
 */
 
 /* plugin container */
-#sdk_easycomment_holder  #sdk_easycomment_container {padding:0; margin:0;border:solid 1px #3B5998;}
 /*#sdk_easycomment_holder  #sdk_easycomment_container {float:left;width:340px;padding-top:5px;background:url(/_sdk/img/easycomment/blue/easy_comment_bg_blue.gif) left top no-repeat;}*/
-#sdk_easycomment_holder  #sdk_easycomment_container {float:left;width:340px;padding-top:5px;background:#3B5998}
-#sdk_easycomment_holder  #sdk_easycomment_container .sdk_easycomment_expand {border-top:solid 1px #CCC;float:left;width:340px;padding-bottom:15px;background:url(/_sdk/img/easycomment/blue/easy_comment_expand.gifs) left bottom no-repeat;background:white}
+#sdk_easycomment_holder  #sdk_easycomment_container {padding:0; margin:0;width:100% !important;}
+#sdk_easycomment_holder  #sdk_easycomment_container {float:left;width:100% !important;padding-top:5px;}
+#sdk_easycomment_holder  #sdk_easycomment_container .sdk_easycomment_expand {float:left;width:100% !important;padding-bottom:15px;background:url(/_sdk/img/easycomment/blue/easy_comment_expand.gifs) left bottom no-repeat;background:white}
 
 /* plugin title */
-#sdk_easycomment_holder  p.sdk_easycomment_header  {float:left;margin-bottom:5px;margin-left:9px;display:inline;}
+#sdk_easycomment_holder  p.sdk_easycomment_header  {float:left;margin-left:9px;display:inline-block;}
+
 #sdk_easycomment_holder  h3.sdk_easycomment_title {height:35px;margin-right:5px;padding-right:10px;line-height:28px;font-weight:bold;font-size:20px;font-family:Tahoma, Geneva, sans-serif;color:#fff;background:url(/_sdk/img/easycomment/blue/easy_comment_arrow.gifs) 95px 12px no-repeat;display:inline-block;}
 
-.sdk_easycomment_wrap {width:336px;height:360px !important;overflow:auto !important;margin-left:2px !important;margin-top:2px !important;}
+.sdk_easycomment_wrap {width:99% !important;height:360px !important;overflow:auto !important;margin-left:0.5% !important;margin-top:2px !important;overflow-x:hidden !important;}
 
 /* plugin content */
 
-#sdk_easycomment_holder .sdk_easycomment_content {float:left;width:314px;margin-top:-5px;margin-left:3px;margin-bottom:5px;display:inline-block;}
-#sdk_easycomment_holder .sdk_easycomment_content li {float:left;width:304px;padding:0 0 0 0;margin:0 2px 0 2px;border-bottom:0 solid #d2d9e7;}
-#sdk_easycomment_holder .sdk_easycomment_content .sdk_easycomment_text {margin-bottom:10px;margin-top:5px;word-spacing:-1px;word-wrap:break-word;color:#474747;font-family:Arial;font-size:11px;margin-right:12px;margin-left:5px;text-align:left;}
+#sdk_easycomment_holder .sdk_easycomment_content {float:left;width:100% !important;margin-top:-5px;margin-left:3px;margin-bottom:5px;display:inline-block;}
+#sdk_easycomment_holder .sdk_easycomment_content li {float:left;width:100% !important;padding:0 0 0 0;margin:0 2px 0 2px;border-bottom:0 solid #d2d9e7;}
+#sdk_easycomment_holder .sdk_easycomment_content .sdk_easycomment_text {margin-bottom:10px;margin-top:5px;word-spacing:-1px;word-wrap:break-word;color:#474747;font-family:Arial;font-size:11px;margin-right:12px;margin-left:5px;text-align:left;width:98% !important;}
 #sdk_easycomment_holder .sdk_easycomment_content .sdk_easycomment_text .sdk_easycomment_text_ico {width:14px;height:14px;margin-right:5px;background:url(/_sdk/img/easycomment/blue/sdk_easycomment_text_ico.gif) left top no-repeat;display:inline-block;}
 
 /* header */
 
 .author {height:15px;text-decoration:none;font-weight:bold;color:#fff;display:inline;margin-left:5px !important;}
 .date {float:right !important;height:15px;margin-right:5px !important;text-decoration:none;font-weight:normal;color:#fff;display:inline;*margin-top:-12px !important;}
-.date_author_info {width:304px !important;padding:0 0 0 2px !important;background: blue;font-size:11px;display:inline-block;height:15px;}
+.date_author_info {width:98% !important;padding:0 0 0 2px !important;background: blue;font-size:11px;display:inline-block;height:15px;}
 
-.sdk_easycomment_content ul {display:inline-block;overflow:hidden;margin:10px 0 10px 0 !important;}
-.sdk_easycomment_content ul li {float:left;}
+.sdk_easycomment_content ul {display:inline-block;overflow:hidden;margin:10px 0 10px 0 !important;width:100% !important;}
+.sdk_easycomment_content ul li {float:left;width:100% !important;}
 
 /* plugin common attrib */
-#sdk_easycomment_holder .sdk_easycomment_content .comment_frm {float:left !important;width:289px;margin-top:25px !important;padding:10px 10px 10px 10px;display:inline-block !important;overflow:hidden !important;border:1px solid #BDC7D8;}
-#sdk_easycomment_holder .sdk_easycomment_content .comment_frm p {width:100%;margin-top:6px;padding-bottom:6px;border-bottom:1px dotted #a3a3a3;display:inline-block}
+#sdk_easycomment_holder .sdk_easycomment_content .comment_frm {float:left !important;width:99%;margin-top:25px !important;padding:10px 10px 10px 10px;display:inline-block !important;overflow:hidden !important;border:1px solid #BDC7D8;}
+#sdk_easycomment_holder .sdk_easycomment_content .comment_frm p {width:98.9%;margin-top:6px;padding-bottom:6px;border-bottom:1px dotted #a3a3a3;display:inline-block}
 #sdk_easycomment_holder .sdk_easycomment_content .comment_frm .pg_easy_comment {border:0;width:100%;margin-top:21px;display:inline-block}
 
-#sdk_easycomment_holder .sdk_easycomment_content .comment_frm .comment_frm_title {font-size:14px;color: #484848;margin-bottom:20px;font-weight:bold;}
+#sdk_easycomment_holder .sdk_easycomment_content .comment_frm .comment_frm_title {font-size:14px;color: #484848;margin-bottom:20px;font-weight:bold;display:inline-block;}
 
 #sdk_easycomment_holder .sdk_easycomment_content .comment_frm label {font-weight:bold;color:#484848;vertical-align:top;}
 /* single choice */
@@ -65,7 +66,7 @@
 
 /* text input */
 #sdk_easycomment_holder .sdk_easycomment_content .comment_frm input {border:1px solid #bdc7d8;}
-#sdk_easycomment_holder .sdk_easycomment_content .comment_frm textarea {margin-top:4px;margin-left:5px;width:213px;height:75px;display:inline;word-wrap:break-word;outline:none;resize:none;color:#484848;border:1px solid #bdc7d8;}
+#sdk_easycomment_holder .sdk_easycomment_content .comment_frm textarea {margin-top:4px;margin-left:5px;height:75px;display:inline;word-wrap:break-word;outline:none;resize:none;color:#484848;border:1px solid #bdc7d8;}
 .pg_easy_comment {margin-bottom:-1px !important;}
 
 .pg_easy_comment .send_btn{width:46px;height:18px;border:none !important;float:right;margin-right:5px !important;background: url(/_sdk/img/easycomment/blue/easy_comment_btn_send.gif) no-repeat;cursor:pointer;}
@@ -86,13 +87,13 @@
 .captcha label {float:left;display:inline;}
 .textinthebox {width:211px;margin-left:14px !important;}
 
-.delete_icon {display:visible;width:15px;height:15px;position:relative;top:18px;*top:4px;*margin-left:100px !important;left:0;z-index:3;margin-right:-108px !important;margin-top:-1`px !important;float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;}
+.delete_icon {display:visible;width:15px;height:15px;position:relative;top:18px;*top:4px;*margin-left:100px !important;left:0;z-index:3;margin-right:-108px !important;margin-top:-1px !important;float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;}
 .delete_icon span {display:none;}
 
 /*.delete_icon:hover {width:15px;height:15px;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_blue.gif) no-repeat } */
-.delete_comment {margin-bottom:10px !important;font-size:11px;font-weight:bold;}
-.delete_comment p {display:inline;color:#666;vertical-align:bottom;}
-.delete_comment input {vertical-align:bottom !important;display:inline;}
+.delete_comment {margin-bottom:10px !important;font-size:11px;font-weight:bold;width:98.4%;}
+.delete_comment .delete_password_label {display:inline;color:#666;vertical-align:bottom;width:25%;}
+.delete_comment .delete_password_frm{vertical-align:bottom !important;display:inline;width:75%;}
 .delete_comment_go {width:56px;height:18px;}
 .no_comment {float:left;width:309px;height:20px !important;margin:0 auto;padding-top:5px !important;text-align:center;font-weight:normal;margin-bottom:10px;padding-bottom:5px !important;display:inline-block;border:1px solid #f5cdb2 !important;background:#ffebdf;}
 .no_comment span {display:inline-block;padding-left:20px !important;background:#ffebdf url(/_sdk/img/easycomment/blue/bg_warn_box.gif) no-repeat left;color: #CC3300;font-size:11px;}
@@ -129,11 +130,11 @@
 #pg_easycomment_loader{width:64px;display:inline-block;text-align:center;margin:60px 0 0 130px;display:none;}
 
 .fixed {width:314px;display:visible;position:fixed;top:-5px;left:10px;padding-top:10px;margin-top:55px !important;background:#fff;height:27px;*left:0;*top:0;*margin-right:10px !important;*margin-left:12px !important;}
-.fixed2 {width:314px;display:visible;padding-top:10px 10px 10px 10px ;margin-top:0px !important;margin-left:14px !important;background:#fff;height:27px;}
+.fixed2 {width:99%;display:visible;padding-top:10px 0 10px 0 ;margin-top:0px !important;margin-left:0 !important;background:#fff;height:27px;}
 
-.see_more{border:solid 1px red;width:100px;text-align:center;margin-left:110px !important;height:20px;}
+.see_more{border:solid 1px red;width:100%;text-align:center;margin-left:110px !important;height:20px;}
 
-.see_more_comment {width:309px;height:25px;text-align:center;border:1px solid #BDC7D8;background: #edeff4;line-height:25px;}
+.see_more_comment {width:98%;height:25px;text-align:center;border:1px solid #BDC7D8;background: #edeff4;line-height:25px;}
 
 .loader_message {height:25px;display:none;}
 .loader_message img {margin-top:5px !important;vertical-align:middle !important;}
@@ -142,3 +143,10 @@
 .sdk_easycomment_see_more_comment{color:black;text-decoration:none;display:inline-block;font-size:10px;font-weight:bold;}
 .sdk_easycomment_see_more_comment:hover{color:blue;text-decoration:underline;}
 .sdk_easycomment_see_more_comment_loader{color:black;text-decoration:none;}
+
+.easycomment_add_comment_form{width:100%;}
+.easycomment_add_comment_form tr td{padding:5px !important;}
+.easycomment_add_comment_form tr td input[type='text'],input[type='password']{width:99%;border:1px solid #bdc7d8;}
+.easycomment_add_comment_form tr td textarea{width:99%;border:1px solid #bdc7d8;margin:0 !important;}
+.easycomment_add_comment_form tr td label{font-weight:bold;color:#484848;vertical-align:top;}
+

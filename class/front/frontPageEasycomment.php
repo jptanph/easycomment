@@ -26,7 +26,7 @@ class frontPageEasycomment extends Controller_Front
         $sHtml = '';
         $sHtml .= "<div id='sdk_easycomment_holder'>\n";
         $sHtml .="		<div id='sdk_easycomment_container'>\n";
-        $sHtml .="			<p class='sdk_easycomment_header'><h3 class='sdk_easycomment_title' style='font-family:Georgia'>Easycomment</h3></p>\n";
+        $sHtml .="			<p class='sdk_easycomment_header'></p>\n";
         $sHtml .="			<div class='sdk_easycomment_expand'>\n";
         $sHtml .="				<div class='leave_message2 fixed2'>\n";
         $sHtml .="					<a href='#none'  id='{$this->_sPrefix}scrolling' onclick='frontPageEasycomment.execLeaveMessage();return false;'>\n";
@@ -42,8 +42,29 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="							<span id='limit_option_area'><a href='#none' class='older_post' onclick='frontPageEasycomment.execLimitComment();'><span>Show Comment <span id='{$this->_sPrefix}per_comment'></span></span></a></span>\n";
         $sHtml .="							<div class='loader_message'><img src='{$this->_sImagePath}small-loader.gif' /></div>\n";
         $sHtml .="						</div>\n";
-        $sHtml .="						<div class='comment_frm' id='{$sPrefix}comment_form' style='display:visible;'>\n";
-        $sHtml .="							<h3 class='comment_frm_title'>Add Comment</h3>\n";
+        $sHtml .="						<div class='comment_frm' id='{$this->_sPrefix}comment_form' style='display:none !important;'>\n";
+        $sHtml .="							<h3 class='comment_frm_title'>Add Comment </h3>\n";
+        $sHtml .="							<form name='test_form' id='test_form'>\n";
+        $sHtml .="								<input type='hidden' id='{$this->_sPrefix}show_comment' value='{$iShowComment}'>\n";
+        $sHtml .="								<input type='hidden' id='{$this->_sPrefix}limit' value='{$aResult['comment_limit']}'>\n";
+        $sHtml .="								<input type='hidden' id='{$this->_sPrefix}current_url' value='{$_SERVER['SCRIPT_URI']}'>\n";
+            $sHtml .="<table class='{$this->_sPrefix}add_comment_form'>\n";
+            $sHtml .="<colgroup>\n";
+            $sHtml .="<col width='100px' />\n";
+            $sHtml .="<col />\n";
+            $sHtml .="</colgroup>\n";
+            $sHtml .="<tr><td><label>Name : </label></td><td><input type='text' value='' id='{$this->_sPrefix}name'></td></tr>\n";
+            $sHtml .="<tr><td><label>Comment : </label></td><td><textarea   id='{$this->_sPrefix}comment'></textarea></td></tr>\n";
+            $sHtml .="<tr><td><label>Password : </label></td><td><input type='password' value='' id='{$this->_sPrefix}password'></td></tr>\n";
+            $sHtml .="<tr><td><label>Captcha : </label></td><td><div class='box'></div><p class='expandable_btn2' style='border-bottom:none;margin:0 5px 0 15px !important;width:48px;display:inline !important;' id='{$sPrefix}send'><a href='#none' onclick='frontPageEasycomment.execRefreshCaptcha();'><span>Change</span></a></p></td></tr>\n";
+            $sHtml .="<tr><td><label>Enter captcha : </label></td><td><input type='text' id='{$this->_sPrefix}captcha'></td></tr>\n";
+            $sHtml .="</table>\n";
+        $sHtml .="								<div class='sdk_easycomment'>\n";
+        $sHtml .="									<p class='expandable_btn2' style='border-bottom:none;display:visible;' id='{$sPrefix}send'><a href='#none' onclick='frontPageEasycomment.execSaveComment();'><span>Send</span></a></p>\n";
+        $sHtml .="									<p class='expandable_btn4 ' style='border-bottom:none;display:none !important;' id='{$sPrefix}processing'><label><a><span class='no_cursor'>Processing...</span></a></label></p>\n";
+        $sHtml .="								</div>\n";
+        $sHtml .="							</form>\n";
+        /*
         $sHtml .="							<form name='test_form' id='test_form'>\n";
         $sHtml .="								<input type='hidden' id='{$this->_sPrefix}show_comment' value='{$iShowComment}'>\n";
         $sHtml .="								<input type='hidden' id='{$this->_sPrefix}limit' value='{$aResult['comment_limit']}'>\n";
@@ -67,6 +88,7 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .="									<p class='expandable_btn4 ' style='border-bottom:none;display:none !important;' id='{$sPrefix}processing'><label><a><span class='no_cursor'>Processing...</span></a></label></p>\n";
         $sHtml .="								</div>\n";
         $sHtml .="							</form>\n";
+        */
         $sHtml .="						</div>\n";
         $sHtml .="					</div>\n";
         $sHtml .="				</div>\n";

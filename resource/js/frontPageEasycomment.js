@@ -60,8 +60,8 @@ var frontPageEasycomment = {
                         }
                         sHtml += "  </p>\n";
                         sHtml += "<div class='delete_comment' style='display:none;' id='easycomment_delete_form" + value.idx + "'>\n";
-                        sHtml += "  <p>Enter Password:</p>\n";
-                        sHtml += "  <input type='password' id='easycomment_password" + value.idx + "' />\n";
+                        sHtml += "  <p class='delete_password_label'>Enter Password:</p>\n";
+                        sHtml += "  <input type='password' class= 'delete_password_frm' id='easycomment_password" + value.idx + "' />\n";
                         sHtml += "  <p class='expandable_btn' style='border-bottom:none;display:visible;'><a href='#none' style='width:20px !important' onclick='frontPageEasycomment.execDelete(" + value.idx + ");'><span>Delete</span></a></p>\n";
                         sHtml += "</div>\n";
                         sHtml += "</li>\n";                         
@@ -82,7 +82,7 @@ var frontPageEasycomment = {
                 $(".see_more_comment").fadeIn(250);
                 $(".older_post").show();
                 $(".loader_message").hide();
-                
+                $(".comment_frm").fadeIn();
             }
         }
         
@@ -168,8 +168,9 @@ var frontPageEasycomment = {
                 includeNumbers: true,
                 regenerate: '',
                 hashName: 'security'
-            });
+            });            
        }
+           
     },execLeaveMessage : function(){
         
         $("#easycomment_scrolling").attr('style','display:none !important');     
@@ -258,5 +259,13 @@ var frontPageEasycomment = {
         }
         $.ajax(options);
 
+    },execRefreshCaptcha : function(){
+        $('.box').realperson('destroy');
+        $('.box').realperson({ 
+            length: 6,
+            includeNumbers: true,
+            regenerate: '',
+            hashName: 'security'
+        });     
     }
 }
