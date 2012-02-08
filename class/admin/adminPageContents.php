@@ -79,6 +79,17 @@ class adminPageContents extends Controller_Admin
         }
         /** FOR DATE RANGE. **/
 
+        /** FOR DATE **/
+        if(isset($aArgs['start_date']) || isset($aArgs['end_date']))
+        {
+            if(!$this->checkDateFormat($aArgs['start_date']) && $this->checkDateFormat($aArgs['end_date']))
+            {
+                $this->writeJs($sRedirect);
+                $iQryStrStatus +=1;
+            }
+        }
+        /** FOR DATE **/
+
         /** query strings. **/
          $sQrySearch = (
             isset($aArgs['keyword']) &&
@@ -188,5 +199,10 @@ class adminPageContents extends Controller_Admin
             $this->assign('aData',$aData);
             $this->view(__CLASS__);
         }
+    }
+
+    private function checkDateFormat($sDate)
+    {
+        return preg_match( '`^\d{4}/\d{1,2}/\d{1,2}$`', $sDate );
     }
 }
