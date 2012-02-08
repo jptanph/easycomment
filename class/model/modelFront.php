@@ -48,7 +48,7 @@ class modelFront extends Model
         $sSql = "INSERT INTO " . EASYCOMMENT_CONTENTS .
             "(url_idx,user_type,visitor_name,visitor_comment,password,comment_date)
             VALUES
-            ($iIdx,'visitor','{$aData['name']}','{$aData['comment']}',PASSWORD('{$aData['password']}'),UNIX_TIMESTAMP(NOW()))
+            ($iIdx,'visitor','{$this->filter_data($aData['name'])}','{$this->filter_data($aData['comment'])}',PASSWORD('{$aData['password']}'),UNIX_TIMESTAMP(NOW()))
             ";
 
         return $this->query($sSql);
@@ -83,5 +83,38 @@ class modelFront extends Model
     {
         $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'];
         return $this->query($sSql,'row');
+    }
+
+    //============================================//
+    //           Filter data method               //
+    //============================================//
+    public function filter_data($sData)
+    {
+        return $this->_sanitize_data($sData);
+    }
+
+    private function _sanitize_data($sData)
+    {
+        $sNewWord = '';
+        $iCharCount = strlen($sData);
+
+        for($i = 0 ; $i < $iCharCount ; $i++)
+        {
+            if($sData[$i] =='\\')
+            {
+                $sNewWord .= '';
+            }
+            else
+            {
+                $sNewWord .= htmlentities( $sData[$i] );
+            }
+        }
+
+        return $this->_strip_quotes($sNewWord);
+    }
+
+    private function _strip_quotes($sData)
+        {
+        return filter_var($sData,FILTER_SANITIZE_MAGIC_QUOTES);
     }
 }
