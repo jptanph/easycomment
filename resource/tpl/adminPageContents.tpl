@@ -25,7 +25,7 @@
                         <option value="url"<?php if($sFieldSearch=='url'){?>selected="selected"<?php }?>>URL</option>
                     </select>
                 </td>
-                <td colspan="2"><input type="text" value="<?php echo $sKeyword; ?>" title="Search by URL or Name" id="<?php echo $sPrefix;?>keyword" class="input_search"/> <a href="#none" class="btn_nor_01 btn_width_search" title="Search Keyword" onclick="adminPageContents.execSearch();return false;" style="width:45px;height:13px" >Search</a><a href="#none" onclick="adminPageContents.execReset();" class="add_link" title="Reset to default">Reset</a></td>
+                <td colspan="2"><input type="hidden" value="init" id="search" name="search"><input type="text" value="<?php echo $sKeyword; ?>" title="Search by URL or Name" id="<?php echo $sPrefix;?>keyword" class="input_search"/> <a href="#none" class="btn_nor_01 btn_width_search" title="Search Keyword" onclick="adminPageContents.execSearch();return false;" style="width:45px;height:13px" >Search</a><a href="#none" onclick="adminPageContents.execReset();" class="add_link" title="Reset to default">Reset</a></td>
             </tr>
         </table>
     </td>

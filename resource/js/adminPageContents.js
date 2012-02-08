@@ -64,6 +64,7 @@ var adminPageContents = {
         var start_date = $("#easycomment_start_date");
         var end_date = $("#easycomment_end_date");
         var keyword = $("#easycomment_keyword");
+        var search_flag = $("#search");
         if((Date.parse(start_date.val()) > Date.parse(end_date.val()))){
             start_date.css('border','solid 2px #DC4E22');
             end_date.css('border','solid 2px #DC4E22');
@@ -78,7 +79,7 @@ var adminPageContents = {
         start_date.css('border','solid 1px #CCC');
         end_date.css('border','solid 1px #CCC'); 
         
-        location.href = usbuilder.getUrl('adminPageContents') + '&keyword='+keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&field_search='+field_search.val()+'&date_range='+date_range.val();
+        location.href = usbuilder.getUrl('adminPageContents') + "&search=" + '&keyword='+keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&field_search='+field_search.val()+'&date_range='+date_range.val() + '&search='+search_flag.val();
     
     },execReset : function(){
         $(".pop_calendar").hide();
