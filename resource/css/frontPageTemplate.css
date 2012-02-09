@@ -1,29 +1,64 @@
 @CHARSET "ISO-8859-1";
 
-.easycomment_wrapper{border:solid 1px red;width:100%;margin:0;display:inline-block;}
-.easycomment_wrapper .easycomment_header{display:inline-block;border:solid 1px green;width:100%;}
-.easycomment_wrapper .easycomment_contents{display:inline-block;border:solid 1px green;width:100%;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments{display:inline-block;width:100%;list-style:none;margin:0;padding:0;height:360px;overflow:auto;overflow-x:hidden;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li{display:block;border-bottom:solid 1px black;width:100%;list-style:none;margin:0;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author {display:inline-block;width:100%;background:blue;padding:2px 0 2px 0;font-size:11px;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_author_name{display:inline;background:green;float:left;margin:0 0 0 2px;padding:0;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{float:right;display:inline;background:green;display:inline-block;margin-right:3px;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{display:inline-block;width:100%;background:yellow;border:solid 1px red;margin:0;*margin:0;*border:solid 1px blue;padding:2px 0 2px 2px;font-size:12px;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{display:inline-block;margin:0;padding:0;background:orange;width:100%;height:14px;}
+.easycomment_wrapper{width:100%;margin:0;}
+.easycomment_wrapper .easycomment_header{display:inline-block;width:100%;}
+.easycomment_wrapper .easycomment_contents{display:inline-block;width:100%;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments{display:inline-block;width:100%;list-style:none;margin:0;padding:0;height:390px;overflow:auto;overflow-x:hidden !important;overflow-y:auto !important;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li{display:block;width:100%;list-style:none;margin:6px 0 6px 0;border-bottom:solid 1px #CCC}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author{height:14px;display:inline-block;width:100%;background:#3B5998;padding:2px 0 2px 0;font-size:11px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_author_name{display:inline;float:left;margin:0 0 0 5px;padding:0;color:white;font-weight:bold;cursor:default;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{float:right;display:inline-block;margin-right:3px;color:white;cursor:default;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{display:inline-block;width:98.7%;margin:0;*margin:0;padding:2px 0 2px 2px;font-size:11px;word-wrap:break-word;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{display:inline-block;margin:0;padding:0;width:100%;height:14px;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{display:inline-block;float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;width:10px;height:20px;padding:0 0 0 5px}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment{display:block;width:100%;background:red;border:solid 1px red;margin:0;*margin:0;*border:solid 1px blue;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment{display:block;width:280px;margin:0;*margin:0;height:100%;padding:4px 0 4px 0;margin-top:12px !important;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{display:inline-block;margin:0;*margin:0;font-size:13px;margin-right:2px;margin-left:3px;color:#333333;font-weight:bold;font-family:calibri}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment input[type='password']{display:inline-block;margin:0;font-size:11px;padding:0;width:43%;margin-left:3px;}
+
+.easycomment_wrapper .easycomment_add_comment{display:block;width:100%;padding:5px;}
+.easycomment_wrapper .easycomment_add_comment h3{margin:10px 0 10px 0;padding:0;font-weight:bold;color:#333333;margin-left:2px;font-size:13px;display:block;}
+.easycomment_wrapper .easycomment_add_comment p{display:block;margin:8px 0 8px 0; width:100%;}
+.easycomment_wrapper .easycomment_add_comment p span{display:block;margin:8px 0 8px 0; width:100%;margin:0 2px 0 5px ;}
+.easycomment_wrapper .easycomment_add_comment p label{display:block;margin:0 2px 0 5px ;font-size:11px;width:100% !important;font-weight:bold;color:#333333;}
+.easycomment_wrapper .easycomment_add_comment p input[type='text']{display:inline-block;margin:0 2px 0 5px ;font-size:11px;width:90% !important;font-weight:bold;color:#gray;height:12px;padding:2px;border:solid 1px #CCC;}
+.easycomment_wrapper .easycomment_add_comment p input[type='password']{display:inline-block;margin:0 2px 0 5px ;font-size:11px;width:90% !important;font-weight:bold;color:#gray;height:12px;padding:2px;border:solid 1px #CCC;}
+.easycomment_wrapper .easycomment_add_comment p textarea{display:inline-block;margin:0 2px 0 5px ;font-size:11px;width:90% !important;font-weight:bold;color:#gray;height:12px;padding:2px;border:solid 1px #CCC;height:60px}
+
+
+
+
+
 
 /** for ie7 **/
 .easycomment_wrapper .easycomment_header{*height:0;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments{*width:100.8%;*margin:0;*padding:0;*height:360px;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{*margin-right:18px;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 22px 0 0}
-
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 21px 0 0}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{*padding:2px 15px 2px 5px;*width:92%;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment{*display:block;margin:0;*margin:0;*height:100%}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{*display:inline-block;*margin:0;*width:70px;*margin-left:4px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment input[type='password']{*display:inline-block;*margin:0;*margin:0;*padding:0;*margin-left:5px;}
 /** for ie7 **/
 
 /** for quirks mode**/
 * html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{*margin-right:4px;}
-* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 16px 0 0}
-
+* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 15px 0 0}
+* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{font-size:11px;font-weight:bold;margin-right:2px;margin-right:2px;}
+* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{*padding:2px 15px 2px 5px;*width:105%;}
 /** for quirks mode**/
 
 /**background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;**/
+
+
+/** button here. **/
+.expandable_btn {display:inline !important;}
+.expandable_btn a {display:inline-block !important;height:18px !important;padding:0 0 0 10px !important;background: url(/_sdk/img/easycomment/blue/easy_comment_btn_expand2.gif) no-repeat top left;text-decoration:none;}
+.expandable_btn a span{display:inline-block !important;height:18px!important;padding:0 10px 0 0!important;line-height:18px !important;background: url(/_sdk/img/easycomment/blue/easy_comment_btn_expand2.gif) no-repeat top right;color:#fff;font-weight:bold;font-family:Arial;cursor:pointer;}
+/** button here. **/
+
+/** button ie7*/
+
+/** button here. **/
+.expandable_btn {*display:inline-block;height:20px;*margin-bottom:-7px;}
+.expandable_btn a {*display:inline-block;height:18px;padding:0 0 0 10px;background: url(/_sdk/img/easycomment/blue/easy_comment_btn_expand2.gif) no-repeat top left;text-decoration:none;}
+.expandable_btn a span{display:inline-block;height:18px;padding:0 10px 0 0;line-height:18px;background: url(/_sdk/img/easycomment/blue/easy_comment_btn_expand2.gif) no-repeat top right;color:#fff;font-weight:bold;font-family:Arial;cursor:pointer;}
