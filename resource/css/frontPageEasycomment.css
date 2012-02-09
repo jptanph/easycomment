@@ -7,42 +7,26 @@
 #sdk_easycomment_holder {margin:0;padding:0}
 #sdk_easycomment_holder img, #sdk_easycomment_holder fieldset {border:0} 
 #sdk_easycomment_holder li {list-style:none;}
-#sdk_easycomment_holder select, #sdk_easycomment_holder input {font-family:verdana; color:#000; font-size:1.00em}
 #sdk_easycomment_holderaddress, #sdk_easycomment_holder em {font-style:normal}
-#sdk_easycomment_holder button  {border:none; background:none; cursor:pointer}
 #sdk_easycomment_holder hr, #sdk_easycomment_holder legend {display:none}
 #sdk_easycomment_holder p, #sdk_easycomment_holder h1, #sdk_easycomment_holder  h2, #sdk_easycomment_holder h3, #sdk_easycomment_holder h4, #sdk_easycomment_holder h5, #sdk_easycomment_holder h6, #sdk_easycomment_holder form, #sdk_easycomment_holder input, #sdk_easycomment_holder ul, #sdk_easycomment_holder li, #sdk_easycomment_holder dl, #sdk_easycomment_holder dt, #sdk_easycomment_holder dd, #sdk_easycomment_holder span {margin:0; padding:0}
-/*#sdk_easycomment_holder a img {vertical-align:top}
-#sdk_easycomment_holder a:link {text-decoration:none}
-#sdk_easycomment_holder a:visited {text-decoration:none}
-#sdk_easycomment_holder a:hover {text-decoration:underline}
-*/
 
 /* plugin container */
-/*#sdk_easycomment_holder  #sdk_easycomment_container {float:left;width:340px;padding-top:5px;background:url(/_sdk/img/easycomment/blue/easy_comment_bg_blue.gif) left top no-repeat;}*/
-#sdk_easycomment_holder  #sdk_easycomment_container {padding:0; margin:0;width:100% !important;}
-#sdk_easycomment_holder  #sdk_easycomment_container {float:left;width:100% !important;padding-top:5px;}
-#sdk_easycomment_holder  #sdk_easycomment_container .sdk_easycomment_expand {float:left;width:100% !important;padding-bottom:15px;background:url(/_sdk/img/easycomment/blue/easy_comment_expand.gifs) left bottom no-repeat;background:white}
-
-/* plugin title */
-#sdk_easycomment_holder  p.sdk_easycomment_header  {float:left;margin-left:9px;display:inline-block;}
-
-#sdk_easycomment_holder  h3.sdk_easycomment_title {height:35px;margin-right:5px;padding-right:10px;line-height:28px;font-weight:bold;font-size:20px;font-family:Tahoma, Geneva, sans-serif;color:#fff;background:url(/_sdk/img/easycomment/blue/easy_comment_arrow.gifs) 95px 12px no-repeat;display:inline-block;}
-
-.sdk_easycomment_wrap {width:99% !important;height:360px !important;overflow:auto !important;margin-left:0.5% !important;margin-top:2px !important;overflow-x:hidden !important;}
+#sdk_easycomment_holder  #sdk_easycomment_container {padding:0; margin:0;width:100% !important;float:left;width:100% !important;padding-top:5px;}
+.sdk_easycomment_wrap {width:98% !important;border:solid 1px green;height:360px !important;margin-top:2px !important;overflow-x:hidden !important;}
 
 /* plugin content */
 
-#sdk_easycomment_holder .sdk_easycomment_content {float:left;width:100% !important;margin-top:-5px;margin-left:3px;margin-bottom:5px;display:inline-block;}
-#sdk_easycomment_holder .sdk_easycomment_content li {float:left;width:100% !important;padding:0 0 0 0;margin:0 2px 0 2px;border-bottom:0 solid #d2d9e7;}
-#sdk_easycomment_holder .sdk_easycomment_content .sdk_easycomment_text {margin-bottom:10px;margin-top:5px;word-spacing:-1px;word-wrap:break-word !important;color:#474747;font-family:Arial;font-size:11px;margin-right:12px;margin-left:5px;text-align:left;width:98% !important;white-space:normal;}
+#sdk_easycomment_holder .sdk_easycomment_content {border:solid 1px yellow;float:center;width:98% !important;margin-top:-5px;margin-bottom:5px;display:inline-block;padding-left:0 !important}
+#sdk_easycomment_holder .sdk_easycomment_content li {border:solid 1px red;float:left;width:100% !important;padding:0 0 0 0;margin:0 2px 0 2px;border-bottom:0 solid #d2d9e7;}
+#sdk_easycomment_holder .sdk_easycomment_content .sdk_easycomment_text {border:solid 1px red;margin-bottom:10px;margin-top:5px;word-spacing:-1px;word-wrap:break-word !important;color:#474747;font-family:Arial;font-size:11px;margin-right:12px;margin-left:5px;text-align:left;width:98% !important;white-space:normal;}
 #sdk_easycomment_holder .sdk_easycomment_content .sdk_easycomment_text .sdk_easycomment_text_ico {width:14px;height:14px;margin-right:5px;background:url(/_sdk/img/easycomment/blue/sdk_easycomment_text_ico.gif) left top no-repeat;display:inline-block;}
 
 /* header */
 
 .author {height:15px;text-decoration:none;font-weight:bold;color:#fff;display:inline;margin-left:5px !important;}
 .date {float:right !important;height:15px;margin-right:5px !important;text-decoration:none;font-weight:normal;color:#fff;display:inline;*margin-top:-12px !important;}
-.date_author_info {width:98% !important;padding:0 0 0 2px !important;background: blue;font-size:11px;display:inline-block;height:15px;}
+.date_author_info {width:99% !important;padding:0 0 0 2px !important;background: blue;font-size:11px;display:inline-block;height:15px;border:solid 1px black;}
 
 .sdk_easycomment_content ul {display:inline-block;overflow:hidden;margin:10px 0 10px 0 !important;width:100% !important;}
 .sdk_easycomment_content ul li {float:left;width:100% !important;}
@@ -87,8 +71,11 @@
 .captcha label {float:left;display:inline;}
 .textinthebox {width:211px;margin-left:14px !important;}
 
-.delete_icon {display:visible;width:15px;height:15px;position:relative;top:18px;left:0;z-index:3;margin-right:-108px !important;margin-top:-1px !important;float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;}
+.delete_icon {width:15px;height:15px;position:relative;top:17px;left:0;z-index:3;margin-top:-1px !important;float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;}
 .delete_icon span {display:none;}
+
+.delete_icon {top:16px\0/ !important;border:solid 1px gray\0/} /* must go at the END of all rules */
+
 
 /*.delete_icon:hover {width:15px;height:15px;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_blue.gif) no-repeat } */
 .delete_comment {margin-bottom:10px !important;font-size:11px;font-weight:bold;width:98.4%;}
@@ -161,11 +148,15 @@
 .date_author_info {*width:98% !important;padding:0 2px 0 2px !important;background: blue;font-size:11px;display:inline-block;height:15px;}
 .delete_icon {*width:15px;height:15px;position:relative;*top:4px;*margin-left:100px !important;left:0;z-index:3;margin-right:-110px !important;margin-top:-1px !important;float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;}
 .delete_icon span {display:none;}
-
 /** for ie7**/
 
 /** for ie9**/
 /* :root .loader_message {height:25px \0/IE9;display:none \0/IE9;}*/
 :root.loader_message img{border:solid 1px red;}
 /** for ie9**/
+
+.easycomment_add_comment_frm1{border:solid 1px red;display:inline-block;list-style:none;}
+.easycomment_add_comment_frm1 li{border:solid 1px red}
+.easycomment_add_comment_frm1 li b{width:5% !important;display:inline-block;border:solid 1px red;}
+.easycomment_add_comment_frm1 li input[type='text'],input[type='password']{width:94%;margin-top:12px;display:inline-block;}
 

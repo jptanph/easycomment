@@ -1,6 +1,5 @@
 $(window).ready(function(){
     frontPageEasycomment.init();
-    
 });
 
 var frontPageEasycomment = {
@@ -13,6 +12,7 @@ var frontPageEasycomment = {
     cacheComment : [],
     bShowComment : false,
     init : function(){
+
         var sHtml = '';
         var sShowLimit = '';
         this.currentUrl = ( this.currentUrl) ?  this.currentUrl : $("#easycomment_current_url").val();
@@ -148,7 +148,7 @@ var frontPageEasycomment = {
                       comment.val('');
                       password.val('');
                       captcha.val('');
-                      $("div").scrollTo($(" .sdk_easycomment_content"),'900',{offset: {top:-30}});
+                      $("div").scrollTo($(".sdk_easycomment_content"),{offset: {top:-30}});
                       //$('.sdk_easycomment_wrap').scrollTo( $('body'), 1000);
                      
                       frontPageEasycomment.bShowComment = false;

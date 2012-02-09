@@ -28,7 +28,7 @@ var adminPageSettings = {
                 $("#color_picker_area").empty();
             }
         });
-        
+//        $.farbtastic('destroy');
         $.farbtastic('#easycomment_cp_canvas', function(color){
             $("#"+element).val(color);
         }); 

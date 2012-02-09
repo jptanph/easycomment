@@ -1,0 +1,29 @@
+@CHARSET "ISO-8859-1";
+
+.easycomment_wrapper{border:solid 1px red;width:100%;margin:0;display:inline-block;}
+.easycomment_wrapper .easycomment_header{display:inline-block;border:solid 1px green;width:100%;}
+.easycomment_wrapper .easycomment_contents{display:inline-block;border:solid 1px green;width:100%;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments{display:inline-block;width:100%;list-style:none;margin:0;padding:0;height:360px;overflow:auto;overflow-x:hidden;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li{display:block;border-bottom:solid 1px black;width:100%;list-style:none;margin:0;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author {display:inline-block;width:100%;background:blue;padding:2px 0 2px 0;font-size:11px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_author_name{display:inline;background:green;float:left;margin:0 0 0 2px;padding:0;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{float:right;display:inline;background:green;display:inline-block;margin-right:3px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{display:inline-block;width:100%;background:yellow;border:solid 1px red;margin:0;*margin:0;*border:solid 1px blue;padding:2px 0 2px 2px;font-size:12px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{display:inline-block;margin:0;padding:0;background:orange;width:100%;height:14px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{display:inline-block;float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;width:10px;height:20px;padding:0 0 0 5px}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment{display:block;width:100%;background:red;border:solid 1px red;margin:0;*margin:0;*border:solid 1px blue;}
+
+/** for ie7 **/
+.easycomment_wrapper .easycomment_header{*height:0;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{*margin-right:18px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 22px 0 0}
+
+/** for ie7 **/
+
+/** for quirks mode**/
+* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{*margin-right:4px;}
+* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 16px 0 0}
+
+/** for quirks mode**/
+
+/**background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;**/
