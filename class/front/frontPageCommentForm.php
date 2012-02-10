@@ -41,7 +41,7 @@ class frontPageCommentForm extends Controller_Front
         $sHtml .= "		       <p><label>Name : </label><input type='text' id='{$this->_sPrefix}name' class='add_comment_text'></p>\n";
         $sHtml .= "		       <p><label>Comment : </label><textarea id='{$this->_sPrefix}comment'></textarea></p>\n";
         $sHtml .= "		       <p><label>Password : </label><input type='password' id='{$this->_sPrefix}password' class='add_comment_password'></p>\n";
-        $sHtml .= "		       <p><label>Captcha : </label><span><div class='input_captcha'></div></span></p>\n";
+        $sHtml .= "		       <p><label>Captcha : </label><div><div class='input_captcha'></div></div></p>\n";
         $sHtml .= "		       <br /><p><label>Enter Captcha : </label><input type='text' id='{$this->_sPrefix}captcha' class='add_comment_text'></p>\n";
         $sHtml .="</form>";
          $sHtml .="	<p style='margin-left:4px;' class='expandable_btn_submit' style='border-bottom:none;display:visible;' id='{$this->_sPrefix}send'><a href='#none' onclick='frontPageEasycomment.execSaveComment();'><span>Send</span></a></p>\n";

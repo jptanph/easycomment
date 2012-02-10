@@ -25,11 +25,13 @@ class frontPageTemplate extends Controller_Front
         {
             $sHtml .= "            <li>";
             $sHtml .= "                <div class='{$this->_sPrefix}author'><span class='{$this->_sPrefix}author_name'>joihn Adrian tan</span><span class='{$this->_sPrefix}date'>2012/08/02 17:56:53</span></div>";
+            $sHtml .= "<div style='position:relative;'>";
             $sHtml .= "                <p class='{$this->_sPrefix}delete_icon'><a href='#none'></a></p>";
             $sHtml .= "                <p class='{$this->_sPrefix}text'>teasddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddddasdddddddddddddddddddddddddddddxt</p>";
             $sHtml .= "                <div class='{$this->_sPrefix}delete_comment'>\n";
             $sHtml .= "                    <label>Password : </label><input type='password' class='delete_li_password'/> <p class='expandable_btn' style='border-bottom:none;display:visible;' id='{$sPrefix}send'><a href='#none' onclick='frontPageEasycomment.execSaveComment();'><span>Delete</span></a></p>";
             $sHtml .= "                </div>\n";
+            $sHtml .= "</div>";
             $sHtml .= "            </li>\n";
         }
 

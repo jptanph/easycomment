@@ -1,22 +1,21 @@
-@CHARSET "ISO-8859-1";
 
 .easycomment_wrapper{width:100%;margin:0;}
 .easycomment_wrapper .easycomment_header{display:inline-block;width:100%;}
 .easycomment_wrapper .easycomment_contents{display:inline-block;width:100%;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments{display:inline-block;width:100%;list-style:none;margin:0;padding:0;overflow:auto;overflow-x:hidden !important;overflow-y:auto !important;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li{display:block;width:100%;list-style:none;margin:6px 0 6px 0;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author{height:14px;display:inline-block;width:100%;background:#3B5998;padding:2px 0 2px 0;font-size:11px;margin-bottom:0;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author{height:14px;display:inline-block;width:100%;background:#3B5998;padding:2px 0 2px 0;font-size:11px;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_author_name{display:inline;float:left;margin:0 0 0 5px;padding:0;color:white;font-weight:bold;cursor:default;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{float:right;display:inline-block;margin-right:3px;color:white;cursor:default;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{display:inline-block;width:98%;margin:0;padding:2px 0 5px 2px;font-size:11px;word-wrap:break-word;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{display:inline-block;margin:0;padding:0;width:100%;height:14px;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{display:inline-block;float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;width:15px;height:15px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{display:inline-block;width:98.7%;margin:0;padding:2px 0 2px 2px;font-size:11px;word-wrap:break-word;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{border:1px solid red;position:absolute;top:0;right:0;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;width:10px;height:20px;padding:0 0 0 5px}
 
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment{display:block;width:280px;margin:0;height:100%;padding:4px 0 10px 0;margin-top:5px !important;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{display:inline-block;margin:0;*margin:0;font-size:13px;margin-right:2px;margin-left:3px;color:#333333;font-weight:bold;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment{display:block;width:280px;margin:0;height:100%;padding:4px 0 4px 0;margin-top:5px !important;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{display:inline-block;margin:0;*margin:0;font-size:13px;margin-right:2px;margin-left:3px;color:#333333;font-weight:bold;font-family:calibri}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment input[type='password']{display:inline-block;margin:0;font-size:11px;padding:0;width:43%;margin-left:3px;}
 
-.easycomment_wrapper .easycomment_add_comment{display:block;width:100%;}/*padding:5px;*/
+.easycomment_wrapper .easycomment_add_comment{display:block;width:100%;padding:5px;}
 .easycomment_wrapper .easycomment_add_comment h3{margin:10px 0 10px 0;padding:0;font-weight:bold;color:#333333;margin-left:2px;font-size:13px;display:block;}
 .easycomment_wrapper .easycomment_add_comment p{display:block;margin:8px 0 8px 0; width:100%;}
 .easycomment_wrapper .easycomment_add_comment p span{display:block;margin:8px 0 8px 0; width:100%;margin:0 2px 0 5px ;}
@@ -28,22 +27,20 @@
 
 /** for ie7 **/
 .easycomment_wrapper .easycomment_header{*height:0;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments{*width:100%;*margin:0;*padding:0;*height:360px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments{*width:100.8%;*margin:0;*padding:0;*height:360px;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{*margin-right:18px;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{*padding:0;*height:14px;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:15px;*height:15px;*margin-right:15px;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{*padding:2px 15px 10px 5px !important;*width:95%;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 21px 0 0}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{*padding:2px 15px 2px 5px;*width:92%;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment{*display:block;margin:0;*margin:0;*height:100%}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{*display:inline-block;*margin:0;*width:70px;*margin-left:4px;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment input[type='password']{*display:inline-block;*margin:0;*margin:0;*padding:0;*margin-left:5px;}
 /** for ie7 **/
 
 /** for quirks mode**/
-* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{*margin-right:3px !important;}
-* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{*margin-right:-2px;*padding:0;}
-* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*margin-right:-6px !important;*margin-top:1px !important;}
+* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{*margin-right:4px;}
+* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 15px 0 0}
 * html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{font-size:11px;font-weight:bold;margin-right:2px;margin-right:2px;}
-* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{*padding:2px 15px 2px 5px;*width:105%;*margin-bottom:15px;}
+* html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{*padding:2px 15px 2px 5px;*width:105%;}
 * html .easycomment_wrapper .easycomment_add_comment p input[type='text']{*width:90% !important;*border:solid 1px red !important;}
 * html .easycomment_wrapper .easycomment_add_comment p input[type='password']{*width:90% !important;font-weight:bold;color:#gray;height:12px;padding:2px;border:solid 1px #CCC;}
 /** for quirks mode**/
@@ -84,23 +81,4 @@
 
 .sdk_easycomment_see_more_comment{color:black;text-decoration:none;display:inline-block;font-size:10px;font-weight:bold;}
 .sdk_easycomment_see_more_comment:hover{color:blue;text-decoration:underline;}
-
-/*
-@media screen and (min-width:675px) and (max-width : 860px) {
-body {width:100%;background:pink}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text {width:97.5%}
-}
-
-@media screen and (min-width:483px) and (max-width : 674px) {
-body {width:100%;background:yellow}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text {width:96%}
-}
-@media screen and (min-width:411px) and (max-width : 482px) {
-body {width:100%;background:orange}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text {width:94%}
-}
-@media screen and (min-width:50px) and (max-width : 410px) {
-body {width:100%;background:violet}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text {width:91%}
-}
-*/
+.input_captcha{border:solid 1px red;height:20px;}

@@ -35,21 +35,21 @@ var frontPageEasycomment = {
                         frontPageEasycomment.iLimit = serverResponse.Data.total_comment;
                     }
                     
-                   //(frontPageEasycomment.iLimit>8) ? $("#easycomment_main_comments").attr('style','height:370px !important') : '';
-
+                   (frontPageEasycomment.iLimit>5) ? $("#easycomment_main_comments").attr('style','height:370px !important;overflow:hidden') : '';
+                  
                     
                     if(serverResponse.Data.total_comment == 0){
                         sShowLimit = "<a  class='older_post'><span>No comment.</span></span></a>";
                     }else{
                         //sShowLimit = "<a href='#none' class='older_post' onclick='frontPageEasycomment.execLimitComment();'><span>Show Comment <span>"+frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment+"</span></span></a>";
                     }
-                    $("#limit_option_area").html(sShowLimit)
+                    $("#limit_option_area").html(sShowLimit);
                     $.each(serverResponse.Data.list,function(index,value){
 
-                      sHtml += "            <li  id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>";
+                      sHtml += "            <li id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>";
                       sHtml += "                <div class='easycomment_author' ><span class='easycomment_author_name'>" + value.visitor_name + "</span><span class='easycomment_date'>" + value.date_posted + "</span></div>";
                       if(value.user_type=='visitor'){
-                          sHtml += "                <p class='easycomment_delete_icon' style='display:none !important;' id='easycomment_delete_link" + value.idx + "'><a href='#none' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")'></a></p>";
+                          sHtml += "                <p class='easycomment_delete_icon' style='visibility:hidden !important;' id='easycomment_delete_link" + value.idx + "'><a href='#none' class='delete_link_right' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")'></a></p>";
                       }
                       sHtml += "                <p class='easycomment_text' id='easycomment_users_comment" + value.idx + "' style='color:" + value.text_color + "'>";
                       sHtml += value.visitor_comment;
@@ -75,9 +75,12 @@ var frontPageEasycomment = {
                 }
                 
                 
-                                
                 $("#easycomment_main_comments").html(sHtml);
-
+                
+                if ( $.browser.msie=='7.0' && frontPageEasycomment.iLimit>=5) {
+                    $('.delete_link_right').attr('style','margin-right:17px');                   
+                }
+                
                 if(frontPageEasycomment.cacheComment.length>0){
                     
                     var total_comment = frontPageEasycomment.cacheComment.length;   
@@ -147,7 +150,7 @@ var frontPageEasycomment = {
                     security : security.val()
                 },success : function(serverResponse){
                     if(serverResponse.Data.status=='errorc'){
-                        captcha.attr('style','border:solid 2px #DC4E22;');
+                        captcha.attr('style','border:solid 2px #DC4E22 !important;');
                     }else{
                       
                       name.val('');
@@ -201,12 +204,12 @@ var frontPageEasycomment = {
         
     },execShowDelete : function(comment_idx){
         
-        $("#easycomment_delete_link"+comment_idx).show();
+        $("#easycomment_delete_link"+comment_idx).attr('style','display:visible');
         this.showDeleteIdx = comment_idx;
     
     },execHideDelete : function(comment_idx){
         
-        $("#easycomment_delete_link"+this.showDeleteIdx).hide();     
+        $("#easycomment_delete_link"+this.showDeleteIdx).attr('style','visibility:hidden');    
         
     },execDeleteComment : function(comment_idx){
     
