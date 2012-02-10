@@ -34,12 +34,14 @@ var frontPageEasycomment = {
                     if(serverResponse.Data.total_comment < frontPageEasycomment.iLimit){
                         frontPageEasycomment.iLimit = serverResponse.Data.total_comment;
                     }
+                    
+                   //(frontPageEasycomment.iLimit>8) ? $("#easycomment_main_comments").attr('style','height:370px !important') : '';
 
                     
                     if(serverResponse.Data.total_comment == 0){
                         sShowLimit = "<a  class='older_post'><span>No comment.</span></span></a>";
                     }else{
-                        sShowLimit = "<a href='#none' class='older_post' onclick='frontPageEasycomment.execLimitComment();'><span>Show Comment <span>"+frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment+"</span></span></a>";
+                        //sShowLimit = "<a href='#none' class='older_post' onclick='frontPageEasycomment.execLimitComment();'><span>Show Comment <span>"+frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment+"</span></span></a>";
                     }
                     $("#limit_option_area").html(sShowLimit)
                     $.each(serverResponse.Data.list,function(index,value){
@@ -49,7 +51,7 @@ var frontPageEasycomment = {
                       if(value.user_type=='visitor'){
                           sHtml += "                <p class='easycomment_delete_icon' style='display:none !important;' id='easycomment_delete_link" + value.idx + "'><a href='#none' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")'></a></p>";
                       }
-                      sHtml += "                <p class='easycomment_text' id='easycomment_users_comment" + value.idx + "'>";
+                      sHtml += "                <p class='easycomment_text' id='easycomment_users_comment" + value.idx + "' style='color:" + value.text_color + "'>";
                       sHtml += value.visitor_comment;
                       if(value.comment_length>300){
                         sHtml += "<br /><i class='{$sPrefix}see_more_comment_loader{$rows.ped_idx}' style='display:none'>loading..</i>";
@@ -61,34 +63,21 @@ var frontPageEasycomment = {
                       sHtml += "                </div>\n";
                       sHtml += "            </li>\n";
                         
-//                        sHtml += "<li id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>\n";
-//                        sHtml += "  <div class='date_author_info' style='background-color:" + value.header_color + "'>";
-//                        sHtml += "		<a class='author' style='color:" + value.htext_color + "'>" +  value.visitor_name + "</a>\n";
-//                        sHtml += "		<a href='#none' class='date' style='color:white'>" + value.date_posted + "</a>\n";
-//                        if(value.user_type=='visitor'){
-//                            sHtml += "      <a href='#none' alt='Delete Comment' title='Delete Comment' id='easycomment_delete_link" + value.idx + "' class='delete_icon' style='display:none;' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")' ><span>Delete Comment</span></a>";                            
-//                        }
-//                        sHtml += "		</div>\n";
-//                        sHtml += "  <p class='sdk_easycomment_text' style='color:" + value.text_color + "' id='easycomment_users_comment" + value.idx + "'>\n";
-//                        sHtml += value.visitor_comment + '<br />';
-//                        if(value.comment_length>300){
-//                            sHtml += "<br /><i class='{$sPrefix}see_more_comment_loader{$rows.ped_idx}' style='display:none'>loading..</i>";
-//                            sHtml += "  <a href='#none' onclick='frontPageEasycomment.execSeeMore(" + value.idx + ");' id='{$sPrefix}see_more_comment{$rows.ped_idx}' class='sdk_easycomment_see_more_comment'>See more.. </a>";
-//                        }
-//                        sHtml += "  </p>\n";
-//                        sHtml += "<div class='delete_comment' style='display:none;' id='easycomment_delete_form" + value.idx + "'>\n";
-//                        sHtml += "  <p class='delete_password_label'>Enter Password:</p>\n";
-//                        sHtml += "  <input type='password' class= 'delete_password_frm' id='easycomment_password" + value.idx + "' />\n";
-//                        sHtml += "  <p class='expandable_btn' style='border-bottom:none;display:visible;'><a href='#none' style='width:20px !important' onclick='frontPageEasycomment.execDelete(" + value.idx + ");'><span>Delete</span></a></p>\n";
-//                        sHtml += "</div>\n";
-//                        sHtml += "</li>\n";                         
+                   
                     });
+                    sHtml += "<li><div class='see_more_comment' style='display:none !important;'>\n";
+                    sHtml +="    <span id='limit_option_area'><a href='#none' class='older_post' onclick='frontPageEasycomment.execLimitComment();'><span>Show Comment <span>"+frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment+"</span></span></a></span></span>\n";
+                    sHtml +="    <div class='loader_message'><img src='{$this->_sImagePath}small-loader.gif' /></div>\n";
+                    sHtml +="</div></li>\n";
                 }else{
                     sShowLimit = "<a  class='older_post_no_record'><label>No comment.</label></span></a>";
                     $("#limit_option_area").html(sShowLimit)
                 }
+                
+                
                                 
                 $("#easycomment_main_comments").html(sHtml);
+
                 if(frontPageEasycomment.cacheComment.length>0){
                     
                     var total_comment = frontPageEasycomment.cacheComment.length;   
@@ -107,7 +96,7 @@ var frontPageEasycomment = {
         frontPageEasycomment.execGenerateCaptcha();
         
     },execSaveComment : function(){
-
+        
         var name = $("#easycomment_name");
         var comment = $("#easycomment_comment");
         var password = $("#easycomment_password");
@@ -117,7 +106,7 @@ var frontPageEasycomment = {
         var errors = 0;     
 
         if($.trim(name.val()).length==0){
-            name.attr('style','border:solid 2px #DC4E22;');
+            name.attr('style','border:solid 2px #DC4E22 !important;');
             errors += 1;
         }else{
             name.attr('style','border:solid 1px #CCCCCC;');
@@ -138,7 +127,7 @@ var frontPageEasycomment = {
         }
 
         if($.trim(captcha.val()).length==0){
-            captcha.attr('style','border:solid 2px #DC4E22;');
+            captcha.attr('style','border:solid 2px #DC4E22 !important;');
             errors += 1;
         }else{
             captcha.attr('style','border:solid 1px #CCCCCC;');
@@ -165,7 +154,7 @@ var frontPageEasycomment = {
                       comment.val('');
                       password.val('');
                       captcha.val('');
-                      $("div").scrollTo($(".sdk_easycomment_content"),{offset: {top:-30}});
+                      $("div").scrollTo($(".easycomment_main_comments"),{offset: {top:-30}});
                       //$('.sdk_easycomment_wrap').scrollTo( $('body'), 1000);
                      
                       frontPageEasycomment.bShowComment = false;
@@ -181,8 +170,8 @@ var frontPageEasycomment = {
     },execGenerateCaptcha : function(){
        if(this.bShowComment==false){
            
-            $('.box').realperson('destroy');
-            $('.box').realperson({ 
+            $('.input_captcha').realperson('destroy');
+            $('.input_captcha').realperson({ 
                 length: 6,
                 includeNumbers: true,
                 regenerate: '',
@@ -280,8 +269,8 @@ var frontPageEasycomment = {
         $.ajax(options);
 
     },execRefreshCaptcha : function(){
-        $('.box').realperson('destroy');
-        $('.box').realperson({ 
+        $('.input_captcha').realperson('destroy');
+        $('.input_captcha').realperson({ 
             length: 6,
             includeNumbers: true,
             regenerate: '',
