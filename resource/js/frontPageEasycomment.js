@@ -43,28 +43,45 @@ var frontPageEasycomment = {
                     }
                     $("#limit_option_area").html(sShowLimit)
                     $.each(serverResponse.Data.list,function(index,value){
-                         
-                        sHtml += "<li id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>\n";
-                        sHtml += "  <div class='date_author_info' style='background-color:" + value.header_color + "'>";
-                        sHtml += "		<a class='author' style='color:" + value.htext_color + "'>" +  value.visitor_name + "</a>\n";
-                        sHtml += "		<a href='#none' class='date' style='color:white'>" + value.date_posted + "</a>\n";
-                        if(value.user_type=='visitor'){
-                            sHtml += "      <a href='#none' alt='Delete Comment' title='Delete Comment' id='easycomment_delete_link" + value.idx + "' class='delete_icon' style='display:none;' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")' ><span>Delete Comment</span></a>";                            
-                        }
-                        sHtml += "		</div>\n";
-                        sHtml += "  <p class='sdk_easycomment_text' style='color:" + value.text_color + "' id='easycomment_users_comment" + value.idx + "'>\n";
-                        sHtml += value.visitor_comment + '<br />';
-                        if(value.comment_length>300){
-                            sHtml += "<br /><i class='{$sPrefix}see_more_comment_loader{$rows.ped_idx}' style='display:none'>loading..</i>";
-                            sHtml += "  <a href='#none' onclick='frontPageEasycomment.execSeeMore(" + value.idx + ");' id='{$sPrefix}see_more_comment{$rows.ped_idx}' class='sdk_easycomment_see_more_comment'>See more.. </a>";
-                        }
-                        sHtml += "  </p>\n";
-                        sHtml += "<div class='delete_comment' style='display:none;' id='easycomment_delete_form" + value.idx + "'>\n";
-                        sHtml += "  <p class='delete_password_label'>Enter Password:</p>\n";
-                        sHtml += "  <input type='password' class= 'delete_password_frm' id='easycomment_password" + value.idx + "' />\n";
-                        sHtml += "  <p class='expandable_btn' style='border-bottom:none;display:visible;'><a href='#none' style='width:20px !important' onclick='frontPageEasycomment.execDelete(" + value.idx + ");'><span>Delete</span></a></p>\n";
-                        sHtml += "</div>\n";
-                        sHtml += "</li>\n";                         
+
+                      sHtml += "            <li  id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>";
+                      sHtml += "                <div class='easycomment_author' ><span class='easycomment_author_name'>" + value.visitor_name + "</span><span class='easycomment_date'>" + value.date_posted + "</span></div>";
+                      if(value.user_type=='visitor'){
+                          sHtml += "                <p class='easycomment_delete_icon' style='display:none !important;' id='easycomment_delete_link" + value.idx + "'><a href='#none' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")'></a></p>";
+                      }
+                      sHtml += "                <p class='easycomment_text' id='easycomment_users_comment" + value.idx + "'>";
+                      sHtml += value.visitor_comment;
+                      if(value.comment_length>300){
+                        sHtml += "<br /><i class='{$sPrefix}see_more_comment_loader{$rows.ped_idx}' style='display:none'>loading..</i>";
+                        sHtml += "  <a href='#none' onclick='frontPageEasycomment.execSeeMore(" + value.idx + ");' id='{$sPrefix}see_more_comment{$rows.ped_idx}' class='sdk_easycomment_see_more_comment'>See more.. </a>";
+                      }
+                      sHtml +="</p>";
+                      sHtml += "                <div class='easycomment_delete_comment' style='display:none;' id='easycomment_delete_form" + value.idx + "'>\n";
+                      sHtml += "                    <label>Password : </label><input type='password' id='easycomment_password" + value.idx + "' class='delete_li_password'/> <p class='expandable_btn' style='border-bottom:none;display:visible;' id='{$sPrefix}send'><a href='#none'  onclick='frontPageEasycomment.execDelete(" + value.idx + ");'><span>Delete</span></a></p>";
+                      sHtml += "                </div>\n";
+                      sHtml += "            </li>\n";
+                        
+//                        sHtml += "<li id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>\n";
+//                        sHtml += "  <div class='date_author_info' style='background-color:" + value.header_color + "'>";
+//                        sHtml += "		<a class='author' style='color:" + value.htext_color + "'>" +  value.visitor_name + "</a>\n";
+//                        sHtml += "		<a href='#none' class='date' style='color:white'>" + value.date_posted + "</a>\n";
+//                        if(value.user_type=='visitor'){
+//                            sHtml += "      <a href='#none' alt='Delete Comment' title='Delete Comment' id='easycomment_delete_link" + value.idx + "' class='delete_icon' style='display:none;' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")' ><span>Delete Comment</span></a>";                            
+//                        }
+//                        sHtml += "		</div>\n";
+//                        sHtml += "  <p class='sdk_easycomment_text' style='color:" + value.text_color + "' id='easycomment_users_comment" + value.idx + "'>\n";
+//                        sHtml += value.visitor_comment + '<br />';
+//                        if(value.comment_length>300){
+//                            sHtml += "<br /><i class='{$sPrefix}see_more_comment_loader{$rows.ped_idx}' style='display:none'>loading..</i>";
+//                            sHtml += "  <a href='#none' onclick='frontPageEasycomment.execSeeMore(" + value.idx + ");' id='{$sPrefix}see_more_comment{$rows.ped_idx}' class='sdk_easycomment_see_more_comment'>See more.. </a>";
+//                        }
+//                        sHtml += "  </p>\n";
+//                        sHtml += "<div class='delete_comment' style='display:none;' id='easycomment_delete_form" + value.idx + "'>\n";
+//                        sHtml += "  <p class='delete_password_label'>Enter Password:</p>\n";
+//                        sHtml += "  <input type='password' class= 'delete_password_frm' id='easycomment_password" + value.idx + "' />\n";
+//                        sHtml += "  <p class='expandable_btn' style='border-bottom:none;display:visible;'><a href='#none' style='width:20px !important' onclick='frontPageEasycomment.execDelete(" + value.idx + ");'><span>Delete</span></a></p>\n";
+//                        sHtml += "</div>\n";
+//                        sHtml += "</li>\n";                         
                     });
                 }else{
                     sShowLimit = "<a  class='older_post_no_record'><label>No comment.</label></span></a>";
@@ -194,11 +211,14 @@ var frontPageEasycomment = {
         $("#easycomment_comment").text('');
         
     },execShowDelete : function(comment_idx){
+        
         $("#easycomment_delete_link"+comment_idx).show();
         this.showDeleteIdx = comment_idx;
     
     },execHideDelete : function(comment_idx){
-        $("#easycomment_delete_link"+this.showDeleteIdx).hide();        
+        
+        $("#easycomment_delete_link"+this.showDeleteIdx).hide();     
+        
     },execDeleteComment : function(comment_idx){
     
         
@@ -210,8 +230,6 @@ var frontPageEasycomment = {
         $("#easycomment_delete_form"+comment_idx).toggle();
         this.clickDeleteIdx = comment_idx;
         $("#easycomment_password"+this.clickDeleteIdx).focus();
-    
-    
     
     
     },execDelete : function(idx){

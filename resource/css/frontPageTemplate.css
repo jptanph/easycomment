@@ -3,8 +3,8 @@
 .easycomment_wrapper{width:100%;margin:0;}
 .easycomment_wrapper .easycomment_header{display:inline-block;width:100%;}
 .easycomment_wrapper .easycomment_contents{display:inline-block;width:100%;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments{display:inline-block;width:100%;list-style:none;margin:0;padding:0;height:390px;overflow:auto;overflow-x:hidden !important;overflow-y:auto !important;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li{display:block;width:100%;list-style:none;margin:6px 0 6px 0;border-bottom:solid 1px #CCC}
+.easycomment_wrapper .easycomment_contents .easycomment_comments{display:inline-block;width:100%;list-style:none;margin:0;padding:0;overflow:auto;overflow-x:hidden !important;overflow-y:auto !important;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li{display:block;width:100%;list-style:none;margin:6px 0 6px 0;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author{height:14px;display:inline-block;width:100%;background:#3B5998;padding:2px 0 2px 0;font-size:11px;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_author_name{display:inline;float:left;margin:0 0 0 5px;padding:0;color:white;font-weight:bold;cursor:default;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{float:right;display:inline-block;margin-right:3px;color:white;cursor:default;}
@@ -20,13 +20,9 @@
 .easycomment_wrapper .easycomment_add_comment p{display:block;margin:8px 0 8px 0; width:100%;}
 .easycomment_wrapper .easycomment_add_comment p span{display:block;margin:8px 0 8px 0; width:100%;margin:0 2px 0 5px ;}
 .easycomment_wrapper .easycomment_add_comment p label{display:block;margin:0 2px 0 5px ;font-size:11px;width:100% !important;font-weight:bold;color:#333333;}
-.easycomment_wrapper .easycomment_add_comment p input[type='text']{display:inline-block;margin:0 2px 0 5px ;font-size:11px;width:90% !important;font-weight:bold;color:#gray;height:12px;padding:2px;border:solid 1px #CCC;}
+.easycomment_wrapper .easycomment_add_comment p input[type='text']{display:inline-block;margin:0 2px 0 5px ;font-size:11px;width:90% !important;font-weight:bold;color:#gray;height:12px;padding:2px;border:solid 1px #CCC !important;}
 .easycomment_wrapper .easycomment_add_comment p input[type='password']{display:inline-block;margin:0 2px 0 5px ;font-size:11px;width:90% !important;font-weight:bold;color:#gray;height:12px;padding:2px;border:solid 1px #CCC;}
 .easycomment_wrapper .easycomment_add_comment p textarea{display:inline-block;margin:0 2px 0 5px ;font-size:11px;width:90% !important;font-weight:bold;color:#gray;height:12px;padding:2px;border:solid 1px #CCC;height:60px}
-
-
-
-
 
 
 /** for ie7 **/
@@ -45,10 +41,19 @@
 * html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 15px 0 0}
 * html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{font-size:11px;font-weight:bold;margin-right:2px;margin-right:2px;}
 * html .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{*padding:2px 15px 2px 5px;*width:105%;}
+* html .easycomment_wrapper .easycomment_add_comment p input[type='text']{*width:90% !important;*border:solid 1px red !important;}
+* html .easycomment_wrapper .easycomment_add_comment p input[type='password']{*width:90% !important;font-weight:bold;color:#gray;height:12px;padding:2px;border:solid 1px #CCC;}
 /** for quirks mode**/
 
-/**background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;**/
-
+/** for ie6**/
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{_margin-right:20px !important;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{display:inline-block;margin:0;padding:0;width:100%;height:14px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{_width:10px;_height:20px;_padding:0 0 0 21px !important;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{_margin:0;_font-size:12px !important;_margin-right:3px !important;_margin-left:1px;color:#333333;font-weight:bold;font-family:calibri}
+.easycomment_wrapper .easycomment_add_comment p .add_comment_password{padding:2px;_border:solid 1px #CCC !important;_width:90%;}
+.easycomment_wrapper .easycomment_add_comment p .add_comment_text{padding:2px;_border:solid 1px #CCC !important;_width:90%;}
+.delete_li_password{_border:solid 1px #CCC;_margin-left:-14px}
+/** for ie6**/
 
 /** button here. **/
 .expandable_btn {display:inline !important;}
@@ -57,8 +62,14 @@
 /** button here. **/
 
 /** button ie7*/
-
 /** button here. **/
 .expandable_btn {*display:inline-block;height:20px;*margin-bottom:-7px;}
 .expandable_btn a {*display:inline-block;height:18px;padding:0 0 0 10px;background: url(/_sdk/img/easycomment/blue/easy_comment_btn_expand2.gif) no-repeat top left;text-decoration:none;}
 .expandable_btn a span{display:inline-block;height:18px;padding:0 10px 0 0;line-height:18px;background: url(/_sdk/img/easycomment/blue/easy_comment_btn_expand2.gif) no-repeat top right;color:#fff;font-weight:bold;font-family:Arial;cursor:pointer;}
+
+.see_more_comment {width:100%;height:25px;text-align:center;border:1px solid #BDC7D8;background: #edeff4;line-height:25px;}
+.older_post{float:center;width:150px;text-align:center;margin:0 auto;padding-right:10px !important;text-decoration:none;font-weight:normal !important;font-style:normal !important;;padding-left:2px !important;color:#558de2;text-align:center;background: url(/_sdk/img/easycomment/sort_down_curr.gif) no-repeat 144px center;display:inline-block;}
+.older_post:hover {text-decoration:underline;}
+
+.sdk_easycomment_see_more_comment{color:black;text-decoration:none;display:inline-block;font-size:10px;font-weight:bold;}
+.sdk_easycomment_see_more_comment:hover{color:blue;text-decoration:underline;}
