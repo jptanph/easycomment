@@ -157,7 +157,7 @@ var frontPageEasycomment = {
                       comment.val('');
                       password.val('');
                       captcha.val('');
-                      $("div").scrollTo($(".easycomment_main_comments"),{offset: {top:-30}});
+                      //$("div").scrollTo($(".easycomment_main_comments"),{offset: {top:-30}});
                       //$('.sdk_easycomment_wrap').scrollTo( $('body'), 1000);
                      
                       frontPageEasycomment.bShowComment = false;
