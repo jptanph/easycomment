@@ -36,7 +36,7 @@ var frontPageEasycomment = {
                         frontPageEasycomment.iLimit = serverResponse.Data.total_comment;
                     }
                     
-                   (frontPageEasycomment.iLimit>5) ? $("#easycomment_main_comments").attr('style','height:370px !important;overflow:hidden') : '';
+                   (frontPageEasycomment.iLimit>5) ? $("#easycomment_main_comments").css({'height':'370px'}) : '';
                   
                     
                     if(serverResponse.Data.total_comment == 0){
@@ -48,7 +48,7 @@ var frontPageEasycomment = {
                     $.each(serverResponse.Data.list,function(index,value){
 
                       sHtml += "            <li id='easycomment_list_comment" + value.idx + "' onmouseover='frontPageEasycomment.execShowDelete(" + value.idx + ")' onmouseout='frontPageEasycomment.execHideDelete(" + value.idx + ")'>";
-                      sHtml += "                <div class='easycomment_author' ><span class='easycomment_author_name'>" + value.visitor_name + "</span><span class='easycomment_date'>" + value.date_posted + "</span></div>";
+                      sHtml += "                <div class='easycomment_author'  style='background:" + value.header_color + "'><span class='easycomment_author_name' style='color:" + value.htext_color + "'>" + value.visitor_name + "</span><span class='easycomment_date'>" + value.date_posted + "</span></div>";
                       if(value.user_type=='visitor'){
                           sHtml += "                <p class='easycomment_delete_icon' style='visibility:hidden !important;' id='easycomment_delete_link" + value.idx + "'><a href='#none' class='delete_link_right' onclick='frontPageEasycomment.execDeleteComment(" + value.idx + ")'></a></p>";
                       }
@@ -72,7 +72,7 @@ var frontPageEasycomment = {
                     sHtml +="</div></li>\n";
                 }else{
                     sHtml += "<li><div class='see_more_comment' style='display:none !important;'>\n";
-                    sHtml +="    <span id='limit_option_area'><a href='#none' class='older_post_no_record' ><span>No Comment.</a></span></span>\n";
+                    sHtml +="    <span id='limit_option_area'><span class='older_post_no_record'>No Comment.</span>\n";
                     sHtml +="    <div class='loader_message'><img src='{$this->_sImagePath}small-loader.gif' /></div>\n";
                     sHtml +="</div></li>\n";
                     $("#limit_option_area").append(sHtml)
@@ -80,9 +80,13 @@ var frontPageEasycomment = {
                 
                 
                 $("#easycomment_main_comments").html(sHtml);
+
                 
-                if ( $.browser.msie=='7.0' && frontPageEasycomment.iLimit>=5) {
-                    $('.delete_link_right').attr('style','margin-right:17px');                   
+                
+                if ( $.browser.msie==true){
+                      if( $.browser.version=='7.0' && frontPageEasycomment.iLimit>=5 && frontPageEasycomment.isIE9() == false) {
+                          $('.delete_link_right').attr('style','margin-right:15px');
+                      }
                 }
                 
                 if(frontPageEasycomment.cacheComment.length>0){
@@ -95,7 +99,7 @@ var frontPageEasycomment = {
                 $(".see_more_comment").fadeIn(250);
                 $(".older_post").show();
                 $(".loader_message").hide();
-                $(".comment_frm").fadeIn();
+                $("#easycomment_add_comment").slideDown(400);
             }
         }
         
@@ -289,5 +293,9 @@ var frontPageEasycomment = {
             regenerate: '',
             hashName: 'security'
         });     
+    },isIE9 : function(){
+        var a;
+        try{var b=arguments.caller.length;a=0;}catch(e){a=1;}
+        return((document.all&&a)==1);   
     }
 }

@@ -2,13 +2,15 @@
 .easycomment_wrapper{width:100%;margin:0;}
 .easycomment_wrapper .easycomment_header{display:inline-block;width:100%;}
 .easycomment_wrapper .easycomment_contents{display:inline-block;width:100%;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments{display:inline-block;width:100%;list-style:none;margin:0;padding:0;overflow:auto;overflow-x:hidden !important;overflow-y:auto !important;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments{display:inline-block;width:100%;list-style:none;margin:0;padding:0;overflow:auto;overflow-x:hidden !important;overflow-y:auto !important;height:360px}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li{display:block;width:100%;list-style:none;margin:6px 0 6px 0;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author{height:14px;display:inline-block;width:100%;background:#3B5998;padding:2px 0 2px 0;font-size:11px;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_author_name{display:inline;float:left;margin:0 0 0 5px;padding:0;color:white;font-weight:bold;cursor:default;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{float:right;display:inline-block;margin-right:3px;color:white;cursor:default;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{display:inline-block;width:98.7%;margin:0;padding:2px 0 2px 2px;font-size:11px;word-wrap:break-word;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{border:1px solid red;position:absolute;top:0;right:0;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon{display:inline-block;margin:0;padding:0;width:100%;height:14px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{display:inline-block;float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;width:15px;height:15px;}
+
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{float:right;background: url(/_sdk/img/easycomment/blue/delete_icon_hover_gray.gif) no-repeat;width:10px;height:20px;padding:0 0 0 5px}
 
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment{display:block;width:280px;margin:0;height:100%;padding:4px 0 4px 0;margin-top:5px !important;}
@@ -27,9 +29,9 @@
 
 /** for ie7 **/
 .easycomment_wrapper .easycomment_header{*height:0;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments{*width:100.8%;*margin:0;*padding:0;*height:360px;}
+.easycomment_wrapper .easycomment_contents .easycomment_comments{*width:100.8%;*margin:0;*padding:0;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_author .easycomment_date{*margin-right:18px;}
-.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 21px 0 0}
+.easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_icon a{*float:right;*width:10px;*height:15px;*padding:0 15px 0 0}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_text{*padding:2px 15px 2px 5px;*width:92%;}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment{*display:block;margin:0;*margin:0;*height:100%}
 .easycomment_wrapper .easycomment_contents .easycomment_comments li .easycomment_delete_comment label{*display:inline-block;*margin:0;*width:70px;*margin-left:4px;}

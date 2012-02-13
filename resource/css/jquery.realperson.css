@@ -4,7 +4,9 @@
     width:210px;
     display:inline-block;
     float:left;
-    
+    height:25px;
+    *margin:11px 0 -25px 5px;
+    margin-left:5px;
 }
 .realperson-text {
     font-family: "Courier New",monospace;
