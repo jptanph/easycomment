@@ -65,7 +65,7 @@
 /** button here. **/
 
 /** button here. **/
-.expandable_btn_submit {display:inline !important;}
+.expandable_btn_submit {display:inline !important;font-size:11px}
 .expandable_btn_submit a {display:inline-block !important;height:18px !important;padding:0 0 0 12px !important;background: url(/_sdk/img/easycomment/blue/easy_comment_btn_expand2.gif) no-repeat top left;text-decoration:none;}
 .expandable_btn_submit a span{display:inline-block !important;height:18px!important;padding:0 5px 0 0!important;line-height:18px !important;background: url(/_sdk/img/easycomment/blue/easy_comment_btn_expand2.gif) no-repeat top right;color:#fff;font-weight:bold;font-family:Arial;cursor:pointer;}
 /** button here. **/

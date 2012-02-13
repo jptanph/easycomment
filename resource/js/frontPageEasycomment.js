@@ -157,9 +157,15 @@ var frontPageEasycomment = {
                       comment.val('');
                       password.val('');
                       captcha.val('');
-                      //$("div").scrollTo($(".easycomment_main_comments"),{offset: {top:-30}});
-                      //$('.sdk_easycomment_wrap').scrollTo( $('body'), 1000);
-                     
+                      //$("#easycomment_wrapper").scrollTo($("#easycomment_main_comments"),{offset: {top:-30}});
+
+
+                     // $('#easycomment_main_comments').scrollTop($('#easycomment_main_comments').scrollTop() + $('#easycomment_main_comments li:eq(0)').position().top);
+
+                      
+                      $('#easycomment_main_comments').animate({ scrollTop: 0 }, 500);
+
+
                       frontPageEasycomment.bShowComment = false;
                       frontPageEasycomment.init();
                     }
