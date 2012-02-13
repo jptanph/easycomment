@@ -21,16 +21,12 @@ class frontPageEasycomment extends Controller_Front
         $aUrl = $model->execGetUrl($aDataUrl);
         $aCountUrlComment = $model->execGetCommentsCount($aUrl['idx']);
 
-//         $this->importJs('jquery.scrollTo-1.4.2');
-//         $this->importJs('jquery.scrollto');
-//         $this->importJs('jquery.scrollto1');
         $this->importJs('jquery.realperson');
         $this->importJs(__CLASS__);
         $this->importCss('frontPageTemplate');
         $this->importCss('jquery.realperson');
 
         $sHtml = "";
-
         $sHtml .="";
         $sHtml .= " <div class='{$this->_sPrefix}wrapper' id='{$this->_sPrefix}wrapper' >\n";
         $sHtml .= " 	<div class='{$this->_sPrefix}header'></div>\n";
