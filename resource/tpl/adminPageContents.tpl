@@ -176,7 +176,7 @@
         Are you sure you want to delete this record?
         <br />
         <br />
-        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDeleteSConfirm()"> Delete </a>
+        <a class="btn_nor_01 btn_width_st1" href="#none" style='cursor:pointer;' title="Delete" onclick="adminPageContents.execDeleteSConfirm('<?php echo $sQrySearch . $sQryRow . $sQryPage . $sQrySort;?>')"> Delete </a>
     </div>
 </div>
 

@@ -226,7 +226,7 @@ var adminPageContents = {
         $("#easycomment_delete_multiple_comment").hide();
         $("#easycomment_delete_single_comment").hide();
     
-    },execDeleteSConfirm : function(){
+    },execDeleteSConfirm : function(sQry){
         $(".pop_calendar").hide();
         var options = {
             url : usbuilder.getUrl('apiAdminDeleteSingle'),
@@ -237,7 +237,7 @@ var adminPageContents = {
             },success : function(serverResponse){
                 popup.close('easycomment_delete_single_comment');
                 oValidator.generalPurpose.getMessage(true, "Deleted successfully");
-                window.location.href=usbuilder.getUrl('adminPageContents');              
+                window.location.href=usbuilder.getUrl('adminPageContents') + sQry;              
             }
             
         }
