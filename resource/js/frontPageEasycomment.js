@@ -68,12 +68,12 @@ var frontPageEasycomment = {
                     });
                     sHtml += "<li><div class='see_more_comment' style='display:none !important;'>\n";
                     sHtml +="    <span id='limit_option_area'><a href='#none' class='older_post' onclick='frontPageEasycomment.execLimitComment();'><span>Show Comment <span>"+frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment+"</span></span></a></span></span>\n";
-                    sHtml +="    <div class='loader_message'><img src='{$this->_sImagePath}small-loader.gif' /></div>\n";
+                    sHtml +="    <div class='loader_message'><img style='margin-top:5px' src='/_sdk/img/easycomment/small-loader.gif' /></div>\n";
                     sHtml +="</div></li>\n";
                 }else{
                     sHtml += "<li><div class='see_more_comment' style='display:none !important;'>\n";
                     sHtml +="    <span id='limit_option_area'><span class='older_post_no_record'>No Comment.</span>\n";
-                    sHtml +="    <div class='loader_message'><img src='{$this->_sImagePath}small-loader.gif' /></div>\n";
+                    sHtml +="    <div class='loader_message'><img style='margin-top:5px'  src='/_sdk/img/easycomment/small-loader.gif' /></div>\n";
                     sHtml +="</div></li>\n";
                     $("#limit_option_area").append(sHtml)
                 }
@@ -99,7 +99,7 @@ var frontPageEasycomment = {
                 $(".see_more_comment").fadeIn(250);
                 $(".older_post").show();
                 $(".loader_message").hide();
-                $("#easycomment_add_comment").slideDown(400);
+                $("#easycomment_add_comment").slideDown(300);
             }
         }
         
