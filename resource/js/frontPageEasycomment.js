@@ -30,7 +30,8 @@ var frontPageEasycomment = {
                 page_url : frontPageEasycomment.currentUrl,
                 limit : this.iLimit
             },success : function(serverResponse){
-                if(serverResponse.Data.list){
+                
+                if(serverResponse){
                     if(serverResponse.Data.total_comment < frontPageEasycomment.iLimit){
                         frontPageEasycomment.iLimit = serverResponse.Data.total_comment;
                     }
@@ -70,8 +71,11 @@ var frontPageEasycomment = {
                     sHtml +="    <div class='loader_message'><img src='{$this->_sImagePath}small-loader.gif' /></div>\n";
                     sHtml +="</div></li>\n";
                 }else{
-                    sShowLimit = "<a  class='older_post_no_record'><label>No comment.</label></span></a>";
-                    $("#limit_option_area").html(sShowLimit)
+                    sHtml += "<li><div class='see_more_comment' style='display:none !important;'>\n";
+                    sHtml +="    <span id='limit_option_area'><a href='#none' class='older_post_no_record' ><span>No Comment.</a></span></span>\n";
+                    sHtml +="    <div class='loader_message'><img src='{$this->_sImagePath}small-loader.gif' /></div>\n";
+                    sHtml +="</div></li>\n";
+                    $("#limit_option_area").append(sHtml)
                 }
                 
                 
