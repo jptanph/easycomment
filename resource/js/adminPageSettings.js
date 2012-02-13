@@ -25,13 +25,16 @@ var adminPageSettings = {
             'width' : 195,
             'classname': 'ly_set ly_editor',
             'closeCallback' : function(){
-                $("#color_picker_area").empty();
+                window.location.href = usbuilder.getUrl('adminPageSettings');
+                //$("#easycomment_color_picker").remove();
             }
         });
-//        $.farbtastic('destroy');
+        
         $.farbtastic('#easycomment_cp_canvas', function(color){
             $("#"+element).val(color);
         }); 
+
+        
     },execReset : function(){
         $("#easycomment_bg_color").val('');
         $("#easycomment_text_color").val('');
