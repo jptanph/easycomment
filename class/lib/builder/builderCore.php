@@ -92,7 +92,8 @@ class builderCore
             }
         }
         $sFormAction .= "$('form[name=\"$sFormName\"]').attr('action', '" . $aUrlInfo['url'] . "');";
-        return $sFormAction;
+
+        $this->getController()->writeJs($sFormAction);
     }
 
     private function _getSpecifiedUrl($sClassName)

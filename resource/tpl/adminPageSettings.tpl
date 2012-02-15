@@ -1,3 +1,5 @@
+<div id="sdk_message_box"></div>
+
 <form name="<?php echo $sPrefix?>settings_form" id="<?php echo $sPrefix?>settings_form" method="post">
 <input type="hidden" value="<?php echo $iIdx?>" name="<?php echo $sPrefix;?>idx">
 <!-- message box -->

@@ -11,21 +11,18 @@ class adminPageContents extends Controller_Admin
         $sPrefix = $this->Request->getAppID() . '_';
         $sImagePath = '/_sdk/img/' . $this->Request->getAppID() . '/';
         /** usbuilder initializer.**/
-        $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-        $this->writeJs($sInitScript);
-
-        $sFormScript = usbuilder()->getFormAction($this->_sPrefix . 'edit_comment_form','');
-        $this->writeJs($sFormScript);
-
+       // $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
+        usbuilder()->init($this, $aArgs);
+        usbuilder()->getFormAction($this->_sPrefix . 'edit_comment_form','');
         usbuilder()->validator(array('form' => $this->_sPrefix . 'add_form'));
         /** usbuilder initializer.**/
 
         $sUrlContents = usbuilder()->getUrl('adminPageContents');
-        $sRedirect =  usbuilder()->jsMove($sUrlContents);
+
 
         if(isset($aArgs['search'])){
             if($aArgs['search']!=='init'){
-                $this->writeJs($sRedirect);
+                usbuilder()->jsMove($sUrlContents);
                 $iQryStrStatus +=1;
             }else{
                 if(
@@ -36,7 +33,7 @@ class adminPageContents extends Controller_Admin
                         !isset($aArgs['field_search'])
                 )
                 {
-                    $this->writeJs($sRedirect);
+                    usbuilder()->jsMove($sUrlContents);
                     $iQryStrStatus +=1;
                 }
             }
@@ -54,7 +51,7 @@ class adminPageContents extends Controller_Admin
                     $aArgs['row'] !=='100'
             )
             {
-                $this->writeJs($sRedirect);
+               usbuilder()->jsMove($sUrlContents);
                 $iQryStrStatus +=1;
             }
         }
@@ -69,7 +66,7 @@ class adminPageContents extends Controller_Admin
                     trim($aArgs['date_range'])!=='custom'
             )
             {
-                $this->writeJs($sRedirect);
+                usbuilder()->jsMove($sUrlContents);
                 $iQryStrStatus +=1;
             }
             else
@@ -84,7 +81,7 @@ class adminPageContents extends Controller_Admin
         {
             if(!$this->checkDateFormat($aArgs['start_date']) && $this->checkDateFormat($aArgs['end_date']))
             {
-                $this->writeJs($sRedirect);
+                usbuilder()->jsMove($sUrlContents);
                 $iQryStrStatus +=1;
             }
         }

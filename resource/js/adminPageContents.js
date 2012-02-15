@@ -9,11 +9,12 @@ var adminPageContents = {
     singleIdx : 0,
     execAddComment : function(){
         $(".pop_calendar").hide();
+        sdk_message.hide();
         $("#easycomment_edit_comment").hide();
         $("#easycomment_delete_multiple_comment").hide();
         $("#easycomment_delete_single_comment").hide();
         
-        popup.load('easycomment_add_comment').skin('admin').layer({
+        sdk_popup.load('easycomment_add_comment').skin('admin').layer({
             'title' : 'Add Comment',
             'width' : 485,
             'classname': 'ly_set ly_editor',
@@ -23,6 +24,8 @@ var adminPageContents = {
         
     },execEditComment : function(idx){
         $(".pop_calendar").hide();
+        sdk_message.hide();
+
         var options = {
             url : usbuilder.getUrl('apiAdminViewComment'),
             type : 'post',
@@ -106,12 +109,13 @@ var adminPageContents = {
             data : {
                 idx : idx.val(),
                 name : name.val(),
+                
                 comment : comment.val()
             },success : function(serverResponse){
 
                 if(serverResponse.Data){
-                    popup.close('easycomment_edit_comment');
-                    oValidator.generalPurpose.getMessage(true, "Save successfully!");
+                    popup.close('easycomment_edit_comment','success');
+                    sdk_message.show("Save successfully!");
                     location.href = usbuilder.getUrl('adminPageContents') + sQry;
                 }
             }
@@ -155,7 +159,9 @@ var adminPageContents = {
         var total_checked = $("input[name='idx_val[]']:checked").length;
         
         if(total_checked==0){
-            oValidator.generalPurpose.getMessage(false, "Please select the record(s) you'd like to delete.");
+            //oValidator.generalPurpose.getMessage(false, "Please select the record(s) you'd like to delete.");
+            sdk_message.show("Please select the record(s) you'd like to delete.", 'warning');
+
         }else{
             
             $("#validation_message").hide();
@@ -210,7 +216,9 @@ var adminPageContents = {
                 idx : adminPageContents.arrayIdx
             },success : function(serverResponse){
                 popup.close('easycomment_delete_multiple_comment');
-                oValidator.generalPurpose.getMessage(true, "Deleted successfully");
+                //oValidator.generalPurpose.getMessage(true, "Deleted successfully");
+               
+                sdk_message.show('Deleted successfully!', 'success');
                 window.location.href=usbuilder.getUrl('adminPageContents'); 
             }            
         }

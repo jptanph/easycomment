@@ -5,8 +5,8 @@ class adminExecSaveSettings extends Controller_AdminExec
 {
     protected function run($aArgs)
     {
-        $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-        $this->writeJs($sInitScript);
+        $sInitScript = usbuilder()->init($this, $aArgs);
+
         $sUrl = usbuilder()->getUrl('adminPageSettings');
 
         $model = new modelAdmin();
@@ -22,11 +22,11 @@ class adminExecSaveSettings extends Controller_AdminExec
         }
 
         if($bResult===false){
-            usbuilder()->message('Saved failed!', 'warning');
+            usbuilder()->message('Saved failed!', $sType = 'warning');
         }else{
-            usbuilder()->message('Saved succesfully!', 'success');
+            usbuilder()->message('Saved succesfully!', $sType = 'success');
         }
-        $sJsMove = usbuilder()->jsMove($sUrl);
-        $this->writeJS($sJsMove);
+        usbuilder()->jsMove($sUrl);
+
     }
 }
