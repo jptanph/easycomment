@@ -251,16 +251,16 @@ var adminPageContents = {
                 idx : adminPageContents.singleIdx
             },success : function(serverResponse){
                 popup.close('easycomment_delete_single_comment');
-                oValidator.generalPurpose.getMessage(true, "Deleted successfully");
+                //oValidator.generalPurpose.getMessage(true, "Deleted successfully");
+                sdk_message.show('Deleted successfully!', 'warning');
                 window.location.href=usbuilder.getUrl('adminPageContents') + sQry;              
             }
             
         }
         $.ajax(options);
     },execCustomDateRange : function(){
-    
+        sdk_message.hide();
         $("select#easycomment_date_range").val('custom');
-        
         $("#easycomment_add_comment").hide();
         $("#easycomment_edit_comment").hide();
         $("#easycomment_delete_multiple_comment").hide();        
@@ -271,7 +271,6 @@ var adminPageContents = {
         var url = $("#easycomment_add_url");
         var name = $("#easycomment_add_name");
         var comment = $("#easycomment_add_visitor_comment");
-        
         
         var options = {
             url : usbuilder.getUrl('apiAdminSave'),
@@ -287,7 +286,8 @@ var adminPageContents = {
                 }else{
                     url.css({'border':'solid 1px #CCC'});
                     popup.close('easycomment_add_comment');
-                    oValidator.generalPurpose.getMessage(true, "Save successfully!");
+                    //oValidator.generalPurpose.getMessage(true, "Saved successfully!");
+                    sdk_message.show('Saved successfully!', 'success');
                     location.href = usbuilder.getUrl('adminPageContents');
                 }
             }
