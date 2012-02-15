@@ -62,6 +62,7 @@ var adminPageContents = {
         
     },execSearch : function(){
         $(".pop_calendar").hide();
+        sdk_message.hide();
         var date_range = $("#easycomment_date_range");
         var field_search = $("#easycomment_field_search");
         var start_date = $("#easycomment_start_date");
@@ -86,6 +87,7 @@ var adminPageContents = {
     
     },execReset : function(){
         $(".pop_calendar").hide();
+        sdk_message.hide();
         $("select#easycomment_field_search").val('name');
         $("select#easycomment_date_range").val('currentMonth');
         $("#easycomment_keyword").val('');
@@ -155,6 +157,7 @@ var adminPageContents = {
         
     },execMultipleDelete : function(){
         $(".pop_calendar").hide();
+        sdk_message.hide();
         var arrayIdx = [];
         var total_checked = $("input[name='idx_val[]']:checked").length;
         
@@ -188,6 +191,7 @@ var adminPageContents = {
         
     },execSelectAll : function(id){
         $(".pop_calendar").hide();
+        sdk_message.hide();
         $("#easycomment_delete_multiple_comment").hide();  
         var is_checked = $("#"+id).is(':checked');
         $("input[name='idx_val[]']").each(function(index,value){
@@ -208,6 +212,7 @@ var adminPageContents = {
         $("#easycomment_delete_single_comment").hide();  
     },execDeleteMConfirm  : function(){
         $(".pop_calendar").hide();
+        sdk_message.hide();
         var options = {
             url : usbuilder.getUrl('apiAdminDeleteMultiple'),
             type : 'post',
@@ -227,6 +232,7 @@ var adminPageContents = {
     
     },execResetSelect : function(){
         $(".pop_calendar").hide();
+        sdk_message.hide();
         $("#easycomment_delete_multiple_comment").hide();
         $("#easycomment_edit_comment").hide();
         
@@ -236,6 +242,7 @@ var adminPageContents = {
     
     },execDeleteSConfirm : function(sQry){
         $(".pop_calendar").hide();
+        sdk_message.hide();
         var options = {
             url : usbuilder.getUrl('apiAdminDeleteSingle'),
             type : 'post',
