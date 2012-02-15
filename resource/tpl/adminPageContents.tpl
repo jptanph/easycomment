@@ -57,9 +57,9 @@
 <colgroup>
     <col width="44px" />
     <col width="48px" />
-    <col  />
-    <col />
-    <col width="150px" />
+    <col  width="350px" />
+    <col   width="350px"/>
+    <col width="94px" />
     <col width="200px" />
 </colgroup>
 <thead>
