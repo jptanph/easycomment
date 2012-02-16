@@ -5,10 +5,9 @@ class apiAdminDeleteMultiple extends Controller_Api
 {
     public function post($aArgs)
     {
-        $model = new modelAdmin();
         foreach($aArgs['idx'] as $rows)
         {
-            $model->execDelete($rows);
+            common()->modelAdmin()->execDelete($rows);
         }
     }
 }

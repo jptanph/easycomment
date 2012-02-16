@@ -141,9 +141,8 @@ class adminPageContents extends Controller_Admin
             /** queries for model.**/
 
 
-            $model = new modelAdmin();
-            $aResult = $model->execGetContents($sSearchWhere,$sOrderBy,$sLimit);
-            $aCount = $model->execGetCount($sInnerJoin,$sSearchWhere);
+            $aResult = common()->modelAdmin()->execGetContents($sSearchWhere,$sOrderBy,$sLimit);
+            $aCount = common()->modelAdmin()->execGetCount($sInnerJoin,$sSearchWhere);
             $iResult = count($aCount);
             $iIncRow = 0;
 

@@ -5,8 +5,6 @@ class apiAdminDeleteSingle extends Controller_Api
 {
     public function post($aArgs)
     {
-        $model = new modelAdmin();
-
-        $model->execDelete($aArgs['idx']);
+        common()->modelAdmin()->execDelete($aArgs['idx']);
     }
 }

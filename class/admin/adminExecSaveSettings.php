@@ -9,24 +9,23 @@ class adminExecSaveSettings extends Controller_AdminExec
 
         $sUrl = usbuilder()->getUrl('adminPageSettings');
 
-        $model = new modelAdmin();
-        $aResult = $model->execGetSettings();
+        $aResult = common()->modelAdmin()->execGetSettings();
 
         if($aResult)
         {
-           $bResult = $model->execUpdateSettings($aArgs);
+           $bResult = common()->modelAdmin()->execUpdateSettings($aArgs);
         }
         else
         {
-            $bResult = $model->execSaveSettings($aArgs);
+            $bResult = common()->modelAdmin()->execSaveSettings($aArgs);
         }
 
         if($bResult===false){
-            usbuilder()->message('Saved failed!', $sType = 'warning');
+            usbuilder()->message('Saved failed!', 'warning');
         }else{
-            usbuilder()->message('Saved succesfully!', $sType = 'success');
+            usbuilder()->message('Saved succesfully!', 'success');
         }
-        usbuilder()->jsMove($sUrl);
 
+        usbuilder()->jsMove($sUrl);
     }
 }

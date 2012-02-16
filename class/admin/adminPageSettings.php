@@ -11,14 +11,11 @@ class adminPageSettings extends Controller_Admin
         $sImagePath = '/_sdk/img/' . $this->Request->getAppID() . '/';
         /** usbuilder initializer.**/
         usbuilder()->init($this, $aArgs);
-        //$this->writeJs($sInitScript);
 
         usbuilder()->getFormAction($this->_sPrefix . 'settings_form','adminExecSaveSettings');
-       // $this->writeJs($sFormScript);
         /** usbuilder initializer.**/
 
-        $model = new modelAdmin();
-        $aResult = $model->execGetSettings();
+        $aResult = common()->modelAdmin()->execGetSettings();
 
         $this->importCss('farbtastic');
         $this->importJs('farbtastic');
@@ -37,7 +34,6 @@ class adminPageSettings extends Controller_Admin
         $this->assign('sHeaderTextColor',$aResult['header_text_color']);
         $this->assign('sShowCustom',($aResult['background_color'] || $aResult['text_color'] || $aResult['header_color'] || $aResult['header_text_color']) ? 'yes' : 'no');
         /** settings assign value.**/
-
         $this->view(__CLASS__);
     }
 }

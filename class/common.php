@@ -5,4 +5,9 @@ class common
     {
         return getInstance('modelAdmin');
     }
+
+    public function modelFront()
+    {
+        return getInstance('modelFront');
+    }
 }

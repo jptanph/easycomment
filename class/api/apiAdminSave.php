@@ -4,13 +4,12 @@ class apiAdminSave extends Controller_Api
 {
     protected function post($aArgs)
     {
-        $model = new modelAdmin();
 
-        $aResult = $model->execGetUrlInfo($aArgs);
+        $aResult = common()->modelAdmin()->execGetUrlInfo($aArgs);
         $aStatus = array();
         if($aResult)
         {
-            $model->execSaveComment($aArgs,$aResult['idx']);
+            common()->modelAdmin()->execSaveComment($aArgs,$aResult['idx']);
             $aStatus['status'] = 'ok';
         }
         else
