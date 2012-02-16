@@ -114,7 +114,6 @@ var adminPageContents = {
                 
                 comment : comment.val()
             },success : function(serverResponse){
-
                 if(serverResponse.Data){
                     popup.close('easycomment_edit_comment','success');
                     sdk_message.show("Save successfully!");
@@ -252,7 +251,7 @@ var adminPageContents = {
             },success : function(serverResponse){
                 popup.close('easycomment_delete_single_comment');
                 //oValidator.generalPurpose.getMessage(true, "Deleted successfully");
-                sdk_message.show('Deleted successfully!', 'warning');
+                sdk_message.show('Deleted successfully!', 'success');
                 window.location.href=usbuilder.getUrl('adminPageContents') + sQry;              
             }
             

@@ -1,27 +1,29 @@
 <?php
+require_once('builder/builderInterface.php');
 
 class apiFrontSaveComment extends Controller_Api
 {
     protected function post($aArgs)
     {
-        $model = new modelFront();
-        $aResultUrl = $model->execGetUrl($aArgs);
+        usbuilder()->init($this, $aArgs);
+
+        $aResultUrl = common()->modelFront()->execGetUrl($aArgs);
         $iUrlIdx = '';
         $aStatus = array();
         if($this->_checkHash($aArgs['captcha']) ==  $aArgs['security']){
 
             if($aResultUrl)
             {
-                $aGetUrl = $model->execGetUrl($aArgs);
+                $aGetUrl = common()->modelFront()->execGetUrl($aArgs);
                 $iUrlIdx = $aGetUrl['idx'];
             }
             else
             {
-                $model->execSaveUrl($aArgs);
-                $aGetUrl = $model->execGetUrl($aArgs);
+                common()->modelFront()->execSaveUrl($aArgs);
+                $aGetUrl = common()->modelFront()->execGetUrl($aArgs);
                 $iUrlIdx = $aGetUrl['idx'];
             }
-            $model->execSaveComment($aArgs,$iUrlIdx);
+            common()->modelFront()->execSaveComment($aArgs,$iUrlIdx);
             $aStatus['status'] = 'ok';
         }else{
             $aStatus['status'] = 'errorc';

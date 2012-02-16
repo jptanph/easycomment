@@ -6,11 +6,11 @@ class apiFrontDeleteComment extends Controller_Api
 {
     protected function post($aArgs)
     {
-        $model = new modelFront();
+        usbuilder()->init($this, $aArgs);
         $sStatus = '';
-        $aResult = $model->execViewComment($aArgs);
+        $aResult = common()->modelFront()->execViewComment($aArgs);
         if($aResult){
-            $model->execDeleteComment($aArgs);
+            common()->modelFront()->execDeleteComment($aArgs);
             $sStatus = 'deleted';
         }else{
             $sStatus = 'error';

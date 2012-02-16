@@ -1,6 +1,7 @@
 <?php
-require_once('builder/common.function.php');
-require_once('builder/filterClass.php');
+require_once('builder/builderInterface.php');
+require_once('common.function.php');
+require_once('filterClass.php');
 
 class apiFrontComments extends Controller_Api
 {
@@ -8,19 +9,20 @@ class apiFrontComments extends Controller_Api
 
     protected function post($aArgs)
     {
+       usbuilder()->init($this, $aArgs);
        $aData = array();
        $aRepWord = array("***");
-       $model = new modelFront();
        $this->_oFilter = new Filter_class();
-       $aUrl = $model->execGetUrl($aArgs);
-       $aSettings = $model->execGetSettings();
+
+       $aUrl = common()->modelFront()->execGetUrl($aArgs);
+       $aSettings = common()->modelFront()->execGetSettings();
        $aFilterData = explode('|',@$aSettings['unauthorized_word']);
        $this->_oFilter->set_filter($aFilterData,$aRepWord);
 
        $sLimit = " LIMIT " . (isset($aArgs['limit']) ? $aArgs['limit'] : (($aSettings['post_count']) ? $aSettings['post_count']: 3));
 
-       $aResult = $model->execGetComments($aUrl['idx'],$sLimit);
-       $aCount = $model->execGetCommentsCount($aUrl['idx']);
+       $aResult = common()->modelFront()->execGetComments($aUrl['idx'],$sLimit);
+       $aCount = common()->modelFront()->execGetCommentsCount($aUrl['idx']);
 
 
        foreach($aResult as $rows)

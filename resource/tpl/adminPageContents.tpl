@@ -60,7 +60,7 @@
     <col  width="350px" />
     <col   width="350px"/>
     <col width="94px" />
-    <col width="200px" />
+    <col width="120px" />
 </colgroup>
 <thead>
 <tr>
