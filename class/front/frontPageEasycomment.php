@@ -11,8 +11,7 @@ class frontPageEasycomment extends Controller_Front
         $this->_sImagePath = '/_sdk/img/' . $this->Request->getAppID() . '/';
         $this->_sPrefix = $this->Request->getAppID() . '_';
         /** usbuilder initializer.**/
-        $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
-        $this->writeJs($sInitScript);
+        usbuilder()->init($this, $aArgs);
         /** usbuilder initializer.**/
 
         $model = new modelFront();
