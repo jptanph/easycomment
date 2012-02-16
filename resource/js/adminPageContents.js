@@ -13,7 +13,6 @@ var adminPageContents = {
         $("#easycomment_edit_comment").hide();
         $("#easycomment_delete_multiple_comment").hide();
         $("#easycomment_delete_single_comment").hide();
-        
         sdk_popup.load('easycomment_add_comment').skin('admin').layer({
             'title' : 'Add Comment',
             'width' : 485,
@@ -34,7 +33,7 @@ var adminPageContents = {
                 idx : idx
             },success : function(serverResponse){
                
-                popup.load('easycomment_edit_comment').skin('admin').layer({
+                sdk_popup.load('easycomment_edit_comment').skin('admin').layer({
                     'title' : 'Edit Comment',
                     'width' : 480,
                     'classname': 'ly_set ly_editor'
@@ -53,12 +52,12 @@ var adminPageContents = {
         
         $.ajax(options);
         
-        popup.load('easycomment_edit_comment').skin('admin').layer({
+        sdk_popup.load('easycomment_edit_comment').skin('admin').layer({
             'title' : 'Edit Comment',
             'width' : 460,
             'classname': 'ly_set ly_editor'
         });        
-        popup.close('easycomment_add_comment');
+        sdk_popup.close('easycomment_add_comment');
         
     },execSearch : function(){
         $(".pop_calendar").hide();
@@ -115,7 +114,7 @@ var adminPageContents = {
                 comment : comment.val()
             },success : function(serverResponse){
                 if(serverResponse.Data){
-                    popup.close('easycomment_edit_comment','success');
+                    sdk_popup.close('easycomment_edit_comment','success');
                     sdk_message.show("Save successfully!");
                     location.href = usbuilder.getUrl('adminPageContents') + sQry;
                 }
@@ -128,7 +127,7 @@ var adminPageContents = {
     },execSingleDelete : function(idx){
         $(".pop_calendar").hide();
         adminPageContents.singleIdx = idx;
-        popup.load('easycomment_delete_single_comment').skin('admin').layer({
+        sdk_popup.load('easycomment_delete_single_comment').skin('admin').layer({
             'title' : 'Delete Comment',
             'width' : 280,
             'classname': 'ly_set ly_editor'
@@ -167,7 +166,7 @@ var adminPageContents = {
         }else{
             
             $("#validation_message").hide();
-            popup.load('easycomment_delete_multiple_comment').skin('admin').layer({
+            sdk_popup.load('easycomment_delete_multiple_comment').skin('admin').layer({
                 'title' : 'Delete Comment',
                 'width' : 280,
                 'classname': 'ly_set ly_editor'
@@ -197,7 +196,7 @@ var adminPageContents = {
             $(this).attr('checked',is_checked);
         });
         if($("input[name='idx_val[]']:checked").length==0){
-            popup.close("simplesample_delete_popup");
+            sdk_popup.close("simplesample_delete_popup");
         }
         
         var total_checked = $("input[name='idx_val[]']:checked").length;
@@ -219,7 +218,7 @@ var adminPageContents = {
             data : {
                 idx : adminPageContents.arrayIdx
             },success : function(serverResponse){
-                popup.close('easycomment_delete_multiple_comment');
+                sdk_popup.close('easycomment_delete_multiple_comment');
                 //oValidator.generalPurpose.getMessage(true, "Deleted successfully");
                
                 sdk_message.show('Deleted successfully!', 'success');
@@ -249,7 +248,7 @@ var adminPageContents = {
             data : {
                 idx : adminPageContents.singleIdx
             },success : function(serverResponse){
-                popup.close('easycomment_delete_single_comment');
+                sdk_popup.close('easycomment_delete_single_comment');
                 //oValidator.generalPurpose.getMessage(true, "Deleted successfully");
                 sdk_message.show('Deleted successfully!', 'success');
                 window.location.href=usbuilder.getUrl('adminPageContents') + sQry;              
@@ -284,7 +283,7 @@ var adminPageContents = {
                     url.css({'border':'solid 2px #DC4E22'});
                 }else{
                     url.css({'border':'solid 1px #CCC'});
-                    popup.close('easycomment_add_comment');
+                    sdk_popup.close('easycomment_add_comment');
                     //oValidator.generalPurpose.getMessage(true, "Saved successfully!");
                     sdk_message.show('Saved successfully!', 'success');
                     location.href = usbuilder.getUrl('adminPageContents');
