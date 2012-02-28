@@ -8,6 +8,7 @@ var adminPageContents = {
     arrayIdx : [],
     singleIdx : 0,
     execAddComment : function(){
+        
         $(".pop_calendar").hide();
         sdk_message.hide();
         $("#easycomment_edit_comment").hide();
@@ -22,6 +23,7 @@ var adminPageContents = {
         popup.close('easycomment_edit_comment');
         
     },execEditComment : function(idx){
+        
         $(".pop_calendar").hide();
         sdk_message.hide();
 
@@ -60,6 +62,7 @@ var adminPageContents = {
         sdk_popup.close('easycomment_add_comment');
         
     },execSearch : function(){
+        
         $(".pop_calendar").hide();
         sdk_message.hide();
         var date_range = $("#easycomment_date_range");
@@ -68,6 +71,8 @@ var adminPageContents = {
         var end_date = $("#easycomment_end_date");
         var keyword = $("#easycomment_keyword");
         var search_flag = $("#search");
+        var seq = $("#easycomment_seq");
+
         if((Date.parse(start_date.val()) > Date.parse(end_date.val()))){
             start_date.css('border','solid 2px #DC4E22');
             end_date.css('border','solid 2px #DC4E22');
@@ -82,9 +87,10 @@ var adminPageContents = {
         start_date.css('border','solid 1px #CCC');
         end_date.css('border','solid 1px #CCC'); 
         
-        location.href = usbuilder.getUrl('adminPageContents') + "&search=" + '&keyword='+keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&field_search='+field_search.val()+'&date_range='+date_range.val() + '&search='+search_flag.val();
+        location.href = usbuilder.getUrl('adminPageContents') + "&seq=" + seq.val() +  "&search=" + '&keyword='+keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&field_search='+field_search.val()+'&date_range='+date_range.val() + '&search='+search_flag.val();
     
     },execReset : function(){
+        
         $(".pop_calendar").hide();
         sdk_message.hide();
         $("select#easycomment_field_search").val('name');
@@ -92,12 +98,14 @@ var adminPageContents = {
         $("#easycomment_keyword").val('');
     
     },execShowRows  : function(sQry){
+        
         $(".pop_calendar").hide();
         var show_row = $("#easycomment_show_row");
        
        location.href = usbuilder.getUrl('adminPageContents') + '&row=' + show_row.val() + sQry;
    
     },execUpdate : function(sQry){
+        
         $(".pop_calendar").hide();
         var idx = $("#easycomment_edit_idx");
         var name = $("#easycomment_edit_name");
@@ -120,11 +128,13 @@ var adminPageContents = {
                 }
             }
         }
+        
         if(oValidator.formName.getMessage('easycomment_edit_comment_form')){
             $.ajax(options);    
         }
             
     },execSingleDelete : function(idx){
+        
         $(".pop_calendar").hide();
         adminPageContents.singleIdx = idx;
         sdk_popup.load('easycomment_delete_single_comment').skin('admin').layer({
@@ -137,6 +147,7 @@ var adminPageContents = {
         $("#easycomment_delete_multiple_comment").hide();
         
     },execDateRange : function(){
+        
         $(".pop_calendar").hide();
         var date_range = $("#easycomment_date_range");
         
@@ -151,9 +162,11 @@ var adminPageContents = {
                 $("#easycomment_end_date").val(serverResponse.Data.eDate)
             }
         }
+        
         $.ajax(options);
         
     },execMultipleDelete : function(){
+        
         $(".pop_calendar").hide();
         sdk_message.hide();
         var arrayIdx = [];
@@ -186,8 +199,8 @@ var adminPageContents = {
         $("#easycomment_add_comment").hide();
         $("#easycomment_edit_comment").hide();
         
-        
     },execSelectAll : function(id){
+        
         $(".pop_calendar").hide();
         sdk_message.hide();
         $("#easycomment_delete_multiple_comment").hide();  
@@ -208,7 +221,9 @@ var adminPageContents = {
         $("#easycomment_edit_comment").hide();
         $("#easycomment_delete_multiple_comment").hide();        
         $("#easycomment_delete_single_comment").hide();  
+        
     },execDeleteMConfirm  : function(){
+        
         $(".pop_calendar").hide();
         sdk_message.hide();
         var options = {
@@ -229,6 +244,7 @@ var adminPageContents = {
         $.ajax(options);
     
     },execResetSelect : function(){
+        
         $(".pop_calendar").hide();
         sdk_message.hide();
         $("#easycomment_delete_multiple_comment").hide();
@@ -239,6 +255,7 @@ var adminPageContents = {
         $("#easycomment_delete_single_comment").hide();
     
     },execDeleteSConfirm : function(sQry){
+        
         $(".pop_calendar").hide();
         sdk_message.hide();
         var options = {
@@ -253,10 +270,11 @@ var adminPageContents = {
                 sdk_message.show('Deleted successfully!', 'success');
                 window.location.href=usbuilder.getUrl('adminPageContents') + sQry;              
             }
-            
         }
         $.ajax(options);
+        
     },execCustomDateRange : function(){
+        
         sdk_message.hide();
         $("select#easycomment_date_range").val('custom');
         $("#easycomment_add_comment").hide();
@@ -290,9 +308,11 @@ var adminPageContents = {
                 }
             }
         }
+        
         if(oValidator.formName.getMessage('easycomment_add_comment')){
             $.ajax(options);    
         }
+        
     },mostAction : function(){
         
         location.href = usbuilder.getUrl('adminPageSettings');

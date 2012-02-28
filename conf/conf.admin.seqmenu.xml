@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<adminmenus>
+    <menu lang="menu_contents" param="EasycommentPageContents" use_most_action='Y'>
+        <page lang="menu_contents" param="EasycommentPageSettings" />
+    </menu>
+</adminmenus>

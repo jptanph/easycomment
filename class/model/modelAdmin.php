@@ -106,4 +106,25 @@ class modelAdmin extends Model
         return $this->query($sSql,'row');
     }
 
+    public function deleteContentsBySeq($aSeq)
+    {
+        $sSeqs = implode(',', $aSeq);
+        $sQuery = "DELETE FROM " . EASYCOMMENT_CONTENTS . " WHERE seq in($sSeqs)";
+        $mResult = $this->query($sQuery);
+        return $mResult;
+    }
+
+    public function deleteSettingsBySeq()
+    {
+        $sQuery = "DELETE FROM " . EASYCOMMENT_SETTINGS;
+        $mResult = $this->query($sQuery);
+        return $mResult;
+    }
+
+    public function deleteUrlBySeq()
+    {
+        $sQuery = "DELETE FROM " . EASYCOMMENT_URL;
+        $mResult = $this->query($sQuery);
+        return $mResult;
+    }
 }

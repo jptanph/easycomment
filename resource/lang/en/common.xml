@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <lang>
     <menu>  
-        <var name="easycomment">Easy Comment Settings</var>
-        <mostbutton>
-            <var param="EasycommentPageContents">Show Settings</var>
-        </mostbutton>
+        <var name="easycomment">Easycomment</var>
+        <var name="menu_contents">Easycomment Settings</var>
     </menu>    
-    <var name="lang">Language</var>
-    <var name="name">English</var>
+    <var name="lang">subject</var>
+    <var name="name">Subject</var>
 </lang>
