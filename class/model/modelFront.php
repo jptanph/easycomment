@@ -7,7 +7,7 @@ define('EASYCOMMENT_URL' , sPrefix . 'url');
 
 class modelFront extends Model
 {
-    public function execGetComments($iIdx,$sLimit)
+    public function execGetComments($iIdx,$seq,$sLimit)
     {
         $sSql = "SELECT
             idx,
@@ -18,11 +18,11 @@ class modelFront extends Model
             password,
             comment_date,
             DATE_FORMAT(FROM_UNIXTIME(comment_date),'%Y/%d/%m %H:%i:%s') as date_posted
-            FROM " . EASYCOMMENT_CONTENTS . " WHERE url_idx = $iIdx ORDER BY comment_date DESC $sLimit";
+            FROM " . EASYCOMMENT_CONTENTS . " WHERE url_idx = $iIdx AND seq = $seq ORDER BY comment_date DESC $sLimit";
         return $this->query($sSql);
     }
 
-    public function execGetCommentsCount($iIdx)
+    public function execGetCommentsCount($iIdx,$seq)
     {
         $sSql = "SELECT
         idx,
@@ -33,22 +33,22 @@ class modelFront extends Model
         password,
         comment_date,
         DATE_FORMAT(FROM_UNIXTIME(comment_date),'%Y/%d/%m %H:%i:%s') as date_posted
-        FROM " . EASYCOMMENT_CONTENTS . " WHERE url_idx = $iIdx ORDER BY comment_date DESC";
+        FROM " . EASYCOMMENT_CONTENTS . " WHERE url_idx = $iIdx AND seq = $seq ORDER BY comment_date DESC";
         return $this->query($sSql);
     }
 
-    public function execGetSettings()
+    public function execGetSettings($seq)
     {
-        $sSql = "SELECT * FROM " . EASYCOMMENT_SETTINGS;
+        $sSql = "SELECT * FROM " . EASYCOMMENT_SETTINGS . " WHERE seq = $seq" ;
         return $this->query($sSql,'row');
     }
 
     public function execSaveComment($aData,$iIdx)
     {
         $sSql = "INSERT INTO " . EASYCOMMENT_CONTENTS .
-            "(url_idx,user_type,visitor_name,visitor_comment,password,comment_date)
+            "(seq,url_idx,user_type,visitor_name,visitor_comment,password,comment_date)
             VALUES
-            ($iIdx,'visitor','{$this->filter_data($aData['name'])}','{$this->filter_data($aData['comment'])}',PASSWORD('{$aData['password']}'),UNIX_TIMESTAMP(NOW()))
+            ({$aData['seq']},$iIdx,'visitor','{$this->filter_data($aData['name'])}','{$this->filter_data($aData['comment'])}',PASSWORD('{$aData['password']}'),UNIX_TIMESTAMP(NOW()))
             ";
 
         return $this->query($sSql);
@@ -56,13 +56,13 @@ class modelFront extends Model
 
     public function execSaveUrl($aData)
     {
-        $sSql = "INSERT INTO " . EASYCOMMENT_URL ."(url) VALUES('{$aData['page_url']}')";
+        $sSql = "INSERT INTO " . EASYCOMMENT_URL ."(seq,url) VALUES({$aData['seq']},'{$aData['page_url']}')";
         return $this->query($sSql);
     }
 
     public function execGetUrl($aData)
     {
-        $sSql = "SELECT * FROM " . EASYCOMMENT_URL . " WHERE url = '{$aData['page_url']}'";
+        $sSql = "SELECT * FROM " . EASYCOMMENT_URL . " WHERE url = '{$aData['page_url']}' AND seq = {$aData['seq']}";
         return $this->query($sSql,'row');
     }
 
@@ -83,6 +83,12 @@ class modelFront extends Model
     {
         $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'];
         return $this->query($sSql,'row');
+    }
+
+    public function initDefault($iSequence)
+    {
+        $sSql = " INSERT INTO " . EASYCOMMENT_SETTINGS . " (seq,comment_limit) VALUES($iSequence,5)";
+        return $this->query($sSql);
     }
 
     //============================================//

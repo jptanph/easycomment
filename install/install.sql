@@ -8,11 +8,12 @@ CREATE TABLE `easycomment_contents` (
   `password` varchar(100) NOT NULL,
   `comment_date` int(11) NOT NULL,
   PRIMARY KEY (`idx`)
-) ENGINE=MyISAM AUTO_INCREMENT=605 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 
 CREATE TABLE `easycomment_settings` (
   `idx` int(100) NOT NULL AUTO_INCREMENT,
+  `seq` int(100) NOT NULL,
   `comment_limit` int(100) NOT NULL,
   `unauthorized_word` longtext NOT NULL,
   `background_color` varchar(100) NOT NULL,
@@ -20,10 +21,11 @@ CREATE TABLE `easycomment_settings` (
   `header_color` varchar(100) NOT NULL,
   `header_text_color` varchar(100) NOT NULL,
   PRIMARY KEY (`idx`)
-) ENGINE=MyISAM AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
 
 CREATE TABLE `easycomment_url` (
   `idx` int(90) NOT NULL AUTO_INCREMENT,
+  `seq` int(100) NOT NULL,  
   `url` longtext NOT NULL,
   PRIMARY KEY (`idx`)
-) ENGINE=MyISAM AUTO_INCREMENT=16 DEFAULT CHARSET=latin1;
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;

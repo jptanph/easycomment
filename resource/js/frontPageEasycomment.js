@@ -5,6 +5,7 @@ $(window).ready(function(){
 var frontPageEasycomment = {
     currentUrl : '',
     iLimit : 0,
+    iSeq : 0,
     showDelete_idx : 0,
     clickDeleteIdx : 0,
     iFixedLimit : 0,
@@ -18,7 +19,8 @@ var frontPageEasycomment = {
         this.currentUrl = ( this.currentUrl) ?  this.currentUrl : $("#easycomment_current_url").val();
         this.iLimit = (this.iLimit ) ? this.iLimit : $("#easycomment_limit").val();
         this.iFixedLimit = ( this.iFixedLimit ) ?  this.iFixedLimit : $("#easycomment_limit").val();
-
+        this.iSeq = ( this.iSeq ) ? this.iSeq : $("#easycomment_seq").val();
+        $("#easycomment_seq").remove();
         $("#easycomment_current_url").remove();
         $("#easycomment_limit").remove();
         var options = {
@@ -27,11 +29,15 @@ var frontPageEasycomment = {
             cache : false,
             type : 'post',
             data : {
-                page_url : frontPageEasycomment.currentUrl,
-                limit : this.iLimit
-            },success : function(serverResponse){
                 
+                page_url : frontPageEasycomment.currentUrl,
+                limit : this.iLimit,
+                seq : frontPageEasycomment.iSeq
+                
+            },success : function(serverResponse){
+                console.log(serverResponse)
                 if(serverResponse){
+                    
                     if(serverResponse.Data.total_comment < frontPageEasycomment.iLimit){
                         frontPageEasycomment.iLimit = serverResponse.Data.total_comment;
                     }
@@ -40,6 +46,7 @@ var frontPageEasycomment = {
                   
                     
                     if(serverResponse.Data.total_comment == 0){
+                       
                         sShowLimit = "<a  class='older_post'><span>No comment.</span></span></a>";
                     }else{
                         //sShowLimit = "<a href='#none' class='older_post' onclick='frontPageEasycomment.execLimitComment();'><span>Show Comment <span>"+frontPageEasycomment.iLimit + '/' + serverResponse.Data.total_comment+"</span></span></a>";
@@ -155,7 +162,8 @@ var frontPageEasycomment = {
                     password : password.val(),
                     captcha : captcha.val(),
                     page_url : frontPageEasycomment.currentUrl,
-                    security : security.val()
+                    security : security.val(),
+                    seq : frontPageEasycomment.iSeq
                 },success : function(serverResponse){
                     if(serverResponse.Data.status=='errorc'){
                         captcha.attr('style','border:solid 2px #DC4E22 !important;');

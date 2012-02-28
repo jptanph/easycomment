@@ -15,14 +15,14 @@ class apiFrontComments extends Controller_Api
        $this->_oFilter = new Filter_class();
 
        $aUrl = common()->modelFront()->execGetUrl($aArgs);
-       $aSettings = common()->modelFront()->execGetSettings();
+       $aSettings = common()->modelFront()->execGetSettings($aArgs['seq']);
        $aFilterData = explode('|',@$aSettings['unauthorized_word']);
        $this->_oFilter->set_filter($aFilterData,$aRepWord);
 
-       $sLimit = " LIMIT " . (isset($aArgs['limit']) ? $aArgs['limit'] : (($aSettings['post_count']) ? $aSettings['post_count']: 3));
+       $sLimit = " LIMIT " . (isset($aArgs['limit']) ? $aArgs['limit'] : (($aSettings['post_count'] ) ? $aSettings['post_count']: 3));
 
-       $aResult = common()->modelFront()->execGetComments($aUrl['idx'],$sLimit);
-       $aCount = common()->modelFront()->execGetCommentsCount($aUrl['idx']);
+       $aResult = common()->modelFront()->execGetComments($aUrl['idx'],$aArgs['seq'],$sLimit);
+       $aCount = common()->modelFront()->execGetCommentsCount($aUrl['idx'],$aArgs['seq']);
 
 
        foreach($aResult as $rows)

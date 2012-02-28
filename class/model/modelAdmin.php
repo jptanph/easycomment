@@ -37,7 +37,7 @@ class modelAdmin extends Model
     public function execUpdate($aArgs)
     {
 
-       $sSql = "UPDATE " . EASYCOMMENT_CONTENTS . " SET visitor_comment = '".$aArgs['comment'] ."' WHERE idx = {$aArgs['idx']}";
+       $sSql = "UPDATE " . EASYCOMMENT_CONTENTS . " SET visitor_comment = '".$aArgs['comment'] ."' WHERE idx = {$aArgs['idx']} AND seq = {$aArgs['seq']}";
 
         return $this->query($sSql);
     }
@@ -54,25 +54,28 @@ class modelAdmin extends Model
         return $this->query($sSql);
     }
 
-    public function execGetSettings()
+    public function execGetSettings($aArgs)
     {
-        $sSql = "SELECT * FROM " . EASYCOMMENT_SETTINGS;
+        $sSql = "SELECT * FROM " . EASYCOMMENT_SETTINGS . " WHERE seq = {$aArgs['seq']}";
         return $this->query($sSql,'row');
     }
 
      public function execSaveSettings($aData)
     {
         $sSql = "INSERT INTO " . EASYCOMMENT_SETTINGS .
-            "(comment_limit,unauthorized_word,background_color,text_color,header_color,header_text_color)
+            "(seq,comment_limit,unauthorized_word,background_color,text_color,header_color,header_text_color)
             VALUES
-            ('{$aData['easycomment_comment_limit']}',
+            (
+            {$aData['seq']},
+            '{$aData['easycomment_comment_limit']}',
             '{$aData['easycomment_ua_word']}',
             '{$aData['easycomment_bg_color']}',
             '{$aData['easycomment_text_color']}',
-            '{$aData['easycomment_header_color']}'
+            '{$aData['easycomment_header_color']}',
             '{$aData['easycomment_htext_color']}'
             )
             ";
+            usbuilder()->vd($sSql);
         return $this->query($sSql);
     }
 
@@ -94,9 +97,9 @@ class modelAdmin extends Model
     public function execSaveComment($aData,$iUrlIdx)
     {
         $sSql = " INSERT INTO " . EASYCOMMENT_CONTENTS .
-            "(url_idx,user_type,visitor_name,visitor_comment,comment_date)
+            "(seq,url_idx,user_type,visitor_name,visitor_comment,comment_date)
             VALUES
-            ($iUrlIdx,'admin','{$aData['name']}','{$aData['comment']}',UNIX_TIMESTAMP(NOW()))";
+            ({$aData['seq']},$iUrlIdx,'admin','{$aData['name']}','{$aData['comment']}',UNIX_TIMESTAMP(NOW()))";
         $this->query($sSql);
     }
 

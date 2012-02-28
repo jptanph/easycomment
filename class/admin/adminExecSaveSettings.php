@@ -7,9 +7,9 @@ class adminExecSaveSettings extends Controller_AdminExec
     {
         $sInitScript = usbuilder()->init($this, $aArgs);
 
-        $sUrl = usbuilder()->getUrl('adminPageSettings');
+        $sUrl = usbuilder()->getUrl('adminPageSettings') . '&seq='.$aArgs['seq'];
 
-        $aResult = common()->modelAdmin()->execGetSettings();
+        $aResult = common()->modelAdmin()->execGetSettings($aArgs);
 
         if($aResult)
         {

@@ -5,17 +5,17 @@ class adminPageContents extends Controller_Admin
 {
     protected function run($aArgs)
     {
-        $aData = array();
-        $iQryStrStatus = 0;
-        $iLimit = (isset($aArgs['row'])) ? $aArgs['row'] : 20;
         $sPrefix = $this->Request->getAppID() . '_';
         $sImagePath = '/_sdk/img/' . $this->Request->getAppID() . '/';
         /** usbuilder initializer.**/
-       // $sInitScript = usbuilder()->init($this->Request->getAppID(), $aArgs);
         usbuilder()->init($this, $aArgs);
         usbuilder()->getFormAction($this->_sPrefix . 'edit_comment_form','');
         usbuilder()->validator(array('form' => $this->_sPrefix . 'add_form'));
         /** usbuilder initializer.**/
+
+        $aData = array();
+        $iQryStrStatus = 0;
+        $iLimit = (isset($aArgs['row'])) ? $aArgs['row'] : 20;
 
         $sUrlContents = usbuilder()->getUrl('adminPageContents');
 

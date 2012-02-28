@@ -15,7 +15,7 @@ class adminPageSettings extends Controller_Admin
         usbuilder()->getFormAction($this->_sPrefix . 'settings_form','adminExecSaveSettings');
         /** usbuilder initializer.**/
 
-        $aResult = common()->modelAdmin()->execGetSettings();
+        $aResult = common()->modelAdmin()->execGetSettings($aArgs);
 
         $this->importCss('farbtastic');
         $this->importJs('farbtastic');
@@ -23,6 +23,7 @@ class adminPageSettings extends Controller_Admin
         $this->importJs(__CLASS__);
 
         /** settings assign value.**/
+        $this->assign('iSeq',$aArgs['seq']);
         $this->assign('sPrefix',$this->_sPrefix);
         $this->assign('sImagePath',$sImagePath);
         $this->assign('iIdx',$aResult['idx']);

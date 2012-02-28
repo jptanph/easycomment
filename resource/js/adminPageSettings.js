@@ -1,4 +1,9 @@
+$(document).ready(function(){
+    
+    adminPageSettings.execInitDefault();
+});
 var adminPageSettings = {
+    iSeq : 0,
     execSave : function(){
         $("#easycomment_color_picker").remove();
         document.easycomment_settings_form.submit();
@@ -26,7 +31,6 @@ var adminPageSettings = {
             'classname': 'ly_set ly_editor',
             'closeCallback' : function(){
                 window.location.href = usbuilder.getUrl('adminPageSettings');
-                //$("#easycomment_color_picker").remove();
             }
         });
         
@@ -36,6 +40,7 @@ var adminPageSettings = {
 
         
     },execReset : function(){
+        
         $("#easycomment_bg_color").val('');
         $("#easycomment_text_color").val('');
         $("#easycomment_header_color").val('');
@@ -45,5 +50,9 @@ var adminPageSettings = {
         $("#easycomment_custom_area").hide();
         $("#easycomment_down").hide();
         $("#easycomment_up").show(); 
+        
+    },execInitDefault : function(){
+        var seq = $("#easycomment_seq");
+        this.iSeq = seq.val();
     }
 }

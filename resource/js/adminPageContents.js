@@ -1,12 +1,14 @@
 $(document).ready(function(){
     var options = { 'years_between' : [2000,2030],'format' : 'yyyy/mm/dd' };
     $("#easycomment_start_date, #easycomment_end_date").BuilderCalendar(options);
+    adminPageContents.execInitDefaults();
 });
 
 
 var adminPageContents = {
     arrayIdx : [],
     singleIdx : 0,
+    iSeq : 0,
     execAddComment : function(){
         
         $(".pop_calendar").hide();
@@ -71,7 +73,6 @@ var adminPageContents = {
         var end_date = $("#easycomment_end_date");
         var keyword = $("#easycomment_keyword");
         var search_flag = $("#search");
-        var seq = $("#easycomment_seq");
 
         if((Date.parse(start_date.val()) > Date.parse(end_date.val()))){
             start_date.css('border','solid 2px #DC4E22');
@@ -87,7 +88,7 @@ var adminPageContents = {
         start_date.css('border','solid 1px #CCC');
         end_date.css('border','solid 1px #CCC'); 
         
-        location.href = usbuilder.getUrl('adminPageContents') + "&seq=" + seq.val() +  "&search=" + '&keyword='+keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&field_search='+field_search.val()+'&date_range='+date_range.val() + '&search='+search_flag.val();
+        location.href = usbuilder.getUrl('adminPageContents') + "&seq=" + this.iSeq +  "&search=" + '&keyword='+keyword.val()+'&start_date='+start_date.val()+'&end_date='+end_date.val()+'&field_search='+field_search.val()+'&date_range='+date_range.val() + '&search='+search_flag.val();
     
     },execReset : function(){
         
@@ -295,8 +296,10 @@ var adminPageContents = {
             data : {
                 name : name.val(),
                 comment : comment.val(),
-                url : url.val()
+                url : url.val(),
+                seq : adminPageContents.iSeq
             },success : function(serverResponse){
+                
                 if(serverResponse.Data.status=='error'){
                     url.css({'border':'solid 2px #DC4E22'});
                 }else{
@@ -316,6 +319,8 @@ var adminPageContents = {
     },mostAction : function(){
         
         location.href = usbuilder.getUrl('adminPageSettings');
-        
+    },execInitDefaults : function(){
+        var seq = $("#easycomment_seq");
+        this.iSeq = seq.val();
     }
 }
