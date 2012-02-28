@@ -309,7 +309,7 @@ var adminPageContents = {
                     sdk_popup.close('easycomment_add_comment');
                     //oValidator.generalPurpose.getMessage(true, "Saved successfully!");
                     sdk_message.show('Saved successfully!', 'success');
-                    location.href = usbuilder.getUrl('adminPageContents');
+                    location.href = usbuilder.getUrl('adminPageContents') + '&seq=' + adminPageContents.iSeq;
                 }
             }
         }

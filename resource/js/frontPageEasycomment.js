@@ -24,7 +24,6 @@ var frontPageEasycomment = {
         this.iLimit = (this.iLimit) ? this.iLimit : $("#easycomment_limit").val();
         this.iFixedLimit = ( this.iFixedLimit ) ?  this.iFixedLimit : $("#easycomment_limit").val();
         this.iSeq = ( this.iSeq ) ? this.iSeq : $("#easycomment_seq").val();
-
 //        $("#easycomment_seq").remove();
 //        $("#easycomment_current_url").remove();
 //        $("#easycomment_limit").remove();
@@ -256,6 +255,7 @@ var frontPageEasycomment = {
                 password : password.val(),
                 seq : frontPageEasycomment.iSeq
             },success : function(serverResponse){
+
                 if(serverResponse.Data=='deleted'){
                     $('#easycomment_list_comment'+idx).slideUp();
                     $('#easycomment_password'+idx).css({'border':'solid 1px #CCC'});
