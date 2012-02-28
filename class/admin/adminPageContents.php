@@ -122,6 +122,18 @@ class adminPageContents extends Controller_Admin
                " WHERE t_contents.seq = {$aArgs['seq']} AND " . (($aArgs['field_search']=='url') ? " t_url.url " : $aArgs['field_search'] ) . " LIKE '%" . trim($aArgs['keyword']) . "%' AND DATE_FORMAT(FROM_UNIXTIME(t_contents.comment_date),'%Y/%m/%d') BETWEEN '" . $aArgs['start_date'] . "' AND '" . $aArgs['end_date'] . "' "
                :
                " WHERE t_contents.seq = {$aArgs['seq']}";
+
+            $sSearchWhere1 = (
+                    isset($aArgs['keyword']) &&
+                    isset($aArgs['start_date']) &&
+                    isset($aArgs['end_date']) &&
+                    isset($aArgs['field_search']) &&
+                    isset($aArgs['date_range'])
+            )
+            ?
+            " WHERE t_contents.seq = {$aArgs['seq']} AND " . (($aArgs['field_search']=='url') ? " t_url.url " : $aArgs['field_search'] ) . " LIKE '%" . trim($aArgs['keyword']) . "%' AND DATE_FORMAT(FROM_UNIXTIME(t_contents.comment_date),'%Y/%m/%d') BETWEEN '" . $aArgs['start_date'] . "' AND '" . $aArgs['end_date'] . "' "
+            :
+            " WHERE seq = {$aArgs['seq']}";
             $sOrderBy = (isset($aArgs['sort']) && isset($aArgs['type']))
                 ?
                 " ORDER BY " . (($aArgs['sort']=='url') ? "t_url.url" : $aArgs['sort'] ) . " " . (($aArgs['type']=='des' ) ? " DESC " : " ASC ")
@@ -142,7 +154,7 @@ class adminPageContents extends Controller_Admin
 
 
             $aResult = common()->modelAdmin()->execGetContents($sSearchWhere,$sOrderBy,$sLimit);
-            $aCount = common()->modelAdmin()->execGetCount($sInnerJoin,$sSearchWhere);
+            $aCount = common()->modelAdmin()->execGetCount($sInnerJoin,$sSearchWhere1);
             $iResult = count($aCount);
             $iIncRow = 0;
 

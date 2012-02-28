@@ -34,7 +34,8 @@ var adminPageContents = {
             type : 'post',
             dataType : 'json',
             data : {
-                idx : idx
+                idx : idx,
+                seq : adminPageContents.iSeq
             },success : function(serverResponse){
                
                 sdk_popup.load('easycomment_edit_comment').skin('admin').layer({
@@ -103,7 +104,7 @@ var adminPageContents = {
         $(".pop_calendar").hide();
         var show_row = $("#easycomment_show_row");
        
-       location.href = usbuilder.getUrl('adminPageContents') + '&row=' + show_row.val() + sQry;
+       location.href = usbuilder.getUrl('adminPageContents') + '&seq=' + adminPageContents.iSeq + '&row=' + show_row.val() + sQry;
    
     },execUpdate : function(sQry){
         
@@ -118,14 +119,14 @@ var adminPageContents = {
             dataType : 'json',
             data : {
                 idx : idx.val(),
-                name : name.val(),
-                
-                comment : comment.val()
+                name : name.val(),                
+                comment : comment.val(),
+                seq : adminPageContents.iSeq
             },success : function(serverResponse){
                 if(serverResponse.Data){
                     sdk_popup.close('easycomment_edit_comment','success');
                     sdk_message.show("Save successfully!");
-                    location.href = usbuilder.getUrl('adminPageContents') + sQry;
+                    location.href = usbuilder.getUrl('adminPageContents') + '&seq=' + adminPageContents.iSeq + sQry;
                 }
             }
         }
@@ -232,13 +233,13 @@ var adminPageContents = {
             type : 'post',
             dataType : 'json',
             data : {
-                idx : adminPageContents.arrayIdx
+                idx : adminPageContents.arrayIdx,
+                seq : adminPageContents.iSeq
             },success : function(serverResponse){
                 sdk_popup.close('easycomment_delete_multiple_comment');
-                //oValidator.generalPurpose.getMessage(true, "Deleted successfully");
                
                 sdk_message.show('Deleted successfully!', 'success');
-                window.location.href=usbuilder.getUrl('adminPageContents'); 
+                window.location.href=usbuilder.getUrl('adminPageContents') + '&seq=' + adminPageContents.iSeq; 
             }            
         }
         
@@ -264,12 +265,13 @@ var adminPageContents = {
             type : 'post',
             dataType : 'json',
             data : {
-                idx : adminPageContents.singleIdx
+                idx : adminPageContents.singleIdx,
+                seq : adminPageContents.iSeq
             },success : function(serverResponse){
                 sdk_popup.close('easycomment_delete_single_comment');
                 //oValidator.generalPurpose.getMessage(true, "Deleted successfully");
                 sdk_message.show('Deleted successfully!', 'success');
-                window.location.href=usbuilder.getUrl('adminPageContents') + sQry;              
+                window.location.href=usbuilder.getUrl('adminPageContents') + '&seq=' + adminPageContents.iSeq + sQry;              
             }
         }
         $.ajax(options);
@@ -319,6 +321,7 @@ var adminPageContents = {
     },mostAction : function(){
         
         location.href = usbuilder.getUrl('adminPageSettings');
+        
     },execInitDefaults : function(){
         var seq = $("#easycomment_seq");
         this.iSeq = seq.val();

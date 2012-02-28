@@ -8,7 +8,7 @@ class apiAdminViewComment extends Controller_Api
     {
        usbuilder()->init($this, $aArgs);
 
-       $aResult = common()->modelAdmin()->execViewComment($aArgs['idx']);
+       $aResult = common()->modelAdmin()->execViewComment($aArgs['idx'],$aArgs['seq']);
        return $aResult;
     }
 }

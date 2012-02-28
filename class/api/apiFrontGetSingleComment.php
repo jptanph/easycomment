@@ -6,9 +6,8 @@ class apiFrontGetSingleComment extends Controller_Api
     protected function post($aArgs)
     {
         usbuilder()->init($this, $aArgs);
-        $model = new modelFront();
 
-        $aResult = $model->execShowComment($aArgs);
+        $aResult = common()->modelFront()->execShowComment($aArgs);
         return $aResult;
     }
 }

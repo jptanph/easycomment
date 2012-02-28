@@ -75,13 +75,13 @@ class modelFront extends Model
 
     public function execViewComment($aData)
     {
-        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'] . " AND PASSWORD = PASSWORD('{$aData['password']}')";
+        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'] . " AND PASSWORD = PASSWORD('{$aData['password']}' AND seq = '{$aData['seq']}')";
         return $this->query($sSql);
     }
 
     public function execShowComment($aData)
     {
-        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'];
+        $sSql = "SELECT * FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = " . $aData['idx'] . " AND seq = " . $aData['seq'];
         return $this->query($sSql,'row');
     }
 

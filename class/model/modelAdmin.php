@@ -21,7 +21,7 @@ class modelAdmin extends Model
         return $this->query($sSql);
     }
 
-    public function execViewComment($iIdx)
+    public function execViewComment($iIdx,$seq)
     {
         $sSql = "SELECT
              t_contents.idx AS idx,
@@ -30,7 +30,7 @@ class modelAdmin extends Model
              t_contents.visitor_comment as visitor_comment,
              t_url.url as url
              FROM " . EASYCOMMENT_CONTENTS . " AS t_contents
-            INNER JOIN " . EASYCOMMENT_URL . " AS t_url on t_contents.url_idx = t_url.idx WHERE t_contents.idx = $iIdx" ;
+            INNER JOIN " . EASYCOMMENT_URL . " AS t_url on t_contents.url_idx = t_url.idx WHERE t_contents.idx = $iIdx AND t_contents.seq = $seq " ;
         return $this->query($sSql,'row');
     }
 
@@ -48,9 +48,9 @@ class modelAdmin extends Model
         return $this->query($sSql);
     }
 
-    public function execDelete($iIdx)
+    public function execDelete($iIdx,$seq)
     {
-        $sSql = "DELETE FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = $iIdx";
+        $sSql = "DELETE FROM " . EASYCOMMENT_CONTENTS . " WHERE idx = $iIdx AND seq = $seq";
         return $this->query($sSql);
     }
 

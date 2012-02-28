@@ -8,7 +8,7 @@ class apiAdminDeleteMultiple extends Controller_Api
         usbuilder()->init($this, $aArgs);
         foreach($aArgs['idx'] as $rows)
         {
-            common()->modelAdmin()->execDelete($rows);
+            common()->modelAdmin()->execDelete($rows,$aArgs['seq']);
         }
     }
 }

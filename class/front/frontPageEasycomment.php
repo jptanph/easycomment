@@ -43,7 +43,7 @@ class frontPageEasycomment extends Controller_Front
         $sHtml .= "	    <div class='{$this->_sPrefix}add_comment' style='display:none;' id='{$this->_sPrefix}add_comment'>\n";
         $sHtml .= "		   <h3>Add Comment</h3>\n";
         $sHtml .="<form>";
-        $sHtml .="<input type='text' id='{$this->_sPrefix}seq' value='{$iSequence}'>\n";
+        $sHtml .="<input type='hidden' id='{$this->_sPrefix}seq' value='{$iSequence}'>\n";
         $sHtml .="<input type='hidden' id='{$this->_sPrefix}show_comment' value='{$iShowComment}'>\n";
         $sHtml .="<input type='hidden' id='{$this->_sPrefix}limit' value='{$aSettings['comment_limit']}'>\n";
         $sHtml .="<input type='hidden' id='{$this->_sPrefix}current_url' value='{$_SERVER['SCRIPT_URI']}'>\n";
