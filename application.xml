@@ -3,19 +3,32 @@
     <langs support="en" default="en"></langs>
     <api use="off">
         <ifs>
+             <if class="apiBuilderLib" permission="off" desc="API for the builder library"></if>
+             <if class="apiAdminDateRange" permission="off" desc="API for generating date ranges"></if>                        
+             <if class="apiAdminDeleteMultiple" permission="off" desc="API for multiple deletion"></if>
+             <if class="apiAdminDeleteSingle" permission="off" desc="API for single deletion"></if>   
+             <if class="apiAdminSave" permission="off" desc="API for saving comment"></if>  
+             <if class="apiAdminUpdate" permission="off" desc="API for updating comment"></if> 
+             <if class="apiAdminViewComment" permission="off" desc="API for generating specific comment information"></if>                                                    
+             <if class="apiFrontComments" permission="off" desc="API for generating comments in front"></if>  
+             <if class="apiFrontDeleteComment" permission="off" desc="API for delete comments in front"></if> 
+             <if class="apiFrontGetSingleComment" permission="off" desc="API for display specific comment in front. User in see more Link"></if>              
+             <if class="apiFrontSaveComment" permission="off" desc="API for saving comment in front"></if>                           
         </ifs>
     </api>
-    <admin use="on" index="adminIndex">
+    <admin use="on" index="adminPageSettings">
         <ifs>
-            <if class="adminIndex" permission="off" desc="Sample Admin Interface"></if>
+            <if class="adminExecSaveSettings" permission="off" desc="Save user's settings"></if>
+            <if class="adminPageContents" permission="off" desc="Display the record list of the comment(s)"></if>      
+            <if class="adminPageSettings" permission="off" desc="Display setting page"></if>      
+            <if class="adminPageManage" permission="off" desc="Display manage page for adding sequence module"></if>     
         </ifs>
         <menus>
         </menus>
     </admin>
     <front use="on">
         <ifs>
-            <if class="frontSample" permission="off" code-assist="off" desc="Sample Front Interface">
-            </if>
+            <if class="frontPageEasycomment" permission="off" code-assist="on" desc="easycomment block | Display easycomment module in front"></if>
         </ifs>
     </front>
 </application>
